@@ -73,6 +73,10 @@ if (slideFiles.length > 0) {
   safeCopy(path.join(slideSrc, slideFiles[0]), path.join(publicImagesDir, 'activities', 'bridge-slide.jpg'));
 }
 
+const swingSrc = path.join(sourceDir, 'Bridge Swing');
+safeCopy(path.join(swingSrc, 'Bridge Swing-1.jpg'), path.join(publicImagesDir, 'activities', 'bridge-swing.jpg'));
+safeCopy(path.join(swingSrc, 'Bridge Swing-2.jpg'), path.join(publicImagesDir, 'activities', 'bridge-swing-action.jpg'));
+
 const cruiseSrc = path.join(sourceDir, 'Riversong Cruise');
 safeCopy(path.join(cruiseSrc, 'Riversong-1.jpg'), path.join(publicImagesDir, 'activities', 'riversong-sunset-cruise.jpg'));
 safeCopy(path.join(cruiseSrc, 'Riversong-3.jpg'), path.join(publicImagesDir, 'activities', 'zambezi-luxury-deck.jpg'));
@@ -80,6 +84,32 @@ safeCopy(path.join(cruiseSrc, 'Riversong-3.jpg'), path.join(publicImagesDir, 'ac
 const chobeSrc = path.join(sourceDir, 'Chobe Day Trip');
 safeCopy(path.join(chobeSrc, 'Chobe -1.jpg'), path.join(publicImagesDir, 'activities', 'chobe-elephants-river.jpg'));
 safeCopy(path.join(chobeSrc, 'Chobe -4.jpg'), path.join(publicImagesDir, 'activities', 'chobe-game-drive.jpg'));
+
+const tourFallsSrc = path.join(sourceDir, 'Guided Tour of the Falls');
+safeCopy(path.join(tourFallsSrc, 'Tour of the Falls-1.jpg'), path.join(publicImagesDir, 'activities', 'guided-tour-falls.jpg'));
+safeCopy(path.join(tourFallsSrc, 'Tour of the Falls-3.jpg'), path.join(publicImagesDir, 'activities', 'guided-tour-viewpoint.jpg'));
+
+const jetboatSrc = path.join(sourceDir, 'Adventure Jetboat');
+safeCopy(path.join(jetboatSrc, 'Jetboat -1.jpg'), path.join(publicImagesDir, 'activities', 'adventure-jetboat.jpg'));
+safeCopy(path.join(jetboatSrc, 'Jetboat-2.jpg'), path.join(publicImagesDir, 'activities', 'jetboat-rapids.jpg'));
+
+const bridgeTourSrc = path.join(sourceDir, 'Historical Bridge Tour');
+safeCopy(path.join(bridgeTourSrc, 'Bridge Tour-1.jpg'), path.join(publicImagesDir, 'activities', 'bridge-tour-catwalk.jpg'));
+safeCopy(path.join(bridgeTourSrc, 'Bridge Tour-2.jpg'), path.join(publicImagesDir, 'activities', 'bridge-tour-history.jpg'));
+
+const villageSrc = path.join(sourceDir, 'Traditional Village Tour');
+const villageFiles = fs.existsSync(villageSrc) ? fs.readdirSync(villageSrc) : [];
+if (villageFiles.length > 0) {
+  safeCopy(path.join(villageSrc, villageFiles[0]), path.join(publicImagesDir, 'activities', 'traditional-village.jpg'));
+}
+
+const eleSrc = path.join(sourceDir, 'Elephant Safari');
+safeCopy(path.join(eleSrc, 'Elecrew-01.jpg'), path.join(publicImagesDir, 'activities', 'elephant-interaction.jpg'));
+safeCopy(path.join(eleSrc, 'Elecrew-04.jpg'), path.join(publicImagesDir, 'activities', 'elephant-safari.jpg'));
+
+const gameDriveSrc = path.join(sourceDir, 'Game Drive');
+safeCopy(path.join(gameDriveSrc, 'Game Drive-1.jpg'), path.join(publicImagesDir, 'activities', 'zambezi-game-drive.jpg'));
+safeCopy(path.join(gameDriveSrc, 'Game Drive-4.jpg'), path.join(publicImagesDir, 'activities', 'game-drive-lions.jpg'));
 
 const fallsSrc = path.join(sourceDir, 'Falls Pics');
 safeCopy(path.join(fallsSrc, 'Falls 1.jpg'), path.join(publicImagesDir, 'destinations', 'victoria-falls-panoramic.jpg'));
