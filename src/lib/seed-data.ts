@@ -2,953 +2,2227 @@ import { Activity, Partner, MappedProperty, AccommodationRequest, PartnerInvoice
 
 export const INITIAL_ACTIVITIES: Activity[] = [
   {
-    id: 'act-heli-12min',
-    slug: 'helicopter-flight-of-angels',
-    name: 'Flight of Angels — 12-13 Min Helicopter Scenic Flight',
-    destination: 'VICTORIA_FALLS',
-    category: 'AIR',
-    shortDescription:
-      'The iconic aerial journey over Victoria Falls and the Batoka Gorge. Experience the breathtaking vistas described by David Livingstone.',
-    fullDescription:
-      'To put the Victoria Falls into true perspective, they must be seen from the air. The "Flight of Angels" is the most popular scenic helicopter flight in Southern Africa. You will lift off from our dedicated helipad just 3km from the Falls and embark on a mesmerizing flight over the full 1,700-metre width of the cataract, the tranquil upper Zambezi River, and the serpentine volcanic chasms of the Batoka Gorge.\n\nEvery passenger is guaranteed a direct window seat with unobstructed bubble-glass viewports, allowing you to capture world-class photography and witness rainbows dancing in the perpetual spray mist.',
-    durationMinutes: 13,
-    durationLabel: '12–13 min',
-    grossPriceUSD: 150,
-    nettPriceUSD: 120,
-    parkFeeUSD: 15,
-    departureTimes: ['08:00', '09:00', '10:00', '11:00', '14:00', '15:00', '16:00'],
-    pickupIncluded: true,
-    fitnessLevel: 'Easy',
-    minAge: 2,
-    includedItems: [
-      'Complimentary return transfers from all Victoria Falls town hotels & lodges',
-      'Guaranteed bubble-window seat for every passenger',
-      'Pre-flight safety briefing and headset communication with commercial pilot',
-      'Flight certificate and destination souvenir map'
+    "id": "act-heli-12min",
+    "slug": "helicopter-flight-of-angels",
+    "name": "Flight of Angels — 12-13 Min Helicopter Scenic Flight",
+    "destination": "VICTORIA_FALLS",
+    "category": "AIR",
+    "shortDescription": "The iconic aerial journey over Victoria Falls and Batoka Gorge. Experience the breathtaking vistas described by David Livingstone.",
+    "fullDescription": "To put the Victoria Falls into true perspective, they must be seen from the air. The \"Flight of Angels\" is the most popular scenic helicopter flight in Southern Africa. You will lift off from our dedicated helipad just 3km from the Falls and embark on a mesmerizing flight over the full 1,700-metre width of the cataract, the tranquil upper Zambezi River, and the serpentine volcanic chasms of the Batoka Gorge.\\n\\nEvery passenger is guaranteed a direct window seat with unobstructed bubble-glass viewports, allowing you to capture world-class photography and witness rainbows dancing in the perpetual spray mist.",
+    "durationMinutes": 13,
+    "durationLabel": "12–13 min",
+    "grossPriceUSD": 173,
+    "nettPriceUSD": 138,
+    "parkFeeUSD": 38,
+    "departureTimes": [
+      "08:00",
+      "09:00",
+      "10:00",
+      "11:00",
+      "14:00",
+      "15:00",
+      "16:00"
     ],
-    excludedItems: [
-      'National Park and Rainforest Heritage Fee ($15.00 USD per person)',
-      'Digital souvenir video / photo package (available as add-on)'
+    "pickupIncluded": true,
+    "fitnessLevel": "Easy",
+    "minAge": 2,
+    "includedItems": [
+      "Return transfers from Victoria Falls town hotels",
+      "Guaranteed bubble-window seat",
+      "Pre-flight safety briefing & pilot headset communication",
+      "Souvenir flight certificate"
     ],
-    restrictions: [
-      'Maximum passenger weight limit of 120 kg (264 lbs) per seat; surcharge applies above',
-      'Infants under 2 years fly free on an adult lap'
+    "excludedItems": [
+      "Fuel surcharge ($20) & Aviation park fee ($18) payable upon check-in",
+      "Souvenir video USB package"
     ],
-    aircraftSpecs: {
-      model: 'Bell 206 LongRanger / Airbus H120 Colibri',
-      capacity: '4 to 6 passengers per flight',
-      features: ['Air-conditioned cabin', 'High-visibility bubble windows', 'Bose noise-canceling headsets', 'Turbine-powered twin reliability']
+    "restrictions": [
+      "Max passenger weight 120kg per individual seat (comfort seat required above)",
+      "Infants under 2 fly free on lap"
+    ],
+    "aircraftSpecs": {
+      "model": "Bell 206 LongRanger / Airbus H120 Colibri",
+      "capacity": "4 to 6 passengers per flight",
+      "features": [
+        "Air-conditioned cabin",
+        "High-visibility bubble windows",
+        "Bose noise-canceling headsets",
+        "Turbine-powered twin reliability"
+      ]
     },
-    photos: [
-      '/images/helicopter/hero-angels.jpg',
-      '/images/helicopter/gorge-flight.jpg',
-      '/images/helicopter/cockpit-view.jpg',
-      '/images/helicopter/falls-rainbow.jpg',
-      '/images/helicopter/spectacular-aerial.jpg',
-      '/images/helicopter/helipad-takeoff.jpg'
+    "photos": [
+      "/images/activities/heli-flight-of-angels.jpg",
+      "/images/helicopter/hero-angels.jpg",
+      "/images/helicopter/cockpit-view.jpg",
+      "/images/helicopter/falls-rainbow.jpg"
     ],
-    rating: 4.96,
-    reviewCount: 428,
-    status: 'ACTIVE',
-    addOns: [
+    "rating": 4.96,
+    "reviewCount": 428,
+    "status": "ACTIVE",
+    "addOns": [
       {
-        id: 'addon-heli-vip-seat',
-        activityId: 'act-heli-12min',
-        name: 'VIP Co-Pilot Front Seat Upgrade',
-        description: 'Sit in the front co-pilot seat alongside the captain for an uninterrupted 180° panoramic vista.',
-        grossPriceUSD: 35,
-        nettPriceUSD: 25,
-        capacityLimit: 1, // HARD CAP: max 1 per flight
-        status: 'ACTIVE'
+        "id": "addon-heli-vip-seat",
+        "activityId": "act-heli-12min",
+        "name": "VIP Co-Pilot Front Seat Upgrade",
+        "description": "Front cockpit seating alongside captain for 180° unobstructed view",
+        "grossPriceUSD": 35,
+        "nettPriceUSD": 25,
+        "capacityLimit": 1,
+        "status": "ACTIVE"
       },
       {
-        id: 'addon-heli-4k-video',
-        activityId: 'act-heli-12min',
-        name: 'HD 4K Souvenir Cockpit & Tail Video (USB Drive)',
-        description: 'Professionally edited digital recording from external high-definition cameras mounted on the helicopter.',
-        grossPriceUSD: 40,
-        nettPriceUSD: 20,
-        capacityLimit: null, // Unlimited
-        status: 'ACTIVE'
+        "id": "addon-heli-4k-video",
+        "activityId": "act-heli-12min",
+        "name": "HD 4K Cockpit & Tail Video (USB)",
+        "description": "Professionally edited video from external helicopter cameras",
+        "grossPriceUSD": 40,
+        "nettPriceUSD": 20,
+        "capacityLimit": null,
+        "status": "ACTIVE"
       },
       {
-        id: 'addon-heli-park-fee',
-        activityId: 'act-heli-12min',
-        name: 'Pre-Paid Zimbabwe National Park Fee',
-        description: 'Skip the cash payment counter at the helipad by pre-paying your statutory government aviation conservation levy.',
-        grossPriceUSD: 15,
-        nettPriceUSD: 15,
-        capacityLimit: null, // Unlimited
-        status: 'ACTIVE'
+        "id": "addon-heli-park-fee",
+        "activityId": "act-heli-12min",
+        "name": "Pre-Paid Aviation & Park Fee",
+        "description": "Covers the mandatory $20 fuel surcharge and $18 aviation park levy",
+        "grossPriceUSD": 38,
+        "nettPriceUSD": 38,
+        "capacityLimit": null,
+        "status": "ACTIVE"
       }
     ]
   },
   {
-    id: 'act-heli-25min',
-    slug: 'zambezi-spectacular-25min-helicopter',
-    name: 'Zambezi Spectacular — 25 Min Extended Helicopter Flight',
-    destination: 'VICTORIA_FALLS',
-    category: 'AIR',
-    shortDescription:
-      'The comprehensive Southern African aerial expedition. Covers Victoria Falls, the deep gorges, and low-level game viewing over Zambezi National Park.',
-    fullDescription:
-      'The ultimate aerial tour of the region. After completing multiple scenic figure-eights over both the Zimbabwean and Zambian sides of Victoria Falls, your helicopter sweeps downstream through the breathtaking Batoka Gorge before banking upstream over the untouched riverine islands of Zambezi National Park.\n\nFly low over the savannah where pods of hippos bask in the river, elephants cross channels, and herds of buffalo graze along the floodplains.',
-    durationMinutes: 25,
-    durationLabel: '25 min',
-    grossPriceUSD: 285,
-    nettPriceUSD: 230,
-    parkFeeUSD: 15,
-    departureTimes: ['08:30', '10:30', '14:30', '16:15'],
-    pickupIncluded: true,
-    fitnessLevel: 'Easy',
-    minAge: 2,
-    includedItems: [
-      'Complimentary return hotel transfers',
-      'Extended 25-minute flight route including Victoria Falls, Batoka Gorge and Zambezi National Park',
-      'Aerial wildlife tracking with live pilot commentary',
-      'Bubble-window guaranteed seating'
+    "id": "act-heli-gorge-22min",
+    "slug": "batoka-gorge-helicopter-flight-22min",
+    "name": "Gorge Flight — 22 Min Deep Batoka Canyon Helicopter Run",
+    "destination": "VICTORIA_FALLS",
+    "category": "AIR",
+    "shortDescription": "Thrilling aerial run swooping deep between the basalt cliff walls of the Batoka Gorge combined with an orbit over the Falls.",
+    "fullDescription": "An exhilarating scenic flight designed for adventurers who want to experience the raw geology of the Zambezi rift valley. In addition to a complete figure-eight orbit over the crest of Victoria Falls, your pilot banks steeply and descends low into the winding basalt canyons of the Batoka Gorge, skimming above the roaring whitewater rapids before rising back up to reveal panoramic vistas across two countries.",
+    "durationMinutes": 22,
+    "durationLabel": "22 min",
+    "grossPriceUSD": 271,
+    "nettPriceUSD": 215,
+    "parkFeeUSD": 51,
+    "departureTimes": [
+      "08:30",
+      "10:30",
+      "14:30",
+      "16:00"
     ],
-    excludedItems: [
-      'National Park Conservation Fee ($15.00 USD per person)',
-      'Digital video package'
+    "pickupIncluded": true,
+    "fitnessLevel": "Easy",
+    "minAge": 2,
+    "includedItems": [
+      "Complimentary hotel return transfers",
+      "Deep canyon descent flight",
+      "Bubble-window view guarantee",
+      "Pilot commentary"
     ],
-    restrictions: [
-      'Maximum passenger weight limit of 120 kg per seat',
-      'Flight path may be adjusted slightly for wildlife protection'
+    "excludedItems": [
+      "Fuel surcharge ($33) and Aviation parks fee ($18)",
+      "Souvenir digital footage"
     ],
-    aircraftSpecs: {
-      model: 'Airbus H120 / Bell 206L LongRanger',
-      capacity: '4 to 6 passengers',
-      features: ['Air conditioning', 'Panoramic glass windows', 'Bose noise-canceling headsets']
+    "restrictions": [
+      "Max weight limit 120 kg per seat",
+      "Passport or ID required for check-in"
+    ],
+    "photos": [
+      "/images/activities/heli-gorge-flight.jpg",
+      "/images/helicopter/gorge-flight.jpg",
+      "/images/activities/heli-cockpit.jpg"
+    ],
+    "rating": 4.94,
+    "reviewCount": 164,
+    "status": "ACTIVE",
+    "addOns": [
+      {
+        "id": "addon-gorge-front-seat",
+        "activityId": "act-heli-gorge-22min",
+        "name": "Front Co-Pilot Seat",
+        "description": "Direct co-pilot front window seat",
+        "grossPriceUSD": 45,
+        "nettPriceUSD": 30,
+        "capacityLimit": 1,
+        "status": "ACTIVE"
+      }
+    ]
+  },
+  {
+    "id": "act-heli-25min",
+    "slug": "zambezi-spectacular-25min-helicopter",
+    "name": "Zambezi Spectacular — 25 Min Extended Aerial Safari Flight",
+    "destination": "VICTORIA_FALLS",
+    "category": "AIR",
+    "shortDescription": "The ultimate Southern African aerial expedition: Victoria Falls, the deep gorges, and low-level game viewing over Zambezi National Park.",
+    "fullDescription": "The comprehensive aerial tour of the region. After completing multiple scenic orbits over both Zimbabwean and Zambian sides of Victoria Falls, your helicopter sweeps downstream through the breathtaking Batoka Gorge before banking upstream over the untouched riverine islands and savannah of Zambezi National Park.\\n\\nFly low over channels where hippo pods bask, elephants cross sandbanks, and giraffe and buffalo herds graze along the floodplains.",
+    "durationMinutes": 25,
+    "durationLabel": "25 min",
+    "grossPriceUSD": 328,
+    "nettPriceUSD": 260,
+    "parkFeeUSD": 51,
+    "departureTimes": [
+      "08:30",
+      "10:30",
+      "14:30",
+      "15:45"
+    ],
+    "pickupIncluded": true,
+    "fitnessLevel": "Easy",
+    "minAge": 2,
+    "includedItems": [
+      "Complimentary hotel pickup and return",
+      "Comprehensive flight: Falls, Gorges & National Park",
+      "Noise-cancelling headsets",
+      "Champagne toast at helipad lounge"
+    ],
+    "excludedItems": [
+      "Fuel surcharge ($33) and park levy ($18)"
+    ],
+    "restrictions": [
+      "Max weight limit 120 kg per seat"
+    ],
+    "aircraftSpecs": {
+      "model": "Airbus H120 / Bell 206L LongRanger",
+      "capacity": "4 to 6 passengers",
+      "features": [
+        "Air-conditioned",
+        "Panoramic bubble windows",
+        "Two-way pilot intercom"
+      ]
     },
-    photos: [
-      '/images/helicopter/spectacular-aerial.jpg',
-      '/images/helicopter/gorge-flight.jpg',
-      '/images/helicopter/hero-angels.jpg',
-      '/images/destinations/victoria-falls-panoramic.jpg'
+    "photos": [
+      "/images/activities/heli-zambezi-spectacular.jpg",
+      "/images/helicopter/spectacular-aerial.jpg",
+      "/images/helicopter/falls-rainbow.jpg"
     ],
-    rating: 4.98,
-    reviewCount: 219,
-    status: 'ACTIVE',
-    addOns: [
+    "rating": 4.98,
+    "reviewCount": 312,
+    "status": "ACTIVE",
+    "addOns": [
       {
-        id: 'addon-heli25-vip-seat',
-        activityId: 'act-heli-25min',
-        name: 'VIP Co-Pilot Front Seat Upgrade',
-        description: 'Unmatched 180-degree view beside the captain during the extended 25-minute expedition.',
-        grossPriceUSD: 45,
-        nettPriceUSD: 30,
-        capacityLimit: 1, // HARD CAP
-        status: 'ACTIVE'
+        "id": "addon-spec-vip-seat",
+        "activityId": "act-heli-25min",
+        "name": "VIP Co-Pilot Front Seat Upgrade",
+        "description": "Co-pilot seat with 180° uninterrupted view",
+        "grossPriceUSD": 50,
+        "nettPriceUSD": 35,
+        "capacityLimit": 1,
+        "status": "ACTIVE"
+      }
+    ]
+  },
+  {
+    "id": "act-micro-15min",
+    "slug": "livingstone-microlight-flight",
+    "name": "Microlight Flight of Angels — 15 Min Open Cockpit (Livingstone)",
+    "destination": "LIVINGSTONE",
+    "category": "AIR",
+    "shortDescription": "Feel the wind on your face in an open-cockpit ultralight aircraft soaring over Victoria Falls with wing-mounted high-res cameras.",
+    "fullDescription": "An exhilarating and intimate flight over Victoria Falls. Departing from the Maramba Aerodrome in Livingstone, you will experience the true thrill of open-air microlight aviation. With nothing between you and the African sky, you will swoop low over the mist-shrouded gorge and the emerald waters of the Zambezi River. The pilot maneuvers the wing-mounted digital camera to capture stunning action shots of you high above the world’s largest curtain of falling water.",
+    "durationMinutes": 15,
+    "durationLabel": "15 min",
+    "grossPriceUSD": 190,
+    "nettPriceUSD": 150,
+    "parkFeeUSD": 6,
+    "departureTimes": [
+      "07:00",
+      "08:00",
+      "09:00",
+      "15:30",
+      "16:30"
+    ],
+    "pickupIncluded": true,
+    "fitnessLevel": "Easy",
+    "minAge": 8,
+    "includedItems": [
+      "Hotel transfers from Livingstone lodges",
+      "Open-cockpit microlight flight with certified aviation pilot",
+      "Pre-flight flight briefing"
+    ],
+    "excludedItems": [
+      "Civil Aviation Authority Levy ($6)",
+      "Wing-mounted digital photo/video memory card"
+    ],
+    "restrictions": [
+      "Strict weight limit 100 kg (220 lbs)",
+      "No hand-held cameras or phones allowed in cockpit for safety reasons"
+    ],
+    "photos": [
+      "/images/activities/heli-flight-of-angels.jpg",
+      "/images/helicopter/hero-angels.jpg"
+    ],
+    "rating": 4.95,
+    "reviewCount": 189,
+    "status": "ACTIVE",
+    "addOns": [
+      {
+        "id": "addon-micro-photos",
+        "activityId": "act-micro-15min",
+        "name": "Wing-Mounted HD Photo & Video Pack",
+        "description": "High-res photos taken from the wing strut camera",
+        "grossPriceUSD": 35,
+        "nettPriceUSD": 20,
+        "capacityLimit": null,
+        "status": "ACTIVE"
+      }
+    ]
+  },
+  {
+    "id": "act-micro-30min",
+    "slug": "livingstone-microlight-flight-30min",
+    "name": "Microlight Gorge & Safari Flight — 30 Min Extended (Livingstone)",
+    "destination": "LIVINGSTONE",
+    "category": "AIR",
+    "shortDescription": "Extended open-cockpit microlight flight covering Victoria Falls, the Batoka Gorge, islands, and Mosi-oa-Tunya National Park.",
+    "fullDescription": "The premier open-air flying adventure. In this extended 30-minute microlight flight, your pilot circles Victoria Falls before tracking down through the Batoka Gorge, banking over Kalai and Livingstone islands, and sweeping low across Mosi-oa-Tunya National Park to spot elephants, giraffes, zebras, and hippos from the air.",
+    "durationMinutes": 30,
+    "durationLabel": "30 min",
+    "grossPriceUSD": 380,
+    "nettPriceUSD": 305,
+    "parkFeeUSD": 6,
+    "departureTimes": [
+      "07:00",
+      "08:00",
+      "15:30",
+      "16:30"
+    ],
+    "pickupIncluded": true,
+    "fitnessLevel": "Easy",
+    "minAge": 8,
+    "includedItems": [
+      "Livingstone hotel return transfers",
+      "30-minute open-cockpit scenic flight",
+      "Wildlife aerial spotting over national park"
+    ],
+    "excludedItems": [
+      "Civil Aviation Authority Levy ($6)",
+      "Wing camera photo/video bundle"
+    ],
+    "restrictions": [
+      "Max weight limit 100 kg",
+      "No loose items in cockpit"
+    ],
+    "photos": [
+      "/images/activities/heli-gorge-flight.jpg",
+      "/images/activities/heli-cockpit.jpg"
+    ],
+    "rating": 4.97,
+    "reviewCount": 96,
+    "status": "ACTIVE",
+    "addOns": []
+  },
+  {
+    "id": "act-raft-low-water",
+    "slug": "batoka-gorge-white-water-rafting",
+    "name": "Full Day White Water Rafting — Low Water (Rapids #1 to #19)",
+    "destination": "VICTORIA_FALLS",
+    "category": "WATER",
+    "shortDescription": "The undisputed premier Grade 5 white-water rafting trip on earth. Battle legendary rapids including \"The Overland Truck-Eater\" and \"Oblivion\".",
+    "fullDescription": "Widely acknowledged as the greatest single-day whitewater rafting journey on the planet. During the low-water season (typically August to December), the Zambezi unleashes massive Grade 4 and 5 waves through the sheer black basalt walls of the Batoka Gorge. You will conquer legendary rapids including The Boiling Pot, Stairway to Heaven, The Gulliver's Travels, and the infamous Oblivion.\\n\\nLed by world-champion international river guides, this full-day expedition includes a scenic walk down the gorge at Rapid #1, world-class safety kayakers, a gourmet riverside lunch, and ice-cold beers at the gorge rim celebration.",
+    "durationMinutes": 420,
+    "durationLabel": "Full Day (7 hrs)",
+    "grossPriceUSD": 173,
+    "nettPriceUSD": 135,
+    "parkFeeUSD": 12,
+    "departureTimes": [
+      "07:00"
+    ],
+    "pickupIncluded": true,
+    "fitnessLevel": "High",
+    "minAge": 15,
+    "includedItems": [
+      "Complimentary hotel pickup and return",
+      "Full safety gear: CE-approved buoyancy aid & helmet",
+      "Riverside barbecue lunch & chilled refreshments",
+      "Cold beers and ciders at top of the gorge"
+    ],
+    "excludedItems": [
+      "National Park River Usage Fee ($12.00 USD)",
+      "Professional river videographer & photographer pack"
+    ],
+    "restrictions": [
+      "Good physical fitness required to hike into and out of the gorge (750 vertical feet)",
+      "Not suitable for pregnant travelers or those with serious back/neck ailments"
+    ],
+    "photos": [
+      "/images/activities/rafting-low-water.jpg",
+      "/images/activities/rapid-action.jpg",
+      "/images/activities/zambezi-rafting.jpg"
+    ],
+    "rating": 4.97,
+    "reviewCount": 512,
+    "status": "ACTIVE",
+    "addOns": [
+      {
+        "id": "addon-raft-video",
+        "activityId": "act-raft-low-water",
+        "name": "GoPro Helmet & Kayak Photo/Video Pack",
+        "description": "Full raw & edited video package captured by dedicated safety kayaker",
+        "grossPriceUSD": 45,
+        "nettPriceUSD": 25,
+        "capacityLimit": null,
+        "status": "ACTIVE"
       },
       {
-        id: 'addon-heli25-4k-video',
-        activityId: 'act-heli-25min',
-        name: 'Full 4K Souvenir Video USB',
-        description: 'Ultra-high-definition multi-camera recording of your complete 25-minute flight.',
-        grossPriceUSD: 45,
-        nettPriceUSD: 22,
-        capacityLimit: null,
-        status: 'ACTIVE'
-      },
-      {
-        id: 'addon-heli25-park-fee',
-        activityId: 'act-heli-25min',
-        name: 'Pre-Paid National Park Fee',
-        description: 'Statutory government aviation conservation levy pre-cleared.',
-        grossPriceUSD: 15,
-        nettPriceUSD: 15,
-        capacityLimit: null,
-        status: 'ACTIVE'
+        "id": "addon-raft-cablecar",
+        "activityId": "act-raft-low-water",
+        "name": "Gorge Lift / Cable Car Ticket",
+        "description": "Skip the 750ft hike out of the gorge by riding the mechanical cable lift",
+        "grossPriceUSD": 15,
+        "nettPriceUSD": 10,
+        "capacityLimit": null,
+        "status": "ACTIVE"
       }
     ]
   },
   {
-    id: 'act-microlight',
-    slug: 'livingstone-microlight-flight',
-    name: 'Livingstone Microlight Scenic Flight (Zambia)',
-    destination: 'LIVINGSTONE',
-    category: 'AIR',
-    shortDescription:
-      'Feel the wind in your face and the mist on your skin. Open-cockpit microlight flights over Victoria Falls and the Batoka Gorge from Batoka Sky aerodrome.',
-    fullDescription:
-      'For the ultimate open-air flying sensation, nothing rivals a microlight flight over the Victoria Falls. Operating from the Batoka Sky aerodrome in Livingstone, Zambia, you fly in a two-seater ultralight aircraft with a certified commercial pilot.\n\nEnjoy complete, unhindered 360-degree vistas as you soar directly through the rising spray plumes of Mosi-oa-Tunya. Choose between the classic 15-minute falls circuit or the exhilarating 30-minute gorge and game-flight over Mosi-oa-Tunya National Park.',
-    durationMinutes: 15,
-    durationLabel: '15 or 30 min',
-    grossPriceUSD: 190,
-    nettPriceUSD: 155,
-    parkFeeUSD: 6,
-    departureTimes: ['06:30', '07:15', '08:00', '15:30', '16:15', '17:00'],
-    pickupIncluded: true,
-    fitnessLevel: 'Easy',
-    minAge: 12,
-    includedItems: [
-      'Return hotel transfers in Livingstone',
-      'Flight suit, communication helmet and pre-flight briefing',
-      'One-on-one personalized flight with a veteran commercial pilot'
+    "id": "act-raft-high-water",
+    "slug": "batoka-gorge-high-water-rafting",
+    "name": "High Water White Water Rafting — Rapids #11 to #23",
+    "destination": "VICTORIA_FALLS",
+    "category": "WATER",
+    "shortDescription": "Giant roller-coaster waves during high water conditions. Surf colossal river hydraulics through the lower Batoka Gorge.",
+    "fullDescription": "Operating when the river levels surge (typically January to March and June to July). With higher water volumes, the first 10 rapids are washed out with extreme boiling currents, so the expedition launches downstream at Rapid #11 (\"The Overland Truck-Eater\") running through to Rapid #23. Experience colossal, roller-coaster standing waves and massive wave trains in warm Zambezi water under pristine sunny skies.",
+    "durationMinutes": 360,
+    "durationLabel": "6 hrs",
+    "grossPriceUSD": 161,
+    "nettPriceUSD": 125,
+    "parkFeeUSD": 12,
+    "departureTimes": [
+      "07:30"
     ],
-    excludedItems: [
-      'Civil Aviation Authority levy ($6.00 USD)',
-      'Wing-mounted high-resolution digital photo series'
+    "pickupIncluded": true,
+    "fitnessLevel": "Moderate",
+    "minAge": 15,
+    "includedItems": [
+      "Hotel transfers",
+      "Professional river guide and safety kayakers",
+      "Life jackets & helmets",
+      "Substantial buffet lunch and cold drinks"
     ],
-    restrictions: [
-      'Maximum passenger weight 100 kg (220 lbs)',
-      'No personal cameras or loose items permitted in the open cockpit for safety'
+    "excludedItems": [
+      "National Park River fee ($12)"
     ],
-    aircraftSpecs: {
-      model: 'Aquilla / DTA Dual-seat Microlight Trike',
-      capacity: '1 passenger + 1 pilot',
-      features: ['Completely open cockpit', 'Intercom communications', 'Wing-mounted GoPro capture system']
-    },
-    photos: [
-      '/images/helicopter/spectacular-aerial.jpg',
-      '/images/destinations/victoria-falls-cataract.jpg',
-      '/images/destinations/livingstone-devilspool.jpg'
+    "restrictions": [
+      "Must be able to swim and hike out of gorge",
+      "Min age 15"
     ],
-    rating: 4.95,
-    reviewCount: 164,
-    status: 'ACTIVE',
-    addOns: [
+    "photos": [
+      "/images/activities/rafting-high-water.jpg",
+      "/images/activities/rapid-action.jpg"
+    ],
+    "rating": 4.91,
+    "reviewCount": 142,
+    "status": "ACTIVE",
+    "addOns": []
+  },
+  {
+    "id": "act-raft-multi-day",
+    "slug": "multi-day-zambezi-rafting-expedition",
+    "name": "Multi-Day Zambezi River Rafting Expedition (2 Days / 1 Night)",
+    "destination": "VICTORIA_FALLS",
+    "category": "WATER",
+    "shortDescription": "The ultimate river wilderness safari. Raft the entire Batoka Gorge and camp on pristine white sand beaches under the stars.",
+    "fullDescription": "Leave civilization completely behind for an epic two-day expedition down the mighty Zambezi. Run all 23 world-famous rapids on Day 1, then pull your raft onto a secluded white sand beach deep within the Batoka Gorge. As night falls, enjoy a campfire barbecue, ice-cold drinks, and sleep on cots under the southern hemisphere night sky. On Day 2, float through serene tranquil canyons where black eagles nest, tackle lower rapids, and exit downstream.",
+    "durationMinutes": 1800,
+    "durationLabel": "2 Days / 1 Night",
+    "grossPriceUSD": 462,
+    "nettPriceUSD": 370,
+    "parkFeeUSD": 24,
+    "departureTimes": [
+      "07:00"
+    ],
+    "pickupIncluded": true,
+    "fitnessLevel": "High",
+    "minAge": 16,
+    "includedItems": [
+      "All river equipment, dry bags & safety gear",
+      "Expedition camping gear (tent, cot, sleeping bag)",
+      "All meals freshly prepared by river chef",
+      "Cold beer, wine, and soft drinks at camp"
+    ],
+    "excludedItems": [
+      "Parks fees ($24)",
+      "Personal tips"
+    ],
+    "restrictions": [
+      "High fitness level required",
+      "Passport required"
+    ],
+    "photos": [
+      "/images/activities/rafting-multi-day.jpg",
+      "/images/activities/rafting-low-water.jpg",
+      "/images/activities/zambezi-rafting.jpg"
+    ],
+    "rating": 4.99,
+    "reviewCount": 68,
+    "status": "ACTIVE",
+    "addOns": []
+  },
+  {
+    "id": "act-upper-canoe",
+    "slug": "upper-zambezi-canoeing-safari",
+    "name": "Upper Zambezi Guided Canoe Safari (Half Day / Full Day)",
+    "destination": "VICTORIA_FALLS",
+    "category": "WATER",
+    "shortDescription": "Paddle Canadian-style two-person canoes through tranquil channels, islands, and gentle rapids upstream of the Falls.",
+    "fullDescription": "Drift silently down the peaceful Upper Zambezi River flanked by Zambezi National Park on one bank and Mosi-oa-Tunya National Park on the other. Guided by experienced canoe river guides, you will paddle inflatable 2-person canoes through narrow channels, gliding past basking hippos, drinking elephants, water monitor lizards, and over 400 species of birdlife before arriving at a scenic island for refreshments.",
+    "durationMinutes": 240,
+    "durationLabel": "4 hrs",
+    "grossPriceUSD": 170,
+    "nettPriceUSD": 135,
+    "parkFeeUSD": 18,
+    "departureTimes": [
+      "08:00",
+      "13:00"
+    ],
+    "pickupIncluded": true,
+    "fitnessLevel": "Moderate",
+    "minAge": 12,
+    "includedItems": [
+      "Return hotel transfers",
+      "Two-person Canadian canoes and paddles",
+      "Life vests and dry bags",
+      "Riverside snacks and drinks"
+    ],
+    "excludedItems": [
+      "National Parks fee ($18)"
+    ],
+    "restrictions": [
+      "Basic swimming ability required",
+      "Min age 12"
+    ],
+    "photos": [
+      "/images/activities/zambezi-sunrise-cruise.jpg",
+      "/images/activities/morning-birding-cruise.jpg"
+    ],
+    "rating": 4.88,
+    "reviewCount": 84,
+    "status": "ACTIVE",
+    "addOns": []
+  },
+  {
+    "id": "act-bungee-solo",
+    "slug": "victoria-falls-bridge-bungee-jump",
+    "name": "Victoria Falls Bridge Bungee Jump — 111m Solo Jump",
+    "destination": "VICTORIA_FALLS",
+    "category": "ADRENALINE",
+    "shortDescription": "111 metres of pure freefall off the historic Victoria Falls Bridge. Consistently voted the world's most spectacular bungee jump.",
+    "fullDescription": "Set against the breathtaking backdrop of Victoria Falls, with the thundering waters of the Zambezi rushing below, the Victoria Falls Bridge Bungee is an international bucket-list thrill. Step up to the bridge platform 111 meters above the river, hear the countdown \"5, 4, 3, 2, 1, BUNGEE!\" and plunge into four seconds of heart-stopping freefall.\\n\\nOperated with a flawless 30-year safety record and strict international standards.",
+    "durationMinutes": 60,
+    "durationLabel": "1 hr",
+    "grossPriceUSD": 194,
+    "nettPriceUSD": 155,
+    "parkFeeUSD": 0,
+    "departureTimes": [
+      "09:00",
+      "10:00",
+      "11:00",
+      "12:00",
+      "14:00",
+      "15:00",
+      "16:00"
+    ],
+    "pickupIncluded": true,
+    "fitnessLevel": "Moderate",
+    "minAge": 14,
+    "includedItems": [
+      "Bridge transport and border gate pass",
+      "Comprehensive safety briefing and ankle/body harness fitting",
+      "Certificate of achievement"
+    ],
+    "excludedItems": [
+      "High-definition photo and video package"
+    ],
+    "restrictions": [
+      "Min weight 40kg, max weight 120kg",
+      "Passport required to access bridge border zone",
+      "Not permitted for pregnant guests or cardiac conditions"
+    ],
+    "photos": [
+      "/images/activities/bridge-bungee.jpg",
+      "/images/activities/gorge-bungee-jump.jpg"
+    ],
+    "rating": 4.95,
+    "reviewCount": 387,
+    "status": "ACTIVE",
+    "addOns": [
       {
-        id: 'addon-micro-30min-upgrade',
-        activityId: 'act-microlight',
-        name: '30-Min Extended Gorge & Game Upgrade',
-        description: 'Extend your flight to 30 minutes, swooping low through the Batoka Gorge and over Mosi-oa-Tunya National Park wildlife.',
-        grossPriceUSD: 190,
-        nettPriceUSD: 155,
-        capacityLimit: null,
-        status: 'ACTIVE'
-      },
-      {
-        id: 'addon-micro-wing-photos',
-        activityId: 'act-microlight',
-        name: 'Wing-Mounted Digital Photo Pack',
-        description: 'Over 50 high-resolution aerial shots captured by the automated wing-strut camera system.',
-        grossPriceUSD: 30,
-        nettPriceUSD: 15,
-        capacityLimit: null,
-        status: 'ACTIVE'
+        "id": "addon-bungee-photos",
+        "activityId": "act-bungee-solo",
+        "name": "4K Multi-Angle Photo & Video USB",
+        "description": "Professional multi-camera video capturing freefall from bridge and ankle",
+        "grossPriceUSD": 35,
+        "nettPriceUSD": 20,
+        "capacityLimit": null,
+        "status": "ACTIVE"
       }
     ]
   },
   {
-    id: 'act-rafting',
-    slug: 'batoka-gorge-white-water-rafting',
-    name: 'Batoka Gorge White Water Rafting — Full Day Adrenaline',
-    destination: 'VICTORIA_FALLS',
-    category: 'WATER',
-    shortDescription:
-      'Globally renowned as the greatest one-day white water rafting trip on earth. Run legendary Class IV & V rapids beneath the mighty Victoria Falls.',
-    fullDescription:
-      'Tackle the roaring Zambezi River as it churns through the Batoka Gorge. Guided by licensed river masters with international whitewater certifications, you will navigate famous Class 4 and 5 rapids like "The Overland Truck-eater", "The Mother", "Gulliver\'s Travels", and "Stairway to Heaven".\n\nIncludes a hearty lunch at the top of the gorge and ice-cold celebratory drinks.',
-    durationMinutes: 420,
-    durationLabel: '7 Hours (Full Day)',
-    grossPriceUSD: 130,
-    nettPriceUSD: 100,
-    parkFeeUSD: 10,
-    departureTimes: ['07:00'],
-    pickupIncluded: true,
-    fitnessLevel: 'High',
-    minAge: 15,
-    includedItems: [
-      'Full equipment: life jacket, helmet, paddle, splash jacket',
-      'Comprehensive safety briefing and raft captain training',
-      'Hearty BBQ buffet lunch and cold refreshments at the top of the gorge',
-      'Return hotel transfers'
+    "id": "act-swing-solo",
+    "slug": "victoria-falls-bridge-swing",
+    "name": "Victoria Falls Bridge Swing — 70m Solo Pendulum Freefall",
+    "destination": "VICTORIA_FALLS",
+    "category": "ADRENALINE",
+    "shortDescription": "Step into the abyss for an upright 70-metre freefall before sweeping into a giant 95-metre pendulum swing across the gorge.",
+    "fullDescription": "Step off the edge of the Victoria Falls Bridge and enjoy a heart-stopping 70-meter vertical freefall before the heavy-duty swing ropes catch you into an enormous 95-meter pendulum arc sweeping over the Batoka Gorge. Enjoy breathtaking views of the river and gorge below as you swing back and forth.",
+    "durationMinutes": 60,
+    "durationLabel": "1 hr",
+    "grossPriceUSD": 137,
+    "nettPriceUSD": 108,
+    "parkFeeUSD": 0,
+    "departureTimes": [
+      "09:00",
+      "10:30",
+      "12:00",
+      "14:30",
+      "16:00"
     ],
-    excludedItems: [
-      'National Park & River Access Fee ($10.00 USD)',
-      'Professional rapid action photography USB (available on site)'
+    "pickupIncluded": true,
+    "fitnessLevel": "Moderate",
+    "minAge": 14,
+    "includedItems": [
+      "Full body harness and safety equipment",
+      "Bridge transfer and border clearance",
+      "Swing certificate"
     ],
-    restrictions: [
-      'Requires good physical fitness to hike in and out of the 230m Batoka Gorge',
-      'Minimum age is 15 years'
+    "excludedItems": [
+      "Action photography and video pack"
     ],
-    photos: [
-      '/images/activities/zambezi-rafting.jpg',
-      '/images/activities/rapid-action.jpg'
+    "restrictions": [
+      "Weight limit 40kg to 140kg",
+      "Passport required for bridge access"
     ],
-    rating: 4.94,
-    reviewCount: 312,
-    status: 'ACTIVE',
-    addOns: [
+    "photos": [
+      "/images/activities/bridge-swing.jpg",
+      "/images/activities/bridge-swing-action.jpg"
+    ],
+    "rating": 4.94,
+    "reviewCount": 224,
+    "status": "ACTIVE",
+    "addOns": []
+  },
+  {
+    "id": "act-swing-tandem",
+    "slug": "victoria-falls-bridge-swing-tandem",
+    "name": "Victoria Falls Bridge Swing — Tandem Leap for Two",
+    "destination": "VICTORIA_FALLS",
+    "category": "ADRENALINE",
+    "shortDescription": "Share the adrenaline rush of a lifetime side-by-side with a partner, friend, or spouse leaping together into the Batoka Gorge.",
+    "fullDescription": "Twice the courage, twice the thrill! The tandem bridge swing lets two people leap simultaneously from the Victoria Falls Bridge platform strapped securely together in full-body harnesses. Plunge 70 meters in tandem freefall before flying through the canyon together in a giant pendulum swing.",
+    "durationMinutes": 60,
+    "durationLabel": "1 hr",
+    "grossPriceUSD": 201,
+    "nettPriceUSD": 160,
+    "parkFeeUSD": 0,
+    "departureTimes": [
+      "09:30",
+      "11:00",
+      "12:30",
+      "15:00",
+      "16:30"
+    ],
+    "pickupIncluded": true,
+    "fitnessLevel": "Moderate",
+    "minAge": 14,
+    "includedItems": [
+      "Tandem harness setup and dual rigging",
+      "Transfers and border bridge clearance",
+      "Two certificates of achievement"
+    ],
+    "excludedItems": [
+      "Souvenir digital photos and video"
+    ],
+    "restrictions": [
+      "Combined weight between 80kg and 180kg",
+      "Passports required"
+    ],
+    "photos": [
+      "/images/activities/bridge-swing-tandem.jpg",
+      "/images/activities/bridge-swing.jpg"
+    ],
+    "rating": 4.96,
+    "reviewCount": 118,
+    "status": "ACTIVE",
+    "addOns": []
+  },
+  {
+    "id": "act-slide-solo",
+    "slug": "victoria-falls-bridge-slide",
+    "name": "Victoria Falls Bridge Slide (Zipline) — 300m Solo Cross-Border Zip",
+    "destination": "VICTORIA_FALLS",
+    "category": "ADRENALINE",
+    "shortDescription": "Glide 300 metres across the Batoka Gorge from Zambia to Zimbabwe on the only international cross-border zipline in the world.",
+    "fullDescription": "Glide smoothly across the gorge on the only zipline in the world that crosses between two sovereign nations. Starting on the Zambian cliff edge, you glide 300 meters down a high-tensile steel cable at speeds up to 60 km/h, suspended 120 meters above the Zambezi River before gentle braking at the Zimbabwean bridge foot. Ideal for all ages from 6 years upward.",
+    "durationMinutes": 45,
+    "durationLabel": "45 min",
+    "grossPriceUSD": 58,
+    "nettPriceUSD": 45,
+    "parkFeeUSD": 0,
+    "departureTimes": [
+      "09:00",
+      "10:00",
+      "11:00",
+      "12:00",
+      "14:00",
+      "15:00",
+      "16:00"
+    ],
+    "pickupIncluded": true,
+    "fitnessLevel": "Easy",
+    "minAge": 6,
+    "includedItems": [
+      "Harness & safety equipment",
+      "Bridge transfer",
+      "Zipline glide"
+    ],
+    "excludedItems": [
+      "Digital photos"
+    ],
+    "restrictions": [
+      "Weight limit 40kg to 140kg",
+      "Passport required"
+    ],
+    "photos": [
+      "/images/activities/bridge-slide.jpg",
+      "/images/activities/bridge-slide-solo.jpg"
+    ],
+    "rating": 4.91,
+    "reviewCount": 176,
+    "status": "ACTIVE",
+    "addOns": []
+  },
+  {
+    "id": "act-slide-tandem",
+    "slug": "victoria-falls-bridge-slide-tandem",
+    "name": "Victoria Falls Bridge Slide (Zipline) — Tandem Family Zipline",
+    "destination": "VICTORIA_FALLS",
+    "category": "ADRENALINE",
+    "shortDescription": "Zipline across the international gorge together with a child or loved one. The ultimate gentle aerial thrill for families.",
+    "fullDescription": "Ride the 300-meter international cross-border zipline side-by-side with your child, partner, or friend. Tandem riders are securely connected together by an instructor and glide smoothly 120 meters above the Zambezi River with panoramic views of the Victoria Falls spray plume.",
+    "durationMinutes": 45,
+    "durationLabel": "45 min",
+    "grossPriceUSD": 82,
+    "nettPriceUSD": 64,
+    "parkFeeUSD": 0,
+    "departureTimes": [
+      "09:30",
+      "10:30",
+      "11:30",
+      "14:30",
+      "15:30"
+    ],
+    "pickupIncluded": true,
+    "fitnessLevel": "Easy",
+    "minAge": 6,
+    "includedItems": [
+      "Dual tandem rigging and harnesses",
+      "Bridge transfers",
+      "Assisted take-off and recovery"
+    ],
+    "excludedItems": [
+      "Photo pack"
+    ],
+    "restrictions": [
+      "Combined weight limit 180kg",
+      "Passports required"
+    ],
+    "photos": [
+      "/images/activities/bridge-slide-tandem.jpg",
+      "/images/activities/bridge-slide.jpg"
+    ],
+    "rating": 4.93,
+    "reviewCount": 89,
+    "status": "ACTIVE",
+    "addOns": []
+  },
+  {
+    "id": "act-flying-fox",
+    "slug": "batoka-gorge-flying-fox",
+    "name": "Batoka Gorge Flying Fox — Horizontal Cable Glide",
+    "destination": "VICTORIA_FALLS",
+    "category": "ADRENALINE",
+    "shortDescription": "Fly face-down like Superman 120 metres above the canyon floor on a high-speed horizontal cable gliding across the Batoka Gorge.",
+    "fullDescription": "Attached horizontally in a chest-and-waist body harness, you launch off the lip of the gorge and soar face-down into empty air. Suspended 120 meters above the churning river, you enjoy bird's-eye views directly into the volcanic abyss before being gently winched back to the platform.",
+    "durationMinutes": 45,
+    "durationLabel": "45 min",
+    "grossPriceUSD": 69,
+    "nettPriceUSD": 54,
+    "parkFeeUSD": 6,
+    "departureTimes": [
+      "09:00",
+      "11:00",
+      "14:00",
+      "15:30"
+    ],
+    "pickupIncluded": true,
+    "fitnessLevel": "Easy",
+    "minAge": 8,
+    "includedItems": [
+      "Full safety briefing and flying harness",
+      "Return hotel transfers",
+      "Gorge lookout platform access"
+    ],
+    "excludedItems": [
+      "Park fee ($6)"
+    ],
+    "restrictions": [
+      "Weight limit 40kg to 130kg"
+    ],
+    "photos": [
+      "/images/activities/bridge-slide-solo.jpg",
+      "/images/activities/bridge-swing-action.jpg"
+    ],
+    "rating": 4.89,
+    "reviewCount": 94,
+    "status": "ACTIVE",
+    "addOns": []
+  },
+  {
+    "id": "act-canopy-tour",
+    "slug": "victoria-falls-canopy-tour",
+    "name": "Batoka Gorge Canopy Tour — 9 Ziplines & Suspended Walkways",
+    "destination": "VICTORIA_FALLS",
+    "category": "ADRENALINE",
+    "shortDescription": "9 exhilarating ziplines and a suspended rope bridge crisscrossing the lush Batoka Gorge rainforest canopy with epic river views.",
+    "fullDescription": "The Victoria Falls Canopy Tour offers a unique perspective on the Batoka Gorge riverine ecosystem. Consisting of 9 varied ziplines ranging from 40 to 85 meters, two suspended walkways, and scenic cliff platforms, you will glide through the hardwood forest canopy while spotting purple-crested turacos and peregrine falcons.",
+    "durationMinutes": 120,
+    "durationLabel": "2 hrs",
+    "grossPriceUSD": 81,
+    "nettPriceUSD": 62,
+    "parkFeeUSD": 6,
+    "departureTimes": [
+      "08:30",
+      "10:30",
+      "13:30",
+      "15:15"
+    ],
+    "pickupIncluded": true,
+    "fitnessLevel": "Moderate",
+    "minAge": 6,
+    "includedItems": [
+      "All zipline equipment, helmets & gloves",
+      "Two certified safety guides per group",
+      "Hotel transfers and cold water"
+    ],
+    "excludedItems": [
+      "Parks fee ($6)"
+    ],
+    "restrictions": [
+      "Max weight 120kg",
+      "Comfortable closed walking shoes required"
+    ],
+    "photos": [
+      "/images/activities/bridge-slide.jpg",
+      "/images/activities/bridge-tour-catwalk.jpg"
+    ],
+    "rating": 4.92,
+    "reviewCount": 205,
+    "status": "ACTIVE",
+    "addOns": []
+  },
+  {
+    "id": "act-big-air",
+    "slug": "the-big-air-experience",
+    "name": "The Big Air Experience — Bungee + Swing + Slide Combo",
+    "destination": "VICTORIA_FALLS",
+    "category": "ADRENALINE",
+    "shortDescription": "Shearwater's legendary triple thrill: tackle the 111m Bungee, 70m Bridge Swing, and 300m Bridge Slide in one unforgettable session.",
+    "fullDescription": "The pinnacle of Victoria Falls adventure. Why choose just one when you can conquer all three iconic bridge adrenaline feats? The Big Air package bundles the 111-meter Victoria Falls Bungee Jump, the 70-meter Bridge Swing pendulum plunge, and the 300-meter international Bridge Slide. Save over $100 compared to booking individually and earn ultimate bragging rights.",
+    "durationMinutes": 180,
+    "durationLabel": "3 hrs",
+    "grossPriceUSD": 280,
+    "nettPriceUSD": 220,
+    "parkFeeUSD": 0,
+    "departureTimes": [
+      "09:00",
+      "11:00",
+      "14:00"
+    ],
+    "pickupIncluded": true,
+    "fitnessLevel": "High",
+    "minAge": 14,
+    "includedItems": [
+      "All 3 activities: Bungee, Bridge Swing, Bridge Slide",
+      "All safety rigging and instruction",
+      "Return transfers and border gate clearance",
+      "Master Certificate of Achievement"
+    ],
+    "excludedItems": [
+      "Photos and video USB package"
+    ],
+    "restrictions": [
+      "Weight limit 40kg to 120kg",
+      "Passport required for border crossing"
+    ],
+    "photos": [
+      "/images/activities/big-air-combo.jpg",
+      "/images/activities/bridge-bungee.jpg",
+      "/images/activities/bridge-swing-action.jpg"
+    ],
+    "rating": 4.99,
+    "reviewCount": 412,
+    "status": "ACTIVE",
+    "addOns": [
       {
-        id: 'addon-rafting-boots',
-        activityId: 'act-rafting',
-        name: 'Gorge Trekking Boot Hire',
-        description: 'High-traction river boots for descending and climbing the gorge walls.',
-        grossPriceUSD: 10,
-        nettPriceUSD: 5,
-        capacityLimit: null,
-        status: 'ACTIVE'
+        "id": "addon-bigair-video",
+        "activityId": "act-big-air",
+        "name": "Ultimate 3-in-1 Action Photo & Video Bundle",
+        "description": "Complete 4K photo & video recordings from all 3 activities",
+        "grossPriceUSD": 65,
+        "nettPriceUSD": 35,
+        "capacityLimit": null,
+        "status": "ACTIVE"
       }
     ]
   },
   {
-    id: 'act-bungee',
-    slug: 'victoria-falls-bridge-bungee-jump',
-    name: 'Victoria Falls Bridge 111m Bungee Jump',
-    destination: 'VICTORIA_FALLS',
-    category: 'ADRENALINE',
-    shortDescription:
-      'The world-famous 111-meter plunge off the historic Victoria Falls Bridge into the swirling mists of the Batoka Gorge.',
-    fullDescription:
-      'Suspended between Zimbabwe and Zambia on Cecil Rhodes\' 1905 Victoria Falls Bridge, you stand on the platform 111 meters above the mighty Zambezi River. With 4 seconds of pure freefall reaching 120 km/h, this is considered by adrenaline seekers as the single most dramatic bungee jump on the planet.\n\nOperated under 100% British safety standards with redundant cords and dual harnesses.',
-    durationMinutes: 120,
-    durationLabel: '2 Hours',
-    grossPriceUSD: 160,
-    nettPriceUSD: 125,
-    parkFeeUSD: 0,
-    departureTimes: ['09:00', '11:00', '14:00', '16:00'],
-    pickupIncluded: true,
-    fitnessLevel: 'Moderate',
-    minAge: 14,
-    includedItems: [
-      'Return transport to the Victoria Falls Bridge border post',
-      'All safety harness gear and certified jump crew',
-      'Certificate of courage'
+    "id": "act-gruesome-twosome",
+    "slug": "the-gruesome-twosome",
+    "name": "The Gruesome Twosome — Bungee Jump & Bridge Swing Combo",
+    "destination": "VICTORIA_FALLS",
+    "category": "ADRENALINE",
+    "shortDescription": "Double the extreme drop: combine the 111m Bungee Jump and the 70m Pendulum Swing into one heart-stopping adventure.",
+    "fullDescription": "For the dedicated adrenaline junkie who wants the maximum gravitational acceleration available on the Victoria Falls Bridge. Take on the head-first 111-meter Bungee Jump, and follow it immediately with the feet-first 70-meter Bridge Swing leap across the Batoka Gorge.",
+    "durationMinutes": 120,
+    "durationLabel": "2 hrs",
+    "grossPriceUSD": 245,
+    "nettPriceUSD": 195,
+    "parkFeeUSD": 0,
+    "departureTimes": [
+      "09:30",
+      "11:30",
+      "14:30"
     ],
-    excludedItems: [
-      'Video and photo package (filmed from multiple angles)'
+    "pickupIncluded": true,
+    "fitnessLevel": "Moderate",
+    "minAge": 14,
+    "includedItems": [
+      "Bungee Jump and Bridge Swing tickets",
+      "All harnesses, equipment & briefings",
+      "Hotel transfers and bridge access passes"
     ],
-    restrictions: [
-      'Minimum weight 40 kg (88 lbs), maximum weight 140 kg (308 lbs)',
-      'Passport required for bridge access (no visa stamp required for jump pass)'
+    "excludedItems": [
+      "Digital footage pack"
     ],
-    photos: [
-      '/images/activities/bridge-bungee.jpg',
-      '/images/activities/gorge-bungee-jump.jpg'
+    "restrictions": [
+      "Weight 40kg to 120kg",
+      "Passport required"
     ],
-    rating: 4.97,
-    reviewCount: 185,
-    status: 'ACTIVE',
-    addOns: []
+    "photos": [
+      "/images/activities/gruesome-twosome.jpg",
+      "/images/activities/bridge-bungee.jpg"
+    ],
+    "rating": 4.97,
+    "reviewCount": 184,
+    "status": "ACTIVE",
+    "addOns": []
   },
   {
-    id: 'act-bridge-swing',
-    slug: 'victoria-falls-bridge-swing',
-    name: 'Victoria Falls Bridge Swing — 80m Freefall Arc',
-    destination: 'VICTORIA_FALLS',
-    category: 'ADRENALINE',
-    shortDescription:
-      'Step off the Victoria Falls Bridge into an 80-meter sheer freefall before swinging in a giant pendulum arc over the churning Zambezi River.',
-    fullDescription:
-      'The Victoria Falls Bridge Swing lets you experience the ultimate rush: stepping into thin air from the center arch of the iconic bridge. Freefall 80 meters before the rope tightens, swinging you in an exhilarating 150-meter arc across the Batoka Gorge.\n\nAvailable as a solo plunge or a tandem jump alongside your partner or travel companion.',
-    durationMinutes: 90,
-    durationLabel: '1.5 Hours',
-    grossPriceUSD: 160,
-    nettPriceUSD: 125,
-    parkFeeUSD: 0,
-    departureTimes: ['09:30', '11:30', '14:30', '16:30'],
-    pickupIncluded: true,
-    fitnessLevel: 'Moderate',
-    minAge: 14,
-    includedItems: [
-      'Return transfers to bridge border gate',
-      'Full body harness and specialized pendulum swing rigging',
-      'Master jump master guidance and safety sign-off'
+    "id": "act-jetboat",
+    "slug": "adventure-jet-boat-batoka-gorge",
+    "name": "Adventure Jet Boat — Batoka Gorge White Water Rapids",
+    "destination": "VICTORIA_FALLS",
+    "category": "WATER",
+    "shortDescription": "465-horsepower twin V8 jet boat rocketing up and down the boiling rapids at the base of Victoria Falls with 360-degree spins.",
+    "fullDescription": "Experience the ultimate aquatic rush below Victoria Falls. Powered by twin 465-hp Hamilton jet units, this state-of-the-art aluminum adventure vessel navigates the ferocious Batoka Gorge rapids right at the base of the Falls. Scream with exhilaration as your master pilot executes high-speed fish-tails, cuts across boiling standing waves, and throws the boat into heart-pounding 360-degree spins.",
+    "durationMinutes": 150,
+    "durationLabel": "2.5 hrs",
+    "grossPriceUSD": 141,
+    "nettPriceUSD": 110,
+    "parkFeeUSD": 12,
+    "departureTimes": [
+      "08:30",
+      "11:00",
+      "14:00"
     ],
-    excludedItems: [
-      'High-speed digital photography and multi-angle video package'
+    "pickupIncluded": true,
+    "fitnessLevel": "Moderate",
+    "minAge": 10,
+    "includedItems": [
+      "Return transfers from town lodges",
+      "Cable car or guided gorge transfer",
+      "Full safety life vest and splash gear",
+      "Post-jetboat cold drinks and snacks"
     ],
-    restrictions: [
-      'Maximum weight: 140 kg solo, 260 kg combined tandem',
-      'Passport required to clear border gate onto the bridge'
+    "excludedItems": [
+      "Parks fee ($12)"
     ],
-    photos: [
-      '/images/activities/bridge-swing.jpg',
-      '/images/activities/bridge-swing-action.jpg'
+    "restrictions": [
+      "Min age 10 years",
+      "Ponchos provided but expect to get wet!"
     ],
-    rating: 4.96,
-    reviewCount: 142,
-    status: 'ACTIVE',
-    addOns: [
+    "photos": [
+      "/images/activities/adventure-jetboat.jpg",
+      "/images/activities/jetboat-rapids.jpg",
+      "/images/activities/jetboat-adventure-spin.jpg"
+    ],
+    "rating": 4.93,
+    "reviewCount": 265,
+    "status": "ACTIVE",
+    "addOns": []
+  },
+  {
+    "id": "act-jetboat-hike",
+    "slug": "adventure-jetboat-and-gorge-hike",
+    "name": "Adventure Jet Boat & Batoka Gorge Hike Combo",
+    "destination": "VICTORIA_FALLS",
+    "category": "WATER",
+    "shortDescription": "Combine the white-knuckle jetboat river thrills with an authentic scenic guided hike down into and out of the Batoka Gorge.",
+    "fullDescription": "A complete canyon adventure. Hike down into the gorge on an authentic geological trail with an experienced naturalist guide, discovering native Baobabs and volcanic rock formations. At the riverbank, board the high-speed jetboat for adrenaline spins on the rapids, then hike back to the plateau for well-deserved refreshments.",
+    "durationMinutes": 240,
+    "durationLabel": "4 hrs",
+    "grossPriceUSD": 185,
+    "nettPriceUSD": 145,
+    "parkFeeUSD": 12,
+    "departureTimes": [
+      "08:00",
+      "13:00"
+    ],
+    "pickupIncluded": true,
+    "fitnessLevel": "High",
+    "minAge": 12,
+    "includedItems": [
+      "Guided gorge hike with walking sticks",
+      "Full jetboat rapid navigation experience",
+      "Buffet snacks, cold beers and soft drinks"
+    ],
+    "excludedItems": [
+      "Parks fee ($12)"
+    ],
+    "restrictions": [
+      "Moderate-to-high fitness required for gorge hike"
+    ],
+    "photos": [
+      "/images/activities/jetboat-gorge-hike.jpg",
+      "/images/activities/adventure-jetboat.jpg"
+    ],
+    "rating": 4.95,
+    "reviewCount": 78,
+    "status": "ACTIVE",
+    "addOns": []
+  },
+  {
+    "id": "act-cruise-riversong",
+    "slug": "riversong-luxury-sunset-cruise",
+    "name": "Riversong Luxury Sunset Cruise — Premium Upper Zambezi Catamaran",
+    "destination": "VICTORIA_FALLS",
+    "category": "WATER",
+    "shortDescription": "The finest river safari in Victoria Falls. 3-deck luxury catamaran, freshly prepared gourmet canapés, craft cocktails, and sunset hippos.",
+    "fullDescription": "The undisputed gold standard of Zambezi river safaris. Operating aboard the custom-engineered Riversong triple-deck luxury catamaran, this cruise delivers five-star hospitality on the peaceful waters upstream of Victoria Falls. Drift past Siloka and Elephant islands where breeding herds of elephants come to bathe and drink at dusk.\\n\\nEnjoy an attentive culinary brigade serving freshly prepared gourmet finger foods, artisanal sliders, and imported premium wines, gins, and spirits while watching a fiery African sunset.",
+    "durationMinutes": 150,
+    "durationLabel": "2.5 hrs",
+    "grossPriceUSD": 98,
+    "nettPriceUSD": 75,
+    "parkFeeUSD": 12,
+    "departureTimes": [
+      "16:00 (Winter)",
+      "16:30 (Summer)"
+    ],
+    "pickupIncluded": true,
+    "fitnessLevel": "Easy",
+    "minAge": 4,
+    "includedItems": [
+      "Complimentary hotel return transfers",
+      "Fully inclusive top-shelf premium bar (spirits, wine, beer, cocktails)",
+      "Chef-prepared gourmet canapés",
+      "Experienced river captain and wildlife guide commentary"
+    ],
+    "excludedItems": [
+      "National Park River Usage Levy ($12.00 USD)"
+    ],
+    "restrictions": [
+      "Smart casual attire recommended",
+      "Children under 4 on request"
+    ],
+    "photos": [
+      "/images/activities/riversong-sunset-cruise.jpg",
+      "/images/activities/zambezi-luxury-deck.jpg",
+      "/images/activities/riversong-dinner-cruise.jpg"
+    ],
+    "rating": 4.96,
+    "reviewCount": 384,
+    "status": "ACTIVE",
+    "addOns": [
       {
-        id: 'addon-swing-tandem',
-        activityId: 'act-bridge-swing',
-        name: 'Tandem Swing Upgrade (Pair of Jumpers)',
-        description: 'Upgrade your solo jump into a combined tandem swing together with a partner.',
-        grossPriceUSD: 80,
-        nettPriceUSD: 60,
-        capacityLimit: null,
-        status: 'ACTIVE'
+        "id": "addon-cruise-champagne",
+        "activityId": "act-cruise-riversong",
+        "name": "Moët & Chandon French Champagne Upgrade",
+        "description": "Chilled bottle of Moët & Chandon Brut Impérial served on the private captain’s deck",
+        "grossPriceUSD": 95,
+        "nettPriceUSD": 70,
+        "capacityLimit": null,
+        "status": "ACTIVE"
       }
     ]
   },
   {
-    id: 'act-bridge-slide',
-    slug: 'victoria-falls-bridge-slide',
-    name: 'Victoria Falls Bridge Slide — High-Wire Zip Line',
-    destination: 'VICTORIA_FALLS',
-    category: 'ADRENALINE',
-    shortDescription:
-      'Glide 300 meters across the Batoka Gorge from the Zambian riverbank to the Victoria Falls Bridge with spectacular cataract views.',
-    fullDescription:
-      'Beginning on the cliff edge of the Zambian riverbank, you are clipped into a high-grade tandem zipline pulley and launched across 300 meters of open airspace, finishing securely on the historical Victoria Falls Bridge.\n\nGentler than the bungee or swing, this activity provides sweeping panoramic vistas of the falls spray and turbulent gorge below, ideal for thrill-seeking families and couples.',
-    durationMinutes: 60,
-    durationLabel: '1 Hour',
-    grossPriceUSD: 45,
-    nettPriceUSD: 35,
-    parkFeeUSD: 0,
-    departureTimes: ['09:00', '10:30', '12:00', '14:00', '15:30'],
-    pickupIncluded: true,
-    fitnessLevel: 'Easy',
-    minAge: 6,
-    includedItems: [
-      'Safety harness, helmet, and zip-line pulley equipment',
-      'Full briefing and landing catch crew',
-      'Complimentary return hotel transfer'
+    "id": "act-cruise-standard",
+    "slug": "standard-zambezi-sunset-cruise",
+    "name": "Classic Zambezi Sunset Cruise — Sundowner River Safari",
+    "destination": "VICTORIA_FALLS",
+    "category": "WATER",
+    "shortDescription": "The classic Victoria Falls sundowner boat cruise: complimentary open bar, traditional snacks, and magical sunset views.",
+    "fullDescription": "Relax and unwind as the African sun dips beneath the horizon. Cruise the wide, tranquil waters of the Zambezi River above the Falls, watching for hippos popping their heads above water, Nile crocodiles sunning on sandbars, and African fish eagles crying from the treetops. An open bar serving local beers, wines, spirits, and soft drinks with a selection of tasty finger snacks is included.",
+    "durationMinutes": 120,
+    "durationLabel": "2 hrs",
+    "grossPriceUSD": 65,
+    "nettPriceUSD": 48,
+    "parkFeeUSD": 12,
+    "departureTimes": [
+      "16:00 (Winter)",
+      "16:30 (Summer)"
     ],
-    excludedItems: [
-      'Souvenir digital photos'
+    "pickupIncluded": true,
+    "fitnessLevel": "Easy",
+    "minAge": 2,
+    "includedItems": [
+      "Hotel transfers",
+      "Unlimited complimentary bar (beer, wine, spirits, mixers)",
+      "Traditional savory snack platters",
+      "River wildlife spotting"
     ],
-    restrictions: [
-      'Children aged 6–12 must slide tandem with an adult'
+    "excludedItems": [
+      "River usage park fee ($12)"
     ],
-    photos: [
-      '/images/activities/bridge-slide.jpg',
-      '/images/activities/bridge-bungee.jpg'
+    "restrictions": [
+      "All ages welcome"
     ],
-    rating: 4.88,
-    reviewCount: 96,
-    status: 'ACTIVE',
-    addOns: []
+    "photos": [
+      "/images/activities/standard-sunset-cruise.jpg",
+      "/images/activities/sunset-cruise-deck.jpg"
+    ],
+    "rating": 4.88,
+    "reviewCount": 290,
+    "status": "ACTIVE",
+    "addOns": []
   },
   {
-    id: 'act-bridge-tour',
-    slug: 'historic-victoria-falls-bridge-tour',
-    name: 'Historic Victoria Falls Bridge Under-Deck Catwalk Tour',
-    destination: 'VICTORIA_FALLS',
-    category: 'CULTURE_HERITAGE',
-    shortDescription:
-      'Walk along the maintenance catwalks directly suspended under the Victoria Falls Bridge. Uncover the dramatic 1905 engineering history.',
-    fullDescription:
-      'Step back in time to 1905 when Cecil John Rhodes ordered the bridge built where the spray from the falls would fall upon the train carriages. Put on a harness and safety carabiner as your theatrical guide leads you onto the narrow steel catwalks directly beneath the bridge deck, suspended 111 meters over the Batoka Gorge.\n\nInspect original Edwardian rivets, hear incredible tales of construction against impossible odds, and watch daredevils plunge on the bungee above.',
-    durationMinutes: 120,
-    durationLabel: '2 Hours',
-    grossPriceUSD: 68,
-    nettPriceUSD: 52,
-    parkFeeUSD: 0,
-    departureTimes: ['10:00', '14:00', '16:00'],
-    pickupIncluded: true,
-    fitnessLevel: 'Moderate',
-    minAge: 10,
-    includedItems: [
-      'Historical narration by theatrical heritage guide',
-      'Full safety continuous-fall-arrest harness and helmet',
-      'Walk under the bridge on original construction catwalks',
-      'Bridge Visitor Centre museum entrance and audio-visual show'
+    "id": "act-cruise-sunrise",
+    "slug": "zambezi-sunrise-morning-cruise",
+    "name": "Zambezi Sunrise & Early Morning Birding Cruise",
+    "destination": "VICTORIA_FALLS",
+    "category": "WATER",
+    "shortDescription": "Peaceful dawn cruise through river channels with morning coffee, continental breakfast, vibrant birdlife, and morning wildlife.",
+    "fullDescription": "Experience the magic of the Zambezi waking up. While most tourists are still asleep, depart early onto glassy, mist-shrouded waters. Sip steaming African coffee or tea accompanied by warm pastries, fruit, and breakfast treats while your naturalist guide points out rare bird species, otters, and early-morning wildlife along the riverbanks.",
+    "durationMinutes": 120,
+    "durationLabel": "2 hrs",
+    "grossPriceUSD": 75,
+    "nettPriceUSD": 58,
+    "parkFeeUSD": 12,
+    "departureTimes": [
+      "06:00 (Summer)",
+      "06:30 (Winter)"
     ],
-    excludedItems: [],
-    restrictions: [
-      'Closed-toe walking shoes mandatory (no sandals/flip-flops)',
-      'Requires clearance of bridge border post (passports needed)'
+    "pickupIncluded": true,
+    "fitnessLevel": "Easy",
+    "minAge": 4,
+    "includedItems": [
+      "Hotel pickup and drop-off",
+      "Freshly brewed coffee, tea, juices",
+      "Continental breakfast spread",
+      "Professional birding guide with binoculars"
     ],
-    photos: [
-      '/images/activities/bridge-tour-catwalk.jpg',
-      '/images/activities/bridge-tour-history.jpg'
+    "excludedItems": [
+      "River park fee ($12)"
     ],
-    rating: 4.93,
-    reviewCount: 118,
-    status: 'ACTIVE',
-    addOns: []
+    "restrictions": [
+      "Warm morning fleece recommended in winter"
+    ],
+    "photos": [
+      "/images/activities/zambezi-sunrise-cruise.jpg",
+      "/images/activities/morning-birding-cruise.jpg"
+    ],
+    "rating": 4.93,
+    "reviewCount": 114,
+    "status": "ACTIVE",
+    "addOns": []
   },
   {
-    id: 'act-guided-tour-falls',
-    slug: 'guided-tour-of-victoria-falls',
-    name: 'Guided Tour of the Victoria Falls (Zimbabwe)',
-    destination: 'VICTORIA_FALLS',
-    category: 'CULTURE_HERITAGE',
-    shortDescription:
-      'A deeply enriching walking tour through the lush Victoria Falls Rainforest. Discover 16 viewpoints, the Big Tree, and the geological origins of the Smoke That Thunders.',
-    fullDescription:
-      'Accompanied by a veteran Zimbabwean professional guide, walk the paved rainforest paths hugging the edge of the Victoria Falls. The Zimbabwean side commands 75% of the total cataract length, including the Devils Cataract, Main Falls, Rainbow Falls, and Danger Point.\n\nYour guide explains the local Tonga lore of Mosi-oa-Tunya, the unique botanical rainforest ecosystem sustained by the perpetual spray, and the dramatic 150-million-year geological history of the Zambezi River basalt fissures.',
-    durationMinutes: 150,
-    durationLabel: '2.5 Hours',
-    grossPriceUSD: 30,
-    nettPriceUSD: 22,
-    parkFeeUSD: 50, // International visitor rainforest fee
-    departureTimes: ['08:00', '10:30', '14:00', '16:00'],
-    pickupIncluded: true,
-    fitnessLevel: 'Easy',
-    minAge: 2,
-    includedItems: [
-      'Return hotel transfers in air-conditioned vehicle',
-      'Professional certified interpretive safari guide',
-      'Bottled mineral water',
-      'Rain poncho rental during high water spray season'
+    "id": "act-cruise-lunch",
+    "slug": "zambezi-lunch-midday-cruise",
+    "name": "Zambezi Midday River Safari & Lunch Cruise",
+    "destination": "VICTORIA_FALLS",
+    "category": "WATER",
+    "shortDescription": "Relaxing afternoon river cruise with a freshly prepared 3-course buffet lunch while cruising past elephant herds and hippo pods.",
+    "fullDescription": "Escape the midday heat and take to the gentle breezes of the Zambezi. Enjoy a scenic 2-hour river safari accompanied by a delectable 3-course buffet featuring grilled meats, fresh salads, local dishes, and chilled refreshments from the open bar.",
+    "durationMinutes": 120,
+    "durationLabel": "2 hrs",
+    "grossPriceUSD": 65,
+    "nettPriceUSD": 50,
+    "parkFeeUSD": 12,
+    "departureTimes": [
+      "12:00"
     ],
-    excludedItems: [
-      'Zimbabwe National Parks Rainforest Entry Fee ($50.00 USD International / $30.00 SADC)'
+    "pickupIncluded": true,
+    "fitnessLevel": "Easy",
+    "minAge": 2,
+    "includedItems": [
+      "Return hotel transfers",
+      "3-course buffet lunch",
+      "Complimentary beer, wine, and soft drinks"
     ],
-    restrictions: [
-      'Paved trails with gradual steps; wheelchair accessible routes available upon advance request'
+    "excludedItems": [
+      "River park levy ($12)"
     ],
-    photos: [
-      '/images/activities/guided-tour-falls.jpg',
-      '/images/activities/guided-tour-viewpoint.jpg',
-      '/images/destinations/victoria-falls-panoramic.jpg'
+    "restrictions": [
+      "Vegetarian and dietary options available on notice"
     ],
-    rating: 4.96,
-    reviewCount: 512,
-    status: 'ACTIVE',
-    addOns: [
+    "photos": [
+      "/images/activities/zambezi-luxury-deck.jpg",
+      "/images/activities/riversong-sunset-cruise.jpg"
+    ],
+    "rating": 4.87,
+    "reviewCount": 95,
+    "status": "ACTIVE",
+    "addOns": []
+  },
+  {
+    "id": "act-cruise-dinner",
+    "slug": "zambezi-starlight-dinner-cruise",
+    "name": "Zambezi Starlight Sunset & Dinner Cruise",
+    "destination": "VICTORIA_FALLS",
+    "category": "WATER",
+    "shortDescription": "Sunset boat safari followed by a 4-course gourmet dinner moored under the Southern African night sky on the Zambezi.",
+    "fullDescription": "The ultimate romantic evening on the Zambezi River. Your voyage begins during golden hour as the sun sets over the riverine islands. As twilight turns to star-studded night, the boat moors in a tranquil bay where candlelit tables are set for a four-course gourmet dinner prepared fresh onboard, paired with fine South African wines.",
+    "durationMinutes": 180,
+    "durationLabel": "3 hrs",
+    "grossPriceUSD": 110,
+    "nettPriceUSD": 85,
+    "parkFeeUSD": 12,
+    "departureTimes": [
+      "16:30 (Summer)",
+      "16:00 (Winter)"
+    ],
+    "pickupIncluded": true,
+    "fitnessLevel": "Easy",
+    "minAge": 6,
+    "includedItems": [
+      "Hotel transfers",
+      "Sunset river cruise + moored 4-course dinner",
+      "Full open bar with selected premium wines",
+      "Ambient candlelit dinner setup"
+    ],
+    "excludedItems": [
+      "River fee ($12)"
+    ],
+    "restrictions": [
+      "Smart casual dress code"
+    ],
+    "photos": [
+      "/images/activities/riversong-dinner-cruise.jpg",
+      "/images/activities/riversong-sunset-cruise.jpg"
+    ],
+    "rating": 4.95,
+    "reviewCount": 168,
+    "status": "ACTIVE",
+    "addOns": []
+  },
+  {
+    "id": "act-tour-falls-zim",
+    "slug": "guided-tour-of-victoria-falls",
+    "name": "Guided Tour of Victoria Falls — Zimbabwe Rainforest (16 Viewpoints)",
+    "destination": "VICTORIA_FALLS",
+    "category": "CULTURE_HERITAGE",
+    "shortDescription": "Comprehensive guided walk across all 16 viewpoints from Devil's Cataract to Danger Point. Discover the botany, geology, and history.",
+    "fullDescription": "Take a guided walk through the world-famous Victoria Falls rainforest on the Zimbabwean side, which commands 75% of the total cataract face. Accompanied by a master local guide, you will walk along the cliff-edge paths visiting all 16 designated viewpoints, including the David Livingstone Statue, the thundering Devil's Cataract, the Main Falls, Horseshoe Falls, Rainbow Falls, and Danger Point.\\n\\nLearn about the local myths, indigenous botanical flora that thrive in the perpetual cloud of spray, and the dramatic geological rifting that carved the Batoka canyons.",
+    "durationMinutes": 150,
+    "durationLabel": "2.5 hrs",
+    "grossPriceUSD": 32,
+    "nettPriceUSD": 24,
+    "parkFeeUSD": 58,
+    "departureTimes": [
+      "08:00",
+      "10:00",
+      "14:00",
+      "15:30"
+    ],
+    "pickupIncluded": true,
+    "fitnessLevel": "Easy",
+    "minAge": 0,
+    "includedItems": [
+      "Return transfers from Victoria Falls hotels",
+      "Licensed national parks professional heritage guide",
+      "Rain ponchos during high water season",
+      "Bottled mineral water"
+    ],
+    "excludedItems": [
+      "Rainforest National Park Entry Fee ($58 International / $35 SADC)",
+      "Personal gratuities"
+    ],
+    "restrictions": [
+      "Paved trails, wheelchair accessible up to Viewpoint 10",
+      "Non-slip footwear recommended"
+    ],
+    "photos": [
+      "/images/activities/guided-tour-falls.jpg",
+      "/images/activities/guided-tour-viewpoint.jpg"
+    ],
+    "rating": 4.96,
+    "reviewCount": 642,
+    "status": "ACTIVE",
+    "addOns": [
       {
-        id: 'addon-tour-rainforest-fee',
-        activityId: 'act-guided-tour-falls',
-        name: 'Pre-Paid Rainforest National Park Entry Fee',
-        description: 'Pre-pay the statutory Zimbabwe Parks & Wildlife Management Authority rainforest admission ($50 USD).',
-        grossPriceUSD: 50,
-        nettPriceUSD: 50,
-        capacityLimit: null,
-        status: 'ACTIVE'
+        "id": "addon-tour-parkfee",
+        "activityId": "act-tour-falls-zim",
+        "name": "Pre-Paid International Rainforest Entry Fee",
+        "description": "Pre-pay statutory $58.00 USD Zimbabwe National Parks ticket",
+        "grossPriceUSD": 58,
+        "nettPriceUSD": 58,
+        "capacityLimit": null,
+        "status": "ACTIVE"
       }
     ]
   },
   {
-    id: 'act-cruise',
-    slug: 'riversong-luxury-sunset-cruise',
-    name: 'Riversong Luxury Zambezi Sunset Cruise',
-    destination: 'VICTORIA_FALLS',
-    category: 'WATER',
-    shortDescription:
-      'Sip artisan cocktails and fine wines on the upper deck of the Riversong as the African sun sets over the Zambezi River.',
-    fullDescription:
-      'Experience the tranquility and majesty of the Zambezi River above the Victoria Falls. The Riversong is a custom-designed luxury catamaran boasting spacious viewing decks, plush lounge seating, and attentive table service.\n\nSpot pods of hippos, bathing elephants, and soaring African fish eagles while enjoying freshly prepared gourmet canapés and an open premium bar.',
-    durationMinutes: 150,
-    durationLabel: '2.5 Hours',
-    grossPriceUSD: 75,
-    nettPriceUSD: 55,
-    parkFeeUSD: 10,
-    departureTimes: ['16:00'],
-    pickupIncluded: true,
-    fitnessLevel: 'Easy',
-    minAge: 2,
-    includedItems: [
-      'Return hotel transfers to the private jetty',
-      'Selection of chef-prepared gourmet canapés and tapas',
-      'Complimentary premium open bar with South African wines, beers, and spirits',
-      'Expert river captain & wildlife guide'
+    "id": "act-tour-falls-zam",
+    "slug": "guided-tour-victoria-falls-zambia",
+    "name": "Guided Tour of Victoria Falls — Zambia Side & Knife-Edge Bridge",
+    "destination": "LIVINGSTONE",
+    "category": "CULTURE_HERITAGE",
+    "shortDescription": "Experience the dramatic Eastern Cataract, brave the thrilling Knife-Edge Bridge, and descend to the swirling Boiling Pot.",
+    "fullDescription": "Explore the spectacular Zambian side of Victoria Falls within Mosi-oa-Tunya National Park. Walk across the thrilling suspended Knife-Edge Bridge, where a continuous curtain of spray drenches visitors in high water. View the dramatic Eastern Cataract and take the historic stone path down into the Boiling Pot, where the Zambezi river surges through the narrow neck of the Batoka Gorge.",
+    "durationMinutes": 150,
+    "durationLabel": "2.5 hrs",
+    "grossPriceUSD": 35,
+    "nettPriceUSD": 26,
+    "parkFeeUSD": 20,
+    "departureTimes": [
+      "08:30",
+      "14:00"
     ],
-    excludedItems: [
-      'National Park River Entry Fee ($10.00 USD per person)'
+    "pickupIncluded": true,
+    "fitnessLevel": "Moderate",
+    "minAge": 4,
+    "includedItems": [
+      "Livingstone hotel return transfers",
+      "Professional Zambian heritage guide",
+      "Rain ponchos"
     ],
-    restrictions: [],
-    photos: [
-      '/images/activities/riversong-sunset-cruise.jpg',
-      '/images/activities/zambezi-luxury-deck.jpg'
+    "excludedItems": [
+      "Zambia National Park entry fee ($20)"
     ],
-    rating: 4.92,
-    reviewCount: 388,
-    status: 'ACTIVE',
-    addOns: []
+    "restrictions": [
+      "Moderate walking on steps down to Boiling Pot"
+    ],
+    "photos": [
+      "/images/activities/guided-tour-zambia.jpg",
+      "/images/activities/guided-tour-viewpoint.jpg"
+    ],
+    "rating": 4.92,
+    "reviewCount": 145,
+    "status": "ACTIVE",
+    "addOns": []
   },
   {
-    id: 'act-adventure-jetboat',
-    slug: 'adventure-jet-boat-batoka-gorge',
-    name: 'Adventure Jet Boat — Batoka Gorge Extreme Rapids',
-    destination: 'VICTORIA_FALLS',
-    category: 'WATER',
-    shortDescription:
-      'Experience 465 horsepower jet engines powering through the churning whitewater of the Batoka Gorge. 360-degree spins against towering canyon walls.',
-    fullDescription:
-      'The Adventure Jet Boat is engineered specifically to master the massive swells and churning boils of the lower Zambezi River rapids. Powered by high-output twin jet engines, your specialized skipper executes hair-raising 360-degree spins, high-speed drifts, and rapid charges between sheer 200m basalt cliffs.\n\nIncludes an exhilarating cable car descent and ascent into the Batoka Gorge.',
-    durationMinutes: 180,
-    durationLabel: '3 Hours',
-    grossPriceUSD: 120,
-    nettPriceUSD: 95,
-    parkFeeUSD: 10,
-    departureTimes: ['08:30', '11:00', '13:30', '15:30'],
-    pickupIncluded: true,
-    fitnessLevel: 'Moderate',
-    minAge: 10,
-    includedItems: [
-      'Return hotel transfers',
-      'Cable car lift into and out of the Batoka Gorge',
-      'Life jackets, safety helmets, and waterproof gear',
-      'Refreshments at the river basecamp'
+    "id": "act-tour-lunar",
+    "slug": "lunar-rainbow-tour",
+    "name": "Lunar Rainbow Night Tour — Victoria Falls Under Full Moon",
+    "destination": "VICTORIA_FALLS",
+    "category": "CULTURE_HERITAGE",
+    "shortDescription": "Witness one of nature's rarest optical phenomena: lunar rainbows (moonbows) shimmering in the mist of Victoria Falls at night.",
+    "fullDescription": "Operated exclusively during the 3 nights of each month surrounding the full moon when the Victoria Falls rainforest opens specially after dark. Guided by rangers equipped with red-filter torches, walk along the rainforest paths to witness ethereal white and pastel lunar rainbows arching across the abyss under the light of the full moon.",
+    "durationMinutes": 120,
+    "durationLabel": "2 hrs",
+    "grossPriceUSD": 32,
+    "nettPriceUSD": 25,
+    "parkFeeUSD": 116,
+    "departureTimes": [
+      "19:30",
+      "20:30"
     ],
-    excludedItems: [
-      'National Parks River Conservation Fee ($10.00 USD)'
+    "pickupIncluded": true,
+    "fitnessLevel": "Easy",
+    "minAge": 6,
+    "includedItems": [
+      "Return night transfers",
+      "Guided nocturnal rainforest walk with headlamps",
+      "Camera tripod assistance for long-exposure photography"
     ],
-    restrictions: [
-      'Not suitable for pregnant women or individuals with serious neck/back injuries'
+    "excludedItems": [
+      "Special National Parks Lunar Night Fee ($116 International)"
     ],
-    photos: [
-      '/images/activities/adventure-jetboat.jpg',
-      '/images/activities/jetboat-rapids.jpg'
+    "restrictions": [
+      "Only available on 3 nights of each calendar month during full moon"
     ],
-    rating: 4.91,
-    reviewCount: 129,
-    status: 'ACTIVE',
-    addOns: []
+    "photos": [
+      "/images/activities/lunar-rainbow-tour.jpg",
+      "/images/activities/guided-tour-falls.jpg"
+    ],
+    "rating": 4.98,
+    "reviewCount": 92,
+    "status": "ACTIVE",
+    "addOns": []
   },
   {
-    id: 'act-game-drive',
-    slug: 'zambezi-national-park-game-drive',
-    name: 'Zambezi National Park Morning & Afternoon Game Drive',
-    destination: 'VICTORIA_FALLS',
-    category: 'SAFARI_WILDLIFE',
-    shortDescription:
-      'Track lion, leopard, elephant, and sable antelope through pristine riverine wilderness in customized open 4x4 safari vehicles.',
-    fullDescription:
-      'Located just upstream from the Falls, the Zambezi National Park spans 56,000 hectares of pristine savannah and Zambezi river frontage. Board an open four-wheel-drive safari vehicle equipped with tiered seating for prime photographic angles.\n\nAccompanied by an armed Zimbabwe National Parks licensed professional guide, you will track big cats, giraffes, zebras, and rare antelope species such as sable and eland. Morning safaris pause for riverside coffee and rusks; afternoon safaris conclude with sundowner drinks.',
-    durationMinutes: 210,
-    durationLabel: '3.5 Hours',
-    grossPriceUSD: 80,
-    nettPriceUSD: 60,
-    parkFeeUSD: 15,
-    departureTimes: ['06:00', '15:00'],
-    pickupIncluded: true,
-    fitnessLevel: 'Easy',
-    minAge: 4,
-    includedItems: [
-      'Return hotel transfers in Victoria Falls',
-      'Open 4x4 safari vehicle with canopy and charging ports',
-      'Licensed professional field safari guide',
-      'Morning tea/coffee or evening sundowner drinks and gourmet snacks'
+    "id": "act-tour-bridge",
+    "slug": "historic-victoria-falls-bridge-tour",
+    "name": "Historic Victoria Falls Bridge Theatrical Tour & Catwalk Exploration",
+    "destination": "VICTORIA_FALLS",
+    "category": "CULTURE_HERITAGE",
+    "shortDescription": "Walk the original 1905 construction catwalks suspended beneath the bridge with a theatrical guide in period Edwardian costume.",
+    "fullDescription": "Journey back in time to 1905 when Cecil Rhodes dreamed of a railway from \"Cape to Cairo\". An actor in authentic Edwardian costume portrays chief engineer Georges Imbault, bringing the extraordinary engineering triumph to life. Fitted with harnesses, you will walk along the original catwalks directly under the steel arch 100 meters above the roaring Zambezi, feeling the thundering spray and watching bungee jumpers leap above your head.",
+    "durationMinutes": 120,
+    "durationLabel": "2 hrs",
+    "grossPriceUSD": 64,
+    "nettPriceUSD": 48,
+    "parkFeeUSD": 0,
+    "departureTimes": [
+      "10:00",
+      "14:00"
     ],
-    excludedItems: [
-      'National Parks Conservation Fee ($15.00 USD per person)'
+    "pickupIncluded": true,
+    "fitnessLevel": "Moderate",
+    "minAge": 10,
+    "includedItems": [
+      "Return transfers from Victoria Falls or Livingstone",
+      "Theatrical presentation and museum video",
+      "Safety harness and guided catwalk beneath the bridge",
+      "Refreshments at Bridge Café"
     ],
-    restrictions: [],
-    photos: [
-      '/images/activities/zambezi-game-drive.jpg',
-      '/images/activities/game-drive-lions.jpg'
+    "excludedItems": [
+      "Passport visa fees (border clearance included gratis with Bridge Pass)"
     ],
-    rating: 4.89,
-    reviewCount: 204,
-    status: 'ACTIVE',
-    addOns: []
+    "restrictions": [
+      "Passport required for bridge access",
+      "Enclosed walking shoes mandatory"
+    ],
+    "photos": [
+      "/images/activities/bridge-tour-catwalk.jpg",
+      "/images/activities/bridge-tour-history.jpg"
+    ],
+    "rating": 4.92,
+    "reviewCount": 198,
+    "status": "ACTIVE",
+    "addOns": []
   },
   {
-    id: 'act-elephant-interaction',
-    slug: 'elephant-sanctuary-interaction',
-    name: 'Through the Eyes of an Elephant Sanctuary Experience',
-    destination: 'VICTORIA_FALLS',
-    category: 'SAFARI_WILDLIFE',
-    shortDescription:
-      'An ethical, educational encounter with orphaned and rescued elephants in the Masuwe River Valley. Walk alongside the herd and learn about conservation.',
-    fullDescription:
-      'Set within the private Masuwe sanctuary, this renowned conservation program offers intimate, non-riding encounters with rescued elephants. Under the guidance of experienced caretakers, spend time feeding the herd healthy treats, touching their rough hide, and learning about elephant anatomy, social communication, and anti-poaching rehabilitation.\n\nConcludes with a delightful bush breakfast or afternoon refreshments on the deck overlooking the waterhole.',
-    durationMinutes: 150,
-    durationLabel: '2.5 Hours',
-    grossPriceUSD: 115,
-    nettPriceUSD: 90,
-    parkFeeUSD: 10,
-    departureTimes: ['06:30', '15:30'],
-    pickupIncluded: true,
-    fitnessLevel: 'Easy',
-    minAge: 4,
-    includedItems: [
-      'Return transfers from Victoria Falls lodges',
-      'Educational presentation and hands-on interaction feeding treats',
-      'Full cooked breakfast (morning) or snacks and drinks (afternoon)'
+    "id": "act-tour-tram",
+    "slug": "victoria-falls-historic-bamba-tram",
+    "name": "Victoria Falls Historic Bamba Tram Bridge Run",
+    "destination": "VICTORIA_FALLS",
+    "category": "CULTURE_HERITAGE",
+    "shortDescription": "Vintage tram excursion through the Victoria Falls rainforest and onto the historic bridge with champagne and fresh pastries.",
+    "fullDescription": "Step aboard the charming open-sided vintage Bamba Tram for a leisurely heritage ride through the coastal teak forests of Victoria Falls onto the iconic bridge. Sip champagne, fruit mimosas, and warm pastries as the tram comes to a stop midway across the gorge, offering unforgettable photo opportunities of the falls.",
+    "durationMinutes": 105,
+    "durationLabel": "1 hr 45 min",
+    "grossPriceUSD": 75,
+    "nettPriceUSD": 58,
+    "parkFeeUSD": 0,
+    "departureTimes": [
+      "09:30",
+      "16:00"
     ],
-    excludedItems: [
-      'Conservation and sanctuary levy ($10.00 USD)'
+    "pickupIncluded": true,
+    "fitnessLevel": "Easy",
+    "minAge": 4,
+    "includedItems": [
+      "Historic tram ride",
+      "Mimosas, champagne, and refreshments",
+      "Bridge crossing pass"
     ],
-    restrictions: [
-      'Strictly ethical encounter: no elephant riding'
+    "excludedItems": [
+      "Personal souvenirs"
     ],
-    photos: [
-      '/images/activities/elephant-interaction.jpg',
-      '/images/activities/elephant-safari.jpg'
+    "restrictions": [
+      "Passport required for bridge border zone"
     ],
-    rating: 4.95,
-    reviewCount: 247,
-    status: 'ACTIVE',
-    addOns: []
+    "photos": [
+      "/images/activities/bamba-tram.jpg",
+      "/images/activities/bridge-tour-history.jpg"
+    ],
+    "rating": 4.91,
+    "reviewCount": 88,
+    "status": "ACTIVE",
+    "addOns": []
   },
   {
-    id: 'act-canopy-tour',
-    slug: 'victoria-falls-canopy-tour',
-    name: 'Victoria Falls Canopy Tour — Batoka Gorge Treetop Ziplines',
-    destination: 'VICTORIA_FALLS',
-    category: 'ADRENALINE',
-    shortDescription:
-      'Glide through 9 cable slides nestled within the lush hardwood riverine forest canopy overlooking the turbulent rapids of the Batoka Gorge.',
-    fullDescription:
-      'The Victoria Falls Canopy Tour offers a breathtaking eco-adventure through the cliffside forests of the Zambezi Gorge. Featuring nine separate zip lines ranging from 40 to 85 meters in length, suspended cable walkways, and rope bridges.\n\nObserve rare birdlife like the Schalow\'s Turaco and Peregrine Falcon while soaking in aerial views of the roaring Zambezi River and the Victoria Falls Bridge.',
-    durationMinutes: 150,
-    durationLabel: '2.5 Hours',
-    grossPriceUSD: 65,
-    nettPriceUSD: 50,
-    parkFeeUSD: 0,
-    departureTimes: ['08:30', '10:30', '13:30', '15:30'],
-    pickupIncluded: true,
-    fitnessLevel: 'Moderate',
-    minAge: 6,
-    includedItems: [
-      'Full canopy safety harness, double-clip lanyards, and helmets',
-      'Two professional canopy tour guides per group',
-      'Return transfers from town hotels'
+    "id": "act-safari-gamedrive-am",
+    "slug": "zambezi-national-park-game-drive",
+    "name": "Zambezi National Park Morning Game Drive (4x4 Open Safari)",
+    "destination": "VICTORIA_FALLS",
+    "category": "SAFARI_WILDLIFE",
+    "shortDescription": "Sunrise open 4x4 safari along the Zambezi River tracking lions, leopards, elephants, buffalo, and rare sable antelope.",
+    "fullDescription": "Traverse the wilderness of the Zambezi National Park just minutes from Victoria Falls. Departing at dawn in custom-outfitted open 4x4 safari vehicles, your professional safari guide navigates along the scenic river drives and Chamabondo vlei networks. Track big cats, herds of elephant, giraffe, kudu, and the park’s signature pride of sable antelope, concluding with bush coffee and freshly baked rusks on the riverbanks.",
+    "durationMinutes": 180,
+    "durationLabel": "3 hrs",
+    "grossPriceUSD": 79,
+    "nettPriceUSD": 60,
+    "parkFeeUSD": 18,
+    "departureTimes": [
+      "06:00 (Summer)",
+      "06:30 (Winter)"
     ],
-    excludedItems: [],
-    restrictions: [
-      'Maximum weight limit 140 kg (308 lbs)'
+    "pickupIncluded": true,
+    "fitnessLevel": "Easy",
+    "minAge": 4,
+    "includedItems": [
+      "Hotel return transfers",
+      "Open 4x4 safari vehicle with window seat guarantee",
+      "Professional guide and tracker",
+      "Bush coffee, tea, and baked breakfast snacks"
     ],
-    photos: [
-      '/images/activities/bridge-slide.jpg',
-      '/images/activities/rapid-action.jpg'
+    "excludedItems": [
+      "National Park Conservation Fee ($18.00 USD)"
     ],
-    rating: 4.91,
-    reviewCount: 167,
-    status: 'ACTIVE',
-    addOns: []
+    "restrictions": [
+      "Warm fleece/jacket recommended for morning departure"
+    ],
+    "photos": [
+      "/images/activities/zambezi-game-drive.jpg",
+      "/images/activities/game-drive-lions.jpg"
+    ],
+    "rating": 4.91,
+    "reviewCount": 278,
+    "status": "ACTIVE",
+    "addOns": []
   },
   {
-    id: 'act-boma-dinner',
-    slug: 'the-boma-dinner-and-drum-show',
-    name: 'The Boma — Place of Eating Dinner & Interactive Drum Show',
-    destination: 'VICTORIA_FALLS',
-    category: 'CULTURE_HERITAGE',
-    shortDescription:
-      'Victoria Falls\' most celebrated culinary experience. A 4-course feast featuring local game meats, traditional Shangaan dancers, and an interactive djembe drumming circle.',
-    fullDescription:
-      'An unforgettable evening celebrating African culture, food, and music. Upon arrival, guests are robed in ceremonial Chitenge sarongs and greeted with traditional face painting. Enjoy a legendary four-course buffet featuring spit-roasted warthog, succulent crocodile, venison steaks, and local delicacies such as the daring mopane worm (with an official certificate for those brave enough!).\n\nAs dinner concludes, every guest receives their own djembe drum to participate in the energetic master drum show, followed by acrobatic dancers and fire spinners.',
-    durationMinutes: 180,
-    durationLabel: '3 Hours',
-    grossPriceUSD: 55,
-    nettPriceUSD: 42,
-    parkFeeUSD: 0,
-    departureTimes: ['19:00'],
-    pickupIncluded: true,
-    fitnessLevel: 'Easy',
-    minAge: 2,
-    includedItems: [
-      'Return hotel transfers in Victoria Falls',
-      'Ceremonial Chitenge welcome and face painting',
-      'Sumptuous four-course African buffet feast',
-      'Interactive Djembe drum and dance show participation'
+    "id": "act-safari-gamedrive-pm",
+    "slug": "zambezi-national-park-afternoon-game-drive",
+    "name": "Zambezi National Park Afternoon Safari & River Sundowner",
+    "destination": "VICTORIA_FALLS",
+    "category": "SAFARI_WILDLIFE",
+    "shortDescription": "Afternoon 4x4 game drive tracking big game coming down to the river to drink, concluding with African sundowners.",
+    "fullDescription": "Experience the peak game-viewing hours as the African heat wanes. Elephants, buffalo, and waterbuck make their way to the Zambezi River to quench their thirst. The drive concludes at a scenic overlook on the riverbanks for traditional sundowner drinks and gourmet snacks as the sun dips below the acacia canopy.",
+    "durationMinutes": 180,
+    "durationLabel": "3 hrs",
+    "grossPriceUSD": 79,
+    "nettPriceUSD": 60,
+    "parkFeeUSD": 18,
+    "departureTimes": [
+      "15:00 (Winter)",
+      "15:30 (Summer)"
     ],
-    excludedItems: [
-      'Beverages and specialty cocktails from the bar'
+    "pickupIncluded": true,
+    "fitnessLevel": "Easy",
+    "minAge": 4,
+    "includedItems": [
+      "Hotel transfers",
+      "Open 4x4 game drive",
+      "Sundowner beers, wines, and snacks on the Zambezi banks"
     ],
-    restrictions: [],
-    photos: [
-      '/images/activities/traditional-village.jpg',
-      '/images/destinations/victoria-falls-panoramic.jpg'
+    "excludedItems": [
+      "National Park fee ($18)"
     ],
-    rating: 4.92,
-    reviewCount: 680,
-    status: 'ACTIVE',
-    addOns: []
+    "restrictions": [
+      "All ages from 4 years"
+    ],
+    "photos": [
+      "/images/activities/game-drive-afternoon.jpg",
+      "/images/activities/zambezi-game-drive.jpg"
+    ],
+    "rating": 4.89,
+    "reviewCount": 154,
+    "status": "ACTIVE",
+    "addOns": []
   },
   {
-    id: 'act-chobe',
-    slug: 'chobe-national-park-day-trip-safari',
-    name: 'Chobe National Park Full-Day Safari (Botswana)',
-    destination: 'CHOBE',
-    category: 'SAFARI_WILDLIFE',
-    shortDescription:
-      'A seamless day expedition to Botswana\'s premier game park. Includes a Chobe River wildlife cruise, buffet lunch at a luxury safari lodge, and a 4x4 open vehicle game drive.',
-    fullDescription:
-      'Chobe National Park holds the greatest concentration of African elephants on the continent, with over 120,000 elephants roaming freely. This full-day adventure begins with an early morning cross-border transfer across the Kazungula Bridge into Botswana.\n\nFirst, board a specialized river safari boat to observe elephants swimming across channels, huge Nile crocodiles, and cape buffalo along the water\'s edge. After a gourmet buffet lunch at a riverside safari lodge, board custom 4x4 open safari vehicles for a deep-track game drive through the Chobe National Park wilderness.',
-    durationMinutes: 540,
-    durationLabel: '9 Hours (Full Day)',
-    grossPriceUSD: 170,
-    nettPriceUSD: 135,
-    parkFeeUSD: 15,
-    departureTimes: ['07:00'],
-    pickupIncluded: true,
-    fitnessLevel: 'Easy',
-    minAge: 4,
-    includedItems: [
-      'Return cross-border transfers from Victoria Falls or Livingstone',
-      'Chobe River 3-hour boat safari',
-      'Sumptuous buffet lunch at a luxury safari lodge',
-      'Chobe National Park 3-hour 4x4 open safari vehicle game drive',
-      'Bottled water and soft drinks throughout the day',
-      'Botswana National Park conservation entry fees'
+    "id": "act-safari-night-dinner",
+    "slug": "zambezi-national-park-night-game-drive-dinner",
+    "name": "Night Game Drive with Bush Dinner — Nocturnal Predator Safari",
+    "destination": "VICTORIA_FALLS",
+    "category": "SAFARI_WILDLIFE",
+    "shortDescription": "Spotlight safari tracking nocturnal predators (leopards, hyenas, genets) followed by a 3-course bush dinner under the stars.",
+    "fullDescription": "When the sun sets, a completely different world awakens in the African bush. Armed with high-powered filtered spotlights, your professional guide tracks nocturnal species that are rarely seen by day—including leopards on the prowl, civets, genets, bushbabies, porcupines, and hunting hyenas. The safari concludes at a private wilderness clearing where a glowing campfire and a lavish 3-course bush barbecue await under the African stars.",
+    "durationMinutes": 240,
+    "durationLabel": "4 hrs",
+    "grossPriceUSD": 272,
+    "nettPriceUSD": 215,
+    "parkFeeUSD": 8,
+    "departureTimes": [
+      "17:30"
     ],
-    excludedItems: [
-      'Personal visa fees if applicable (KAZA Univisa covers border entry)',
-      'Alcoholic beverages with lunch'
+    "pickupIncluded": true,
+    "fitnessLevel": "Easy",
+    "minAge": 6,
+    "includedItems": [
+      "Spotlight night safari in open 4x4",
+      "3-course bush dinner cooked over open wood fires",
+      "Complimentary wine, beer, and soft drinks at camp",
+      "Return hotel transfers"
     ],
-    restrictions: [
-      'Valid passport with at least 6 months validity required',
-      'KAZA Univisa recommended for seamless dual entry'
+    "excludedItems": [
+      "Conservation levy ($8)"
     ],
-    photos: [
-      '/images/activities/chobe-elephants-river.jpg',
-      '/images/activities/chobe-game-drive.jpg',
-      '/images/destinations/chobe-river-safari.jpg'
+    "restrictions": [
+      "Warm clothing recommended for open-air night drive"
     ],
-    rating: 4.96,
-    reviewCount: 460,
-    status: 'ACTIVE',
-    addOns: []
+    "photos": [
+      "/images/activities/night-game-drive.jpg",
+      "/images/activities/night-bush-dinner.jpg"
+    ],
+    "rating": 4.97,
+    "reviewCount": 112,
+    "status": "ACTIVE",
+    "addOns": []
   },
   {
-    id: 'act-livingstone-devilspool',
-    slug: 'livingstone-island-devils-pool',
-    name: 'Livingstone Island & Devil\'s Pool Swim (Zambia)',
-    destination: 'LIVINGSTONE',
-    category: 'ADRENALINE',
-    shortDescription:
-      'Stand where David Livingstone first saw the Falls and take a dip in nature\'s ultimate infinity pool perched right on the precipice of the 100m drop.',
-    fullDescription:
-      'Accessible only during low-to-medium water seasons, Devil\'s Pool is an exhilarating natural rock pool resting right on the lip of Victoria Falls on the Zambian border. A boat whisks you across the Zambezi to historic Livingstone Island, where you follow expert guides along a rock ledge to plunge into the pool, gazing down into the swirling 100m abyss.\n\nConcludes with high tea or a gourmet riverside breakfast under canvas.',
-    durationMinutes: 180,
-    durationLabel: '3 Hours',
-    grossPriceUSD: 149,
-    nettPriceUSD: 115,
-    parkFeeUSD: 0,
-    departureTimes: ['07:30', '09:00', '10:30', '12:30', '15:30'],
-    pickupIncluded: true,
-    fitnessLevel: 'Moderate',
-    minAge: 12,
-    includedItems: [
-      'Twin-engine boat transfer to Livingstone Island',
-      'Guided swim in Devil\'s Pool with experienced safety handlers',
-      'Full gourmet meal (Breakfast, Lunch, or High Tea depending on slot)',
-      'Historical tour of Livingstone Island'
+    "id": "act-safari-walking",
+    "slug": "zambezi-national-park-walking-safari",
+    "name": "Zambezi National Park Guided Walking Safari on Foot",
+    "destination": "VICTORIA_FALLS",
+    "category": "SAFARI_WILDLIFE",
+    "shortDescription": "Bush tracking big game on foot with an armed professional ranger. Learn animal tracks, medicinal flora, and survival lore.",
+    "fullDescription": "Nothing compares to the sensory experience of walking through wild Africa on foot. Led by a fully licensed professional safari walking guide and accompanied by an armed National Parks ranger, you will follow animal tracks, decipher signs of the bush, study medicinal plants, and experience thrilling encounters with big game at eye level.",
+    "durationMinutes": 180,
+    "durationLabel": "3 hrs",
+    "grossPriceUSD": 112,
+    "nettPriceUSD": 88,
+    "parkFeeUSD": 18,
+    "departureTimes": [
+      "06:30",
+      "14:30"
     ],
-    excludedItems: [
-      'Cross-border bridge transfer if originating from Zimbabwe side'
+    "pickupIncluded": true,
+    "fitnessLevel": "Moderate",
+    "minAge": 12,
+    "includedItems": [
+      "Hotel transfers",
+      "Armed professional guide and tracker",
+      "Bush snacks and mineral water"
     ],
-    restrictions: [
-      'Seasonal activity: operates during low-water period (usually mid-August to mid-January)',
-      'Swimming capability required'
+    "excludedItems": [
+      "Parks fee ($18)"
     ],
-    photos: [
-      '/images/destinations/livingstone-devilspool.jpg',
-      '/images/destinations/victoria-falls-cataract.jpg'
+    "restrictions": [
+      "Neutral outdoor clothing required (no bright colors or white)",
+      "Min age 12"
     ],
-    rating: 4.99,
-    reviewCount: 275,
-    status: 'ACTIVE',
-    addOns: [
+    "photos": [
+      "/images/activities/zambezi-walking-safari.jpg",
+      "/images/activities/game-walk-trackers.jpg"
+    ],
+    "rating": 4.94,
+    "reviewCount": 86,
+    "status": "ACTIVE",
+    "addOns": []
+  },
+  {
+    "id": "act-safari-elephant-elecrew",
+    "slug": "through-the-eyes-of-an-elephant",
+    "name": "\"Through the Eyes of an Elephant\" Educational Conservation Encounter",
+    "destination": "VICTORIA_FALLS",
+    "category": "SAFARI_WILDLIFE",
+    "shortDescription": "Conservation-focused, non-riding educational encounter and walk with rescued elephants in partnership with the EleCREW trust.",
+    "fullDescription": "An educational and conservation-focused elephant encounter designed to deepen your understanding of Africa’s most intelligent giants. In partnership with EleCREW (a registered non-profit promoting human-elephant coexistence), guests learn how elephants see, hear, smell, feel, and think. Guided by expert handlers, you will walk alongside these majestic giants across level wilderness trails and learn about anti-poaching and habitat protection efforts.",
+    "durationMinutes": 180,
+    "durationLabel": "3 hrs",
+    "grossPriceUSD": 148,
+    "nettPriceUSD": 115,
+    "parkFeeUSD": 24,
+    "departureTimes": [
+      "08:00",
+      "10:30",
+      "14:30"
+    ],
+    "pickupIncluded": true,
+    "fitnessLevel": "Easy",
+    "minAge": 4,
+    "includedItems": [
+      "Guided educational conservation presentation",
+      "20-minute elephant wilderness walk",
+      "Morning or afternoon refreshments",
+      "Return transfers from town lodges"
+    ],
+    "excludedItems": [
+      "Conservation levy ($24) directly supporting EleCREW trust",
+      "Souvenir photos"
+    ],
+    "restrictions": [
+      "Non-riding ethical sanctuary",
+      "Children under 10 view the walk from designated safari vehicle"
+    ],
+    "photos": [
+      "/images/activities/through-the-eyes-elephant.jpg",
+      "/images/activities/elephant-interaction.jpg",
+      "/images/activities/elephant-safari.jpg"
+    ],
+    "rating": 4.96,
+    "reviewCount": 220,
+    "status": "ACTIVE",
+    "addOns": []
+  },
+  {
+    "id": "act-safari-chobe-day",
+    "slug": "chobe-national-park-day-trip-safari",
+    "name": "Chobe National Park Full Day Safari — Botswana Border Excursion",
+    "destination": "CHOBE",
+    "category": "SAFARI_WILDLIFE",
+    "shortDescription": "Full-day safari to Botswana: 3-hour Chobe River boat safari, luxury lodge buffet lunch, and open 4x4 game drive.",
+    "fullDescription": "Cross into Botswana for a world-renowned safari in Chobe National Park, home to the largest concentration of African elephants on earth (over 120,000 elephants). Your expedition includes a morning safari river cruise along the Chobe River where elephants swim across deep channels and hundreds of hippos congregate, followed by a luxury 5-star buffet lunch at a riverside lodge, and an afternoon 4x4 open safari drive into the park tracking lions, leopards, and sable.",
+    "durationMinutes": 600,
+    "durationLabel": "Full Day (10 hrs)",
+    "grossPriceUSD": 249,
+    "nettPriceUSD": 195,
+    "parkFeeUSD": 0,
+    "departureTimes": [
+      "07:00"
+    ],
+    "pickupIncluded": true,
+    "fitnessLevel": "Easy",
+    "minAge": 4,
+    "includedItems": [
+      "All international border transfers from Victoria Falls / Livingstone",
+      "3-hour Chobe River safari boat cruise",
+      "Full 5-star lodge buffet lunch and soft drinks",
+      "3-hour afternoon open 4x4 game drive in Chobe National Park",
+      "All Botswana National Park entry fees"
+    ],
+    "excludedItems": [
+      "Botswana visa fees (most Western passports are visa-exempt)"
+    ],
+    "restrictions": [
+      "Valid passport required for Botswana immigration"
+    ],
+    "photos": [
+      "/images/activities/chobe-elephants-river.jpg",
+      "/images/activities/chobe-game-drive.jpg"
+    ],
+    "rating": 4.97,
+    "reviewCount": 489,
+    "status": "ACTIVE",
+    "addOns": []
+  },
+  {
+    "id": "act-safari-chobe-camp",
+    "slug": "chobe-overnight-camping-safari",
+    "name": "Chobe Overnight Wilderness Camping Safari (2 Days / 1 Night)",
+    "destination": "CHOBE",
+    "category": "SAFARI_WILDLIFE",
+    "shortDescription": "Complete Botswana wilderness immersion: river safari, 2 full game drives, campfire barbecue, and camping under canvas in Chobe NP.",
+    "fullDescription": "Take your Botswana safari to the next level with an overnight camping expedition deep inside Chobe National Park. Experience an evening game drive after day visitors have departed, dinner cooked over open mopane wood coals, stories around the campfire, and the thrilling sounds of lions roaring and hyenas calling while tucked into comfortable canvas tents with cots and bedrolls.",
+    "durationMinutes": 1800,
+    "durationLabel": "2 Days / 1 Night",
+    "grossPriceUSD": 381,
+    "nettPriceUSD": 305,
+    "parkFeeUSD": 30,
+    "departureTimes": [
+      "07:00"
+    ],
+    "pickupIncluded": true,
+    "fitnessLevel": "Moderate",
+    "minAge": 8,
+    "includedItems": [
+      "All transfers from Victoria Falls",
+      "River safari boat cruise",
+      "Multiple 4x4 game drives",
+      "Comfortable tented camp accommodation with bedrolls",
+      "All meals and wine/beer at camp"
+    ],
+    "excludedItems": [
+      "National park fees ($30)"
+    ],
+    "restrictions": [
+      "Passport required for Botswana entry"
+    ],
+    "photos": [
+      "/images/activities/chobe-camping-safari.jpg",
+      "/images/activities/chobe-elephants-river.jpg"
+    ],
+    "rating": 4.98,
+    "reviewCount": 76,
+    "status": "ACTIVE",
+    "addOns": []
+  },
+  {
+    "id": "act-safari-rhino",
+    "slug": "white-rhino-walking-safari",
+    "name": "White Rhino Tracking Walking Safari (Mosi-oa-Tunya / Livingstone)",
+    "destination": "LIVINGSTONE",
+    "category": "SAFARI_WILDLIFE",
+    "shortDescription": "Track endangered Southern White Rhinos on foot in Mosi-oa-Tunya National Park, guarded 24/7 by dedicated wildlife rangers.",
+    "fullDescription": "An extraordinary opportunity to approach endangered white rhinos on foot. Guarded around the clock by armed Zambian wildlife police officers to protect them from poachers, these magnificent prehistoric creatures can be observed from close range under the direction of your guide and trackers.",
+    "durationMinutes": 180,
+    "durationLabel": "3 hrs",
+    "grossPriceUSD": 120,
+    "nettPriceUSD": 95,
+    "parkFeeUSD": 20,
+    "departureTimes": [
+      "07:00",
+      "14:30"
+    ],
+    "pickupIncluded": true,
+    "fitnessLevel": "Moderate",
+    "minAge": 12,
+    "includedItems": [
+      "Hotel transfers from Livingstone",
+      "Experienced walking guide and armed rangers",
+      "Bush refreshments"
+    ],
+    "excludedItems": [
+      "Mosi-oa-Tunya Park entrance fee ($20)"
+    ],
+    "restrictions": [
+      "Enclosed walking shoes and neutral clothing mandatory"
+    ],
+    "photos": [
+      "/images/activities/game-walk-trackers.jpg",
+      "/images/activities/zambezi-game-drive.jpg"
+    ],
+    "rating": 4.96,
+    "reviewCount": 165,
+    "status": "ACTIVE",
+    "addOns": []
+  },
+  {
+    "id": "act-safari-devils-am",
+    "slug": "livingstone-island-devils-pool-morning-breezer",
+    "name": "Livingstone Island & Devil's Pool — Morning Breezer",
+    "destination": "LIVINGSTONE",
+    "category": "ADRENALINE",
+    "shortDescription": "Boat to Livingstone Island on the lip of Victoria Falls, swim in Devil's Pool right on the edge, and enjoy morning refreshments.",
+    "fullDescription": "The world's most famous natural infinity pool. Departing by twin-engine boat from the Royal Livingstone Hotel, you will journey through the Zambezi rapids to Livingstone Island on the crest of Victoria Falls. Follow in the footsteps of David Livingstone before taking the plunge into Devil’s Pool—a naturally formed rock pool right on the precipice of the 100-meter drop. After your swim, savor freshly baked scones and morning coffee on the island.",
+    "durationMinutes": 120,
+    "durationLabel": "2 hrs",
+    "grossPriceUSD": 149,
+    "nettPriceUSD": 120,
+    "parkFeeUSD": 0,
+    "departureTimes": [
+      "07:30",
+      "09:00"
+    ],
+    "pickupIncluded": false,
+    "fitnessLevel": "Moderate",
+    "minAge": 12,
+    "includedItems": [
+      "Boat transfer to Livingstone Island",
+      "Guided swim in Devil's Pool with trained safety guides",
+      "Morning scones, tea, coffee, and fruit on the island"
+    ],
+    "excludedItems": [
+      "Hotel transfer to Royal Livingstone jetty (available as add-on)"
+    ],
+    "restrictions": [
+      "Seasonal: operates during low/medium water (typically late August to January)",
+      "Must be able to swim across short river channel"
+    ],
+    "photos": [
+      "/images/activities/rapid-action.jpg",
+      "/images/activities/guided-tour-viewpoint.jpg"
+    ],
+    "rating": 4.99,
+    "reviewCount": 384,
+    "status": "ACTIVE",
+    "addOns": [
       {
-        id: 'addon-devil-lunch-upgrade',
-        activityId: 'act-livingstone-devilspool',
-        name: 'Gourmet 3-Course Island Lunch Slot Upgrade',
-        description: 'Upgrade your island tour to the premium 12:30 midday slot with a three-course gourmet lunch and chilled wines.',
-        grossPriceUSD: 50,
-        nettPriceUSD: 40,
-        capacityLimit: null,
-        status: 'ACTIVE'
+        "id": "addon-devils-transfer",
+        "activityId": "act-safari-devils-am",
+        "name": "Return Road Transfer to Royal Livingstone",
+        "description": "Transfers from Victoria Falls town or Livingstone hotels to the island boat launch",
+        "grossPriceUSD": 25,
+        "nettPriceUSD": 15,
+        "capacityLimit": null,
+        "status": "ACTIVE"
       }
     ]
   },
   {
-    id: 'act-white-rhino',
-    slug: 'white-rhino-walking-safari',
-    name: 'White Rhino Walking Safari (Mosi-oa-Tunya, Zambia)',
-    destination: 'LIVINGSTONE',
-    category: 'SAFARI_WILDLIFE',
-    shortDescription:
-      'Track endangered white rhinos on foot accompanied by armed Zambian wildlife scouts in Mosi-oa-Tunya National Park.',
-    fullDescription:
-      'An exceptional, rare wildlife encounter in Southern Africa. Under the close escort of Zambia Wildlife Authority (DNPW) armed rangers who guard these precious rhinos 24/7, you head out on foot through the riverine thickets of Mosi-oa-Tunya National Park.\n\nExperience the thrill of standing just meters away from these prehistoric giants in their natural habitat while discovering animal tracks, medicinal flora, and smaller wildlife on the ground.',
-    durationMinutes: 180,
-    durationLabel: '3 Hours',
-    grossPriceUSD: 110,
-    nettPriceUSD: 85,
-    parkFeeUSD: 15,
-    departureTimes: ['06:30', '15:00'],
-    pickupIncluded: true,
-    fitnessLevel: 'Moderate',
-    minAge: 12,
-    includedItems: [
-      'Return hotel transfers in Livingstone',
-      'Accompanied by armed national parks wildlife scouts',
-      'Guided walking safari tracking the rhino crash',
-      'Bush refreshments and snacks'
+    "id": "act-safari-devils-lunch",
+    "slug": "livingstone-island-devils-pool",
+    "name": "Livingstone Island & Devil's Pool — Midday Swim & 3-Course Lunch",
+    "destination": "LIVINGSTONE",
+    "category": "ADRENALINE",
+    "shortDescription": "Midday swim on the edge of the abyss followed by a gourmet 3-course lunch prepared fresh on Livingstone Island.",
+    "fullDescription": "Experience Devil’s Pool during prime daylight when rainbows arch through the rising mist. After an adrenaline-fueled swim on the edge of the abyss, sit down at linen-covered tables for a sumptuous 3-course lunch prepared fresh by island chefs, paired with chilled wine and beer.",
+    "durationMinutes": 150,
+    "durationLabel": "2.5 hrs",
+    "grossPriceUSD": 199,
+    "nettPriceUSD": 155,
+    "parkFeeUSD": 0,
+    "departureTimes": [
+      "12:30"
     ],
-    excludedItems: [
-      'Zambia National Parks Conservation Fee ($15.00 USD)'
+    "pickupIncluded": false,
+    "fitnessLevel": "Moderate",
+    "minAge": 12,
+    "includedItems": [
+      "Island boat crossing",
+      "Guided Devil's Pool swim",
+      "3-course lunch and wine/beer on Livingstone Island"
     ],
-    restrictions: [
-      'Neutral-toned safari clothing and closed walking shoes required',
-      'Strict adherence to ranger safety commands'
+    "excludedItems": [
+      "Road transfer to jetty"
     ],
-    photos: [
-      '/images/activities/zambezi-game-drive.jpg',
-      '/images/activities/game-drive-lions.jpg'
+    "restrictions": [
+      "Seasonal operation (Aug to Jan)",
+      "Good swimming capability required"
     ],
-    rating: 4.94,
-    reviewCount: 138,
-    status: 'ACTIVE',
-    addOns: []
+    "photos": [
+      "/images/activities/rapid-action.jpg",
+      "/images/activities/guided-tour-viewpoint.jpg"
+    ],
+    "rating": 4.98,
+    "reviewCount": 290,
+    "status": "ACTIVE",
+    "addOns": []
   },
   {
-    id: 'act-hwange-day-trip',
-    slug: 'hwange-national-park-full-day-safari',
-    name: 'Hwange National Park Full-Day Safari Expedition',
-    destination: 'VICTORIA_FALLS',
-    category: 'SAFARI_WILDLIFE',
-    shortDescription:
-      'Journey to Zimbabwe\'s legendary safari jewel. Full-day safari in open 4x4 vehicles across Hwange\'s famous wildlife waterholes.',
-    fullDescription:
-      'Covering over 14,600 square kilometers, Hwange National Park is Zimbabwe\'s largest national park and home to vast elephant herds numbering over 45,000, as well as lion prides, cheetahs, leopards, and African wild dogs.\n\nDeparting early from Victoria Falls, travel in comfort to the park entrance before boarding specialized open 4x4 safari vehicles. Spend the day traversing key waterholes where elephants, giraffes, and plains game congregate, accompanied by a lavish bush lunch.',
-    durationMinutes: 660,
-    durationLabel: '11 Hours (Full Day)',
-    grossPriceUSD: 220,
-    nettPriceUSD: 175,
-    parkFeeUSD: 20,
-    departureTimes: ['06:00'],
-    pickupIncluded: true,
-    fitnessLevel: 'Easy',
-    minAge: 6,
-    includedItems: [
-      'Return private road transfers from Victoria Falls',
-      'Extensive open 4x4 game drive in Hwange National Park',
-      'Professional safari guide with specialized tracking skills',
-      'Full safari lodge lunch and drinks',
-      'National park entry and conservation levies'
+    "id": "act-safari-devils-tea",
+    "slug": "livingstone-island-devils-pool-high-tea",
+    "name": "Livingstone Island & Devil's Pool — Afternoon High Tea",
+    "destination": "LIVINGSTONE",
+    "category": "ADRENALINE",
+    "shortDescription": "Late afternoon Devil's Pool edge swim followed by traditional British high tea, cakes, and prosecco on the island.",
+    "fullDescription": "The quintessential colonial adventure experience. Cruise to Livingstone Island in the gentle afternoon light, swim in Devil's Pool with panoramic views of the entire falls, and return to dry land on the island for elegant High Tea featuring gourmet finger sandwiches, artisanal pastries, cakes, and sparkling wine.",
+    "durationMinutes": 120,
+    "durationLabel": "2 hrs",
+    "grossPriceUSD": 189,
+    "nettPriceUSD": 148,
+    "parkFeeUSD": 0,
+    "departureTimes": [
+      "15:30"
     ],
-    excludedItems: [
-      'Gratuities for driver and guide'
+    "pickupIncluded": false,
+    "fitnessLevel": "Moderate",
+    "minAge": 12,
+    "includedItems": [
+      "Island boat transfer",
+      "Guided swim in Devil's Pool",
+      "Full High Tea spread with cakes, sandwiches & sparkling wine"
     ],
-    restrictions: [],
-    photos: [
-      '/images/activities/game-drive-lions.jpg',
-      '/images/activities/zambezi-game-drive.jpg',
-      '/images/activities/chobe-game-drive.jpg'
+    "excludedItems": [
+      "Road transfers"
     ],
-    rating: 4.97,
-    reviewCount: 189,
-    status: 'ACTIVE',
-    addOns: []
+    "restrictions": [
+      "Seasonal operation (Aug to Jan)",
+      "Min age 12"
+    ],
+    "photos": [
+      "/images/activities/rapid-action.jpg",
+      "/images/activities/guided-tour-viewpoint.jpg"
+    ],
+    "rating": 4.97,
+    "reviewCount": 210,
+    "status": "ACTIVE",
+    "addOns": []
   },
   {
-    id: 'act-traditional-village',
-    slug: 'traditional-african-village-tour',
-    name: 'Traditional African Village Cultural Tour (Mukuni & Ndebele)',
-    destination: 'VICTORIA_FALLS',
-    category: 'CULTURE_HERITAGE',
-    shortDescription:
-      'Authentic insight into rural African village life. Meet the local headman, tour traditional homesteads, and witness timeless crafts and customs.',
-    fullDescription:
-      'Experience genuine Southern African hospitality with a guided cultural tour to a real working traditional village. You will be welcomed into an authentic community where generations have lived according to ancient customs.\n\nWalk among thatched mud-brick homesteads, see traditional ironmongery and wood carving, learn how local beer is brewed, and observe how traditional court councils resolve village matters. A portion of every ticket directly supports village clinics and primary schools.',
-    durationMinutes: 150,
-    durationLabel: '2.5 Hours',
-    grossPriceUSD: 35,
-    nettPriceUSD: 25,
-    parkFeeUSD: 0,
-    departureTimes: ['09:00', '14:00'],
-    pickupIncluded: true,
-    fitnessLevel: 'Easy',
-    minAge: 2,
-    includedItems: [
-      'Return hotel transfers',
-      'Local resident cultural village guide',
-      'Village entry fee and community fund donation'
+    "id": "act-safari-hwange",
+    "slug": "hwange-national-park-full-day-safari",
+    "name": "Hwange National Park Full Day Safari — Big Five Super-Prides",
+    "destination": "VICTORIA_FALLS",
+    "category": "SAFARI_WILDLIFE",
+    "shortDescription": "Full-day safari to Zimbabwe's crown jewel national park: 40,000+ elephants, lion super-prides, and waterhole game viewing.",
+    "fullDescription": "Hwange National Park is Zimbabwe’s largest and premier wildlife reserve, encompassing 14,650 square kilometers of Kalahari sands and teak forests. Known worldwide for its colossal elephant herds (exceeding 40,000 animals) and legendary lion prides, this full-day expedition includes transfers from Victoria Falls, a morning game drive visiting productive pumped waterholes, a delicious safari lunch, and an afternoon safari drive.",
+    "durationMinutes": 720,
+    "durationLabel": "Full Day (12 hrs)",
+    "grossPriceUSD": 295,
+    "nettPriceUSD": 235,
+    "parkFeeUSD": 20,
+    "departureTimes": [
+      "06:00"
     ],
-    excludedItems: [
-      'Purchases of handmade wooden curios or pottery'
+    "pickupIncluded": true,
+    "fitnessLevel": "Easy",
+    "minAge": 6,
+    "includedItems": [
+      "Return transfers from Victoria Falls hotels to Hwange",
+      "Full-day game drive in open 4x4 safari vehicles",
+      "Safari lodge lunch with beverages",
+      "Professional safari guide and tracker"
     ],
-    restrictions: [],
-    photos: [
-      '/images/activities/traditional-village.jpg',
-      '/images/destinations/victoria-falls-panoramic.jpg'
+    "excludedItems": [
+      "Hwange National Park Entrance Fee ($20.00 USD)"
     ],
-    rating: 4.87,
-    reviewCount: 145,
-    status: 'ACTIVE',
-    addOns: []
+    "restrictions": [
+      "Full day tour; 2-hour transfer each way"
+    ],
+    "photos": [
+      "/images/activities/game-drive-lions.jpg",
+      "/images/activities/zambezi-game-drive.jpg"
+    ],
+    "rating": 4.94,
+    "reviewCount": 178,
+    "status": "ACTIVE",
+    "addOns": []
+  },
+  {
+    "id": "act-boma",
+    "slug": "the-boma-dinner-and-drum-show",
+    "name": "The Boma — Dinner & Drum Show Cultural Feast",
+    "destination": "VICTORIA_FALLS",
+    "category": "CULTURE_HERITAGE",
+    "shortDescription": "Legendary African cultural feast: 4-course barbecue buffet, traditional Shangaan dancers, fortune teller, and interactive drumming.",
+    "fullDescription": "Consistently rated the must-do evening experience in Victoria Falls. Dressed in traditional chitenge robes upon arrival, guests are welcomed with a hand-washing ceremony and a sip of local sorghum beer. Feast on an expansive four-course buffet featuring spit-roasted warthog, game stews, Zambezi bream, and the daring mopane worm challenge (with a signed certificate!).\\n\\nThe evening peaks with a spirited interactive drumming session where every guest is handed their own djembe drum.",
+    "durationMinutes": 180,
+    "durationLabel": "3 hrs",
+    "grossPriceUSD": 71,
+    "nettPriceUSD": 54,
+    "parkFeeUSD": 0,
+    "departureTimes": [
+      "19:00"
+    ],
+    "pickupIncluded": true,
+    "fitnessLevel": "Easy",
+    "minAge": 0,
+    "includedItems": [
+      "Return transfers from all Victoria Falls hotels & lodges",
+      "Four-course African feast buffet",
+      "Chitenge wrap dressing and face painting",
+      "Djembe drum per person for interactive performance"
+    ],
+    "excludedItems": [
+      "Beverages and bar purchases"
+    ],
+    "restrictions": [
+      "Family friendly, suitable for all ages"
+    ],
+    "photos": [
+      "/images/activities/traditional-village.jpg",
+      "/images/activities/simunye-theatre-stage.jpg"
+    ],
+    "rating": 4.93,
+    "reviewCount": 540,
+    "status": "ACTIVE",
+    "addOns": []
+  },
+  {
+    "id": "act-simunye",
+    "slug": "simunye-spirit-of-africa",
+    "name": "Simunye — Spirit of Africa Live Theatrical Musical Show",
+    "destination": "VICTORIA_FALLS",
+    "category": "CULTURE_HERITAGE",
+    "shortDescription": "Acclaimed evening Broadway-style theatrical show at Victoria Falls Theatre combining giant puppetry, dance, music, and acrobatics.",
+    "fullDescription": "Simunye (\"We Are One\") is a dazzling world-class theatrical production staged at the custom-built Victoria Falls Theatre. Created in collaboration with internationally renowned directors, this magical show tells the story of a journey through the African wild using larger-than-life puppetry, breathtaking acrobatics, evocative original music, and mesmerizing visual effects. A captivating spectacle for audiences of all ages.",
+    "durationMinutes": 90,
+    "durationLabel": "1.5 hrs",
+    "grossPriceUSD": 69,
+    "nettPriceUSD": 52,
+    "parkFeeUSD": 0,
+    "departureTimes": [
+      "18:00",
+      "20:00"
+    ],
+    "pickupIncluded": true,
+    "fitnessLevel": "Easy",
+    "minAge": 4,
+    "includedItems": [
+      "Return hotel transfers",
+      "Reserved tiered seating at Victoria Falls Theatre",
+      "Full 75-minute live theatrical show"
+    ],
+    "excludedItems": [
+      "Drinks and snacks at the theatre bar"
+    ],
+    "restrictions": [
+      "No flash photography during performance"
+    ],
+    "photos": [
+      "/images/activities/simunye-spirit-of-africa.jpg",
+      "/images/activities/simunye-theatre-stage.jpg",
+      "/images/activities/simunye-acrobatics.jpg"
+    ],
+    "rating": 4.97,
+    "reviewCount": 320,
+    "status": "ACTIVE",
+    "addOns": []
+  },
+  {
+    "id": "act-dusty-road",
+    "slug": "dusty-road-township-dining-experience",
+    "name": "Dusty Road Township Cultural Dining Experience (Chinotimba)",
+    "destination": "VICTORIA_FALLS",
+    "category": "CULTURE_HERITAGE",
+    "shortDescription": "Traditional Zimbabwean township culinary experience cooked over open fires with local ingredients in Chinotimba township.",
+    "fullDescription": "Located in the heart of Chinotimba, Victoria Falls’ oldest township, Dusty Road is a celebrated traditional restaurant created by renowned chef Sarah Lilford. Savor authentic Zimbabwean cuisine cooked over open fires and cast-iron pots—including sadza, wild spinach, groundnut stew, and roasted guinea fowl—surrounded by vibrant upcycled art and township hospitality.",
+    "durationMinutes": 150,
+    "durationLabel": "2.5 hrs",
+    "grossPriceUSD": 55,
+    "nettPriceUSD": 42,
+    "parkFeeUSD": 0,
+    "departureTimes": [
+      "12:30 (Lunch)",
+      "18:30 (Dinner)"
+    ],
+    "pickupIncluded": true,
+    "fitnessLevel": "Easy",
+    "minAge": 4,
+    "includedItems": [
+      "Return transfers from town",
+      "Full multi-dish traditional tasting menu",
+      "Introduction to township heritage and culinary history"
+    ],
+    "excludedItems": [
+      "Craft beers and cocktails"
+    ],
+    "restrictions": [
+      "Vegetarian and vegan options available"
+    ],
+    "photos": [
+      "/images/activities/dusty-road-township.jpg",
+      "/images/activities/traditional-village.jpg"
+    ],
+    "rating": 4.95,
+    "reviewCount": 148,
+    "status": "ACTIVE",
+    "addOns": []
+  },
+  {
+    "id": "act-village-tour",
+    "slug": "traditional-african-village-tour",
+    "name": "Traditional Zimbabwean Rural Village Tour (Monde / Mukuni)",
+    "destination": "VICTORIA_FALLS",
+    "category": "CULTURE_HERITAGE",
+    "shortDescription": "Authentic cultural visit to a working rural African village. Meet the village headman, visit homesteads, and support the local school.",
+    "fullDescription": "Experience everyday rural African life beyond the tourist bubble. Accompanied by a local guide born and raised in the community, you will visit Monde Village, a traditional rural settlement located 15km outside Victoria Falls town. Meet the village elders, learn about thatched mud-brick architecture, subsistence farming, traditional medicine, and visit the village primary school.",
+    "durationMinutes": 150,
+    "durationLabel": "2.5 hrs",
+    "grossPriceUSD": 60,
+    "nettPriceUSD": 45,
+    "parkFeeUSD": 0,
+    "departureTimes": [
+      "09:00",
+      "14:30"
+    ],
+    "pickupIncluded": true,
+    "fitnessLevel": "Easy",
+    "minAge": 0,
+    "includedItems": [
+      "Return transfers from Victoria Falls",
+      "Guided village walk and meeting with community leaders",
+      "Contribution to the village development trust fund"
+    ],
+    "excludedItems": [
+      "Personal donations to school (stationery welcomed)"
+    ],
+    "restrictions": [
+      "Modest attire covering shoulders and knees requested"
+    ],
+    "photos": [
+      "/images/activities/traditional-village.jpg",
+      "/images/activities/ndebele-village.jpg"
+    ],
+    "rating": 4.92,
+    "reviewCount": 158,
+    "status": "ACTIVE",
+    "addOns": []
+  },
+  {
+    "id": "act-batoka-ndebele",
+    "slug": "batoka-gorge-hike-and-ndebele-village-tour",
+    "name": "Batoka Gorge Hike & Ndebele Cultural Village Encounter",
+    "destination": "VICTORIA_FALLS",
+    "category": "CULTURE_HERITAGE",
+    "shortDescription": "Guided descent and climb through the Batoka Gorge combined with an authentic cultural immersion in a traditional Ndebele village.",
+    "fullDescription": "A unique combination of hiking adventure and cultural discovery. Hike down into the dramatic Batoka Gorge alongside local naturalists, observing unique flora and river rapids. Afterward, visit an authentic Ndebele rural village on the canyon plateau to experience traditional music, beadwork crafts, and indigenous cooking.",
+    "durationMinutes": 240,
+    "durationLabel": "4 hrs",
+    "grossPriceUSD": 75,
+    "nettPriceUSD": 58,
+    "parkFeeUSD": 12,
+    "departureTimes": [
+      "08:00",
+      "13:30"
+    ],
+    "pickupIncluded": true,
+    "fitnessLevel": "Moderate",
+    "minAge": 10,
+    "includedItems": [
+      "Return transfers",
+      "Guided gorge hike with equipment",
+      "Ndebele cultural homestead visit",
+      "Refreshments and mineral water"
+    ],
+    "excludedItems": [
+      "Parks fee ($12)"
+    ],
+    "restrictions": [
+      "Moderate fitness required for hiking"
+    ],
+    "photos": [
+      "/images/activities/batoka-hike-ndebele.jpg",
+      "/images/activities/ndebele-village.jpg"
+    ],
+    "rating": 4.93,
+    "reviewCount": 92,
+    "status": "ACTIVE",
+    "addOns": []
+  },
+  {
+    "id": "act-combo-ticket-1",
+    "slug": "shearwater-ticket-to-adventure-pass-1",
+    "name": "Shearwater Ticket to Adventure — Sunset Cruise + 2 Activities",
+    "destination": "VICTORIA_FALLS",
+    "category": "ADRENALINE",
+    "shortDescription": "Shearwater's bestselling combo pass: includes a luxury Sunset Cruise PLUS your choice of any two flagship adventure activities.",
+    "fullDescription": "The ultimate smart traveler's pass. Shearwater’s \"Ticket to Adventure 1\" guarantees significant savings (saving up to $80 per person) by bundling a relaxing Zambezi Sunset Cruise with any two major adventure experiences of your choice:\\n\\nChoose 2 from:\\n- 12-13 Min \"Flight of Angels\" Helicopter Scenic Flight\\n- Full Day Batoka Gorge White Water Rafting\\n- 111m Victoria Falls Bridge Bungee Jump\\n- 70m Bridge Swing or 300m Bridge Slide\\n- Adventure Jet Boat Batoka Gorge\\n- Guided Tour of Victoria Falls Rainforest\\n- Morning or Afternoon Zambezi Game Drive",
+    "durationMinutes": 480,
+    "durationLabel": "Flexible Multi-Day",
+    "grossPriceUSD": 385,
+    "nettPriceUSD": 300,
+    "parkFeeUSD": 24,
+    "departureTimes": [
+      "Flexible — arranged with concierge upon arrival"
+    ],
+    "pickupIncluded": true,
+    "fitnessLevel": "Moderate",
+    "minAge": 14,
+    "includedItems": [
+      "Zambezi Sunset Cruise with open bar and snacks",
+      "Choice of 2 major adventure activities",
+      "Complimentary hotel return transfers for all activities",
+      "Priority concierge schedule coordination"
+    ],
+    "excludedItems": [
+      "Statutory park/aviation fees for selected activities"
+    ],
+    "restrictions": [
+      "Activities can be scheduled over 1 to 5 days during your stay"
+    ],
+    "photos": [
+      "/images/activities/riversong-sunset-cruise.jpg",
+      "/images/activities/heli-flight-of-angels.jpg",
+      "/images/activities/rafting-low-water.jpg"
+    ],
+    "rating": 4.99,
+    "reviewCount": 450,
+    "status": "ACTIVE",
+    "addOns": []
+  },
+  {
+    "id": "act-combo-ticket-2",
+    "slug": "shearwater-ticket-to-adventure-pass-2",
+    "name": "Shearwater Ticket to Adventure — Sunset Cruise + 3 Activities",
+    "destination": "VICTORIA_FALLS",
+    "category": "ADRENALINE",
+    "shortDescription": "The complete Victoria Falls adventure portfolio: Zambezi Sunset Cruise PLUS any three major adventure activities at huge savings.",
+    "fullDescription": "The ultimate luxury bundle for the complete Victoria Falls itinerary. Includes the Zambezi Sunset Cruise plus any three major activities of your choice across air, water, bridge, and safari, saving over $120 compared to individual booking.",
+    "durationMinutes": 720,
+    "durationLabel": "Flexible Multi-Day",
+    "grossPriceUSD": 495,
+    "nettPriceUSD": 390,
+    "parkFeeUSD": 36,
+    "departureTimes": [
+      "Flexible — arranged with concierge upon arrival"
+    ],
+    "pickupIncluded": true,
+    "fitnessLevel": "Moderate",
+    "minAge": 14,
+    "includedItems": [
+      "Sunset Cruise with open bar & canapés",
+      "Choice of 3 major activities from full Shearwater catalog",
+      "All hotel transfers",
+      "Dedicated DMC coordinator service"
+    ],
+    "excludedItems": [
+      "Park fees"
+    ],
+    "restrictions": [
+      "Valid for up to 7 days from first activity"
+    ],
+    "photos": [
+      "/images/activities/riversong-sunset-cruise.jpg",
+      "/images/activities/big-air-combo.jpg",
+      "/images/activities/heli-zambezi-spectacular.jpg"
+    ],
+    "rating": 4.99,
+    "reviewCount": 318,
+    "status": "ACTIVE",
+    "addOns": []
   }
 ];
 
