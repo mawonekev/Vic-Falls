@@ -1,0 +1,253 @@
+// Prisma schema for Victoria Falls, Livingstone & Chobe Tourism Platform
+// Based strictly on FINAL_PRD.md Section 6
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+enum Destination {
+  VICTORIA_FALLS
+  LIVINGSTONE
+  CHOBE
+}
+
+enum ActivityCategory {
+  AIR
+  WATER
+  ADRENALINE
+  SAFARI_WILDLIFE
+  CULTURE_HERITAGE
+}
+
+enum RecordStatus {
+  ACTIVE
+  INACTIVE
+  ARCHIVED
+}
+
+enum CommissionType {
+  PERCENTAGE
+  FIXED_AMOUNT
+}
+
+enum PaymentPath {
+  PAY_NOW
+  PAY_AT_PROPERTY
+}
+
+enum RequestStatus {
+  PENDING
+  CONFIRMED
+  DECLINED
+  CANCELLED
+}
+
+enum PaymentStatus {
+  HELD
+  CAPTURED
+  FAILED
+  VOIDED
+  REFUNDED
+}
+
+enum InvoiceStatus {
+  DRAFT
+  ISSUED
+  PAID
+  CANCELLED
+}
+
+// -------------------------------------------------------------
+// TRAVELLER (Deduplicated by Unique Email)
+// -------------------------------------------------------------
+model Traveller {
+  id                    String                 @id @default(uuid())
+  email                 String                 @unique
+  fullName              String
+  phone                 String?
+  nationality           String?
+  createdAt             DateTime               @default(now())
+  updatedAt             DateTime               @updatedAt
+  bookings              ActivityBooking[]
+  accommodationRequests AccommodationRequest[]
+}
+
+// -------------------------------------------------------------
+// ACTIVITY & ADD-ON MODELS
+// -------------------------------------------------------------
+model Activity {
+  id               String            @id @default(uuid())
+  destination      Destination
+  category         ActivityCategory
+  name             String
+  slug             String            @unique
+  shortDescription String
+  fullDescription  String            @db.Text
+  durationMinutes  Int
+  grossPriceUSD    Decimal           @db.Decimal(10, 2)
+  nettPriceUSD     Decimal           @db.Decimal(10, 2)
+  parkFeeUSD       Decimal           @default(0.00) @db.Decimal(10, 2)
+  includedItems    String[]
+  excludedItems    String[]
+  restrictions     String[]
+  photos           String[]
+  lastVerifiedDate DateTime          @default(now())
+  status           RecordStatus      @default(ACTIVE)
+  sourceRowRef     Int?
+  createdAt        DateTime          @default(now())
+  updatedAt        DateTime          @updatedAt
+  addOns           AddOn[]
+  bookings         ActivityBooking[]
+}
+
+model AddOn {
+  id            String                  @id @default(uuid())
+  activityId    String
+  activity      Activity                @relation(fields: [activityId], references: [id], onDelete: Cascade)
+  name          String
+  description   String?
+  grossPriceUSD Decimal                 @db.Decimal(10, 2)
+  nettPriceUSD  Decimal                 @db.Decimal(10, 2)
+  capacityLimit Int?                    // Null = unlimited; Integer = hard slot ceiling
+  status        RecordStatus            @default(ACTIVE)
+  sourceRowRef  Int?
+  createdAt     DateTime                @default(now())
+  updatedAt     DateTime                @updatedAt
+  bookingItems  ActivityBookingAddOn[]
+}
+
+model ActivityBooking {
+  id              String                 @id @default(uuid())
+  activityId      String
+  activity        Activity               @relation(fields: [activityId], references: [id])
+  travellerId     String
+  traveller       Traveller              @relation(fields: [travellerId], references: [id])
+  bookingDate     DateTime
+  timeSlot        String
+  numAdults       Int
+  numChildren     Int                    @default(0)
+  totalAmountUSD  Decimal                @db.Decimal(10, 2)
+  parkFeesPaidUSD Decimal                @default(0.00) @db.Decimal(10, 2)
+  paymentId       String?                @unique
+  payment         Payment?               @relation(fields: [paymentId], references: [id])
+  status          RequestStatus          @default(CONFIRMED)
+  createdAt       DateTime               @default(now())
+  addOns          ActivityBookingAddOn[]
+}
+
+model ActivityBookingAddOn {
+  id                String          @id @default(uuid())
+  activityBookingId String
+  activityBooking   ActivityBooking @relation(fields: [activityBookingId], references: [id], onDelete: Cascade)
+  addOnId           String
+  addOn             AddOn           @relation(fields: [addOnId], references: [id])
+  quantity          Int             @default(1)
+  priceAtBookingUSD Decimal         @db.Decimal(10, 2)
+}
+
+// -------------------------------------------------------------
+// PARTNER & HOTEL MAP MODELS
+// -------------------------------------------------------------
+model Partner {
+  id                    String                 @id @default(uuid())
+  name                  String
+  destination           Destination
+  contactEmail          String
+  contactPhone          String?
+  commissionType        CommissionType         @default(PERCENTAGE)
+  commissionValue       Decimal                @db.Decimal(10, 2) // e.g. 20.00 for 20%
+  contentRightsGranted  Boolean                @default(true)
+  status                RecordStatus           @default(ACTIVE)
+  createdAt             DateTime               @default(now())
+  updatedAt             DateTime               @updatedAt
+  mappedProperties      MappedProperty[]
+  accommodationRequests AccommodationRequest[]
+  invoices              PartnerInvoice[]
+}
+
+model MappedProperty {
+  id                     String      @id @default(uuid())
+  name                   String
+  address                String
+  latitude               Float
+  longitude              Float
+  destination            Destination
+  sourceApiId            String?
+  isBookablePartner      Boolean     @default(false)
+  locationVerifiedByStaff Boolean     @default(false) // Must be true to link partner
+  partnerId              String?
+  partner                Partner?    @relation(fields: [partnerId], references: [id])
+  createdAt              DateTime    @default(now())
+  updatedAt              DateTime    @updatedAt
+}
+
+// -------------------------------------------------------------
+// ACCOMMODATION REQUESTS & INVOICING
+// -------------------------------------------------------------
+model AccommodationRequest {
+  id                 String          @id @default(uuid())
+  partnerId          String
+  partner            Partner         @relation(fields: [partnerId], references: [id])
+  travellerId        String
+  traveller          Traveller       @relation(fields: [travellerId], references: [id])
+  checkInDate        DateTime
+  checkOutDate       DateTime
+  roomType           String
+  numGuests          Int
+  quotedRateUSD      Decimal         @db.Decimal(10, 2)
+  paymentPath        PaymentPath
+  status             RequestStatus   @default(PENDING)
+  paymentId          String?         @unique
+  payment            Payment?        @relation(fields: [paymentId], references: [id])
+  manualReviewNotes  String?         @db.Text
+  createdAt          DateTime        @default(now())
+  confirmedAt        DateTime?
+  invoice            PartnerInvoice?
+}
+
+model Payment {
+  id                         String                @id @default(uuid())
+  gatewayReference           String?               // Stripe PaymentIntent ID
+  amountUSD                  Decimal               @db.Decimal(10, 2)
+  status                     PaymentStatus         @default(HELD)
+  capturedAt                 DateTime?
+  securePaymentLinkUrl       String?
+  securePaymentLinkSentAt    DateTime?
+  securePaymentLinkExpiresAt DateTime?             // 48h SLA boundary
+  createdAt                  DateTime              @default(now())
+  activityBooking            ActivityBooking?
+  accommodationRequest       AccommodationRequest?
+}
+
+model PartnerInvoice {
+  id                     String               @id @default(uuid())
+  partnerId              String
+  partner                Partner              @relation(fields: [partnerId], references: [id])
+  accommodationRequestId String               @unique
+  accommodationRequest   AccommodationRequest @relation(fields: [accommodationRequestId], references: [id])
+  commissionAmountUSD    Decimal              @db.Decimal(10, 2) // Auto-computed at confirmation
+  status                 InvoiceStatus        @default(DRAFT)
+  createdAt              DateTime             @default(now())
+  billedAt               DateTime?
+  paidAt                 DateTime?
+}
+
+// -------------------------------------------------------------
+// ISSUE REPORTING
+// -------------------------------------------------------------
+model IssueReport {
+  id              String   @id @default(uuid())
+  pageUrl         String
+  pageType        String   // ACTIVITY, HOTEL, GENERAL
+  pageRefId       String?
+  description     String   @db.Text
+  reporterEmail   String?
+  reporterContact String?
+  status          String   @default("OPEN")
+  createdAt       DateTime @default(now())
+}

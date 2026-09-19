@@ -1,0 +1,311 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Plus+Jakarta+Sans:ital,wght@0,300..800;1,300..800&display=swap');
+
+:root {
+  /* Bespoke Safari Luxury HSL Palette */
+  --gold-primary: hsl(38, 74%, 50%);
+  --gold-hover: hsl(38, 78%, 43%);
+  --gold-subtle: hsla(38, 74%, 50%, 0.12);
+  --gold-glow: hsla(38, 74%, 50%, 0.28);
+
+  --obsidian: hsl(220, 26%, 9%);
+  --obsidian-surface: hsl(220, 22%, 14%);
+  --obsidian-card: hsl(220, 20%, 18%);
+  --obsidian-border: hsl(220, 16%, 24%);
+
+  --sand-bg: hsl(40, 30%, 97%);
+  --sand-card: hsl(0, 0%, 100%);
+  --sand-border: hsl(40, 20%, 88%);
+
+  --text-main: hsl(220, 24%, 12%);
+  --text-muted: hsl(220, 12%, 46%);
+  --text-light: hsl(0, 0%, 98%);
+  --text-light-muted: hsl(220, 15%, 72%);
+
+  --emerald: hsl(152, 68%, 38%);
+  --emerald-bg: hsla(152, 68%, 38%, 0.1);
+  --crimson: hsl(352, 75%, 52%);
+  --crimson-bg: hsla(352, 75%, 52%, 0.1);
+
+  --amber-sla: hsl(35, 92%, 50%);
+  --amber-sla-bg: hsla(35, 92%, 50%, 0.12);
+
+  /* Typography */
+  --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-serif: 'Playfair Display', Georgia, serif;
+
+  /* Shadows & Elevation */
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.08);
+  --shadow-lg: 0 16px 40px rgba(0, 0, 0, 0.12);
+  --shadow-gold: 0 8px 24px hsla(38, 74%, 50%, 0.25);
+
+  --radius-sm: 6px;
+  --radius-md: 12px;
+  --radius-lg: 18px;
+  --radius-full: 9999px;
+
+  --transition-fast: 0.18s cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-smooth: 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-family: var(--font-sans);
+  color: var(--text-main);
+  background-color: var(--sand-bg);
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+}
+
+body {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button, input, select, textarea {
+  font-family: inherit;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Container */
+.container {
+  width: 100%;
+  max-width: 1320px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 24px;
+  padding-right: 24px;
+}
+
+/* Typography Utilities */
+.font-serif {
+  font-family: var(--font-serif);
+}
+
+.heading-display {
+  font-family: var(--font-serif);
+  font-size: clamp(2.2rem, 5vw, 3.8rem);
+  line-height: 1.15;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+.heading-title {
+  font-family: var(--font-serif);
+  font-size: clamp(1.6rem, 3vw, 2.4rem);
+  line-height: 1.25;
+  font-weight: 600;
+}
+
+.heading-subtitle {
+  font-size: 1.15rem;
+  line-height: 1.6;
+  color: var(--text-muted);
+}
+
+/* Badges & Pills */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 14px;
+  border-radius: var(--radius-full);
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+
+.badge-gold {
+  background: var(--gold-subtle);
+  color: hsl(38, 80%, 36%);
+  border: 1px solid hsla(38, 74%, 50%, 0.3);
+}
+
+.badge-obsidian {
+  background: var(--obsidian);
+  color: var(--gold-primary);
+  border: 1px solid var(--obsidian-border);
+}
+
+.badge-emerald {
+  background: var(--emerald-bg);
+  color: var(--emerald);
+  border: 1px solid hsla(152, 68%, 38%, 0.25);
+}
+
+.badge-crimson {
+  background: var(--crimson-bg);
+  color: var(--crimson);
+  border: 1px solid hsla(352, 75%, 52%, 0.25);
+}
+
+.badge-amber {
+  background: var(--amber-sla-bg);
+  color: var(--amber-sla);
+  border: 1px solid hsla(35, 92%, 50%, 0.3);
+}
+
+/* Primary Luxury Buttons */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px 24px;
+  border-radius: var(--radius-md);
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all var(--transition-smooth);
+  border: none;
+  text-decoration: none;
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, var(--gold-primary), var(--gold-hover));
+  color: #fff;
+  box-shadow: var(--shadow-gold);
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 28px hsla(38, 74%, 50%, 0.35);
+}
+
+.btn-obsidian {
+  background: var(--obsidian);
+  color: var(--text-light);
+  border: 1px solid var(--obsidian-border);
+}
+
+.btn-obsidian:hover {
+  background: var(--obsidian-surface);
+  color: var(--gold-primary);
+  border-color: var(--gold-primary);
+  transform: translateY(-2px);
+}
+
+.btn-outline {
+  background: transparent;
+  color: var(--text-main);
+  border: 1.5px solid var(--sand-border);
+}
+
+.btn-outline:hover {
+  border-color: var(--gold-primary);
+  color: var(--gold-hover);
+  background: var(--gold-subtle);
+}
+
+.btn-sm {
+  padding: 8px 16px;
+  font-size: 0.85rem;
+  border-radius: var(--radius-sm);
+}
+
+.btn-lg {
+  padding: 16px 32px;
+  font-size: 1.05rem;
+  border-radius: var(--radius-md);
+}
+
+/* Glass Header */
+.header-glass {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(18, 22, 29, 0.92);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border-bottom: 1px solid hsla(0, 0%, 100%, 0.08);
+  transition: all var(--transition-smooth);
+}
+
+/* Cards */
+.card-luxury {
+  background: var(--sand-card);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--sand-border);
+  box-shadow: var(--shadow-sm);
+  overflow: hidden;
+  transition: all var(--transition-smooth);
+}
+
+.card-luxury:hover {
+  box-shadow: var(--shadow-lg);
+  transform: translateY(-4px);
+  border-color: hsla(38, 74%, 50%, 0.4);
+}
+
+/* Sticky Booking Widget */
+.sticky-sidebar {
+  position: sticky;
+  top: 100px;
+  background: #ffffff;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--sand-border);
+  box-shadow: var(--shadow-md);
+  padding: 28px;
+}
+
+/* Modals */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  background: rgba(10, 13, 18, 0.75);
+  backdrop-filter: blur(8px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  animation: fadeIn 0.2s ease-out;
+}
+
+.modal-content {
+  background: #ffffff;
+  border-radius: var(--radius-lg);
+  max-width: 600px;
+  width: 100%;
+  max-height: 90vh;
+  overflow-y: auto;
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.3);
+  position: relative;
+  animation: scaleUp 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes scaleUp {
+  from { opacity: 0; transform: scale(0.96); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+/* Pulse animation for urgent SLA */
+@keyframes pulseUrgent {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.45; }
+}
+
+.pulse-urgent {
+  animation: pulseUrgent 1.6s infinite ease-in-out;
+}

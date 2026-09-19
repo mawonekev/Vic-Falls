@@ -21,3 +21,7 @@ yarn-error.log*
 # OS Files
 .DS_Store
 Thumbs.db
+
+# Raw Source Asset Pack (Curated images preserved in public/images/)
+Shearwater Agents Info Pack/
+
