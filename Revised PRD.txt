@@ -1,0 +1,351 @@
+# Victoria Falls, Livingstone & Chobe Tourism Platform — Product Requirements Document (V1, Rev. 4 — Post-Audit)
+
+## Changes in This Update
+
+This revision applies every unresolved lapse from a self-debate audit of
+Rev. 3. Twelve corrections were made across data models, business rules,
+and technical architecture. Several introduce new `[ASK]` items that
+require a decision before build — most notably around add-on capacity
+limits, accommodation confirmation timing, and secure payment link
+expiry, none of which were decided previously and are not invented here.
+
+- **Add-ons that imply scarcity (e.g. "guaranteed seat") are no longer
+  covered by the "always available" rule by default.** A new
+  `capacityLimit` field allows specific add-ons to be capped.
+- **`Traveller` records are now deduplicated by email**, protecting the
+  accuracy of the combination-rate success metric.
+- **A confirmation SLA and a secure-payment-link expiry are now
+  required**, closing two paths where a booking could sit unresolved
+  indefinitely.
+- **Accommodation commission is now a structured, computable field**
+  (`commissionType`/`commissionValue`) instead of free text.
+- **The geo/places data source gap is elevated** — it's in scope for V1
+  and still has no chosen provider.
+- **Zoho Mail's suitability as a transactional sender is now flagged as
+  a risk**, not silently assumed adequate.
+- **The Excel "no live sync" line is reworded** to describe a scope
+  choice, not a technical limitation.
+- **A mapped-hotel verification step, an email-failure fallback, and a
+  non-bookable pin's tap behavior are now defined.**
+- **Success metrics now state explicitly that no target thresholds are
+  set in this document.**
+
+## 1. Product Summary
+
+A booking website for the "Golden Triangle" of Southern Africa — Victoria
+Falls (Zimbabwe), Livingstone (Zambia), and Chobe/Kasane (Botswana) —
+sold together as one trip to international travellers from the US/Canada,
+UK/Western Europe, and Australia/New Zealand. Version one covers two
+distinct booking experiences: instant, paid activity booking with
+optional add-ons, and an inquiry-based accommodation flow where the
+traveller chooses to pay on the site now or pay the property on arrival.
+A map view built from external geo data shows the broader hotel
+landscape in each destination, alongside the smaller set of properties
+actually bookable through the site. The business acts as a travel agent,
+not a stockholder.
+
+## 2. Problem Statement
+
+An international traveller planning a Victoria Falls trip today has to
+book a helicopter flight with one operator, a hotel through a generic
+OTA, and a Chobe day trip over an email thread with a third party, with
+no single party coordinating the whole itinerary, the border logistics,
+or the payment experience. This platform exists to be that single
+coordinator, without pretending to control inventory it does not own.
+
+## 3. Users & Personas
+
+- **Traveller** — the only user of the public-facing site. Browses and
+  books activities instantly (with optional add-ons), browses a hotel
+  map, and submits accommodation requests to bookable partner
+  properties with a choice of payment timing.
+- **Partner (hotel or activity operator)** — not a user of the site.
+  Provides pricing and availability that staff enter into the system.
+  Receives payment or an invoice per the agreed commission. When a
+  "pay now" accommodation payment capture fails, staff are responsible
+  for re-confirming availability with this partner directly as part of
+  the recovery flow.
+- **Internal staff/admin** — not customer-facing. Maintains the
+  activity and add-on spreadsheet import, verifies mapped hotel
+  locations before linking them to a `Partner`, reviews and confirms
+  accommodation requests within the stated SLA, manages the manual
+  review gate, captures/voids held payments, sends secure payment links
+  on capture failure, tracks pay-at-property invoicing, and reviews
+  reported issues.
+
+## 4. Scope
+
+### In Scope for V1
+- Activity browsing and instant, paid booking across all three
+  destinations, gross/nett priced, availability always shown, with
+  optional add-ons (capacity-limited where the add-on implies scarcity).
+- A map view of all hotels in the three destination areas, sourced from
+  an external geo/places data source, with bookable partner properties
+  distinguished from reference-only listings.
+- Accommodation request-to-book flow for directly-agreed (bookable)
+  properties, with a pay-now (held, then captured) or pay-at-property
+  choice, a stated staff confirmation SLA, and an expiring secure
+  payment link on capture failure.
+- Staff/admin screens for activity and add-on import and sign-off,
+  mapped-hotel verification, accommodation review/confirmation, payment
+  capture/void/secure-link generation, pay-at-property invoice
+  tracking with automatic commission calculation, and issue-report
+  review.
+- A "report an issue" link on every activity and accommodation page,
+  creating a tracked record and notifying the owner directly.
+- One static border/visa/currency reference page.
+- Automatic confirmation emails for paid activity bookings and confirmed
+  accommodation requests, with a retry-then-manual-resend fallback if
+  delivery fails.
+
+### Out of Scope for V1
+- The Hotelbeds integration and the "honour the lower rate" rule.
+- Real capacity/seat tracking for activities or standard add-ons — only
+  add-ons explicitly flagged as scarce carry a capacity limit.
+- Personalization, package deals, or a loyalty scheme.
+- A partner-facing portal or login.
+- Automated, itinerary-specific border/visa messaging.
+- Multi-currency checkout beyond USD.
+- Any accounting-system integration beyond a manual, in-app invoice
+  tracking record.
+- Direct booking against a non-partner hotel shown on the map (display
+  only, per Section 5.2).
+
+## 5. Functional Requirements
+
+### 5.1 Activity booking and checkout
+- Traveller browses activities by destination and category, opens a
+  detail page, selects a date, time slot, and guest count.
+- Traveller may select zero or more optional add-ons. **Add-ons with a
+  `capacityLimit` set enforce that limit at checkout**; add-ons with no
+  limit follow the same always-available rule as the base activity.
+  `[ASK: which specific add-ons, if any, need a real capacity limit,
+  and what is it per activity?]`
+- Booking lookup: the traveller's email is checked against existing
+  `Traveller` records first; an existing match is reused, not
+  duplicated.
+- Checkout captures payment via Stripe immediately on success.
+- On success: an `ActivityBooking` record is created (`confirmed`),
+  linked to any `ActivityBookingAddOn` records, and a confirmation
+  email is sent. **Payment success is authoritative regardless of email
+  outcome** — a failed send triggers one automatic retry, then is
+  logged for manual resend if that also fails.
+- On payment failure: no records are created; the traveller sees a
+  plain retry message.
+
+### 5.2 Hotel map and accommodation request-to-book flow
+- The site shows a map of hotels in each destination, from an external
+  geo/places source (Section 7). Properties linked to an active
+  `Partner` record are bookable; others are reference-only, showing
+  name and address with **no booking action**.
+  `[ASK: should a non-bookable pin invite the traveller to contact the
+  business about adding that property, or show nothing further?]`
+- For a bookable property, the traveller submits a request with the
+  same fields as before, and chooses **Pay now** or **Pay at
+  property**. The request form states the expected confirmation
+  timeframe. `[ASK: what is the target staff confirmation SLA — hours
+  or days?]`
+- Every `AccommodationRequest` requires manual staff confirmation,
+  including the border/permit review gate.
+- **On staff confirmation:**
+  - `PAY_NOW`: the held payment is captured.
+    - **If capture fails:** guest is notified immediately with a
+      secure Stripe payment link and a pay-at-property fallback option.
+      **The link carries an expiry** (`securePaymentLinkExpiresAt`).
+      `[ASK: how long should the link remain valid before it expires?]`
+      If it expires unused, the request **automatically** reverts to
+      `PAY_AT_PROPERTY` and a `PartnerInvoice` is generated — no
+      booking is left in an unresolved payment state indefinitely.
+  - `PAY_AT_PROPERTY`: a `PartnerInvoice` is created, with its
+    commission amount computed automatically from the partner's
+    `commissionType`/`commissionValue` (Section 6) — no manual
+    calculation required.
+- **On decline:** a `PAY_NOW` hold is voided; the traveller is
+  notified.
+- Rate-lapse rule unchanged: `quotedRateUSD` is fixed at confirmation.
+
+### 5.3 Staff/admin screens
+- **Activity catalogue:** upload/import the Excel spreadsheet
+  (`grossPriceUSD`/`nettPriceUSD` per activity and add-on), with
+  sign-off on price changes.
+- **Hotel map data:** before linking a `MappedProperty` to a `Partner`,
+  staff confirm the pin's address and coordinates match the real
+  property. `[ASSUME: manual visual check, not an automated
+  address-validation service, unless specifically requested.]`
+- **Accommodation request queue:** confirm/decline, capture/void,
+  generate secure payment links, with the request's time-in-queue
+  visible against the stated SLA.
+- **Invoicing:** `PartnerInvoice` status tracking, with commission
+  amounts calculated automatically rather than entered by hand.
+- **Issue reports:** queue of submitted `IssueReport` records.
+
+### 5.4 "Report an issue" flow
+Unchanged — creates an `IssueReport` record and sends a direct
+notification to the owner.
+
+## 6. Data Models
+
+**Activity**
+- `id`, `destination`, `name`, `category`, `description`,
+  `durationMinutes`, `grossPriceUSD`, `nettPriceUSD`, `includedItems`,
+  `excludedItems`, `restrictions`, `photos`, `lastVerifiedDate`,
+  `status`, `sourceRowRef`
+
+**AddOn**
+- `id`, `activityId` (FK), `name`, `description`, `grossPriceUSD`,
+  `nettPriceUSD`, **`capacityLimit`** (nullable integer — null means
+  unlimited), `status`, `sourceRowRef`
+
+**ActivityBooking**
+- `id`, `activityId` (FK), `travellerId` (FK), `bookingDate`,
+  `timeSlot`, `numAdults`, `numChildren`, `totalAmountUSD`,
+  `paymentId` (FK), `status` (`confirmed`), `createdAt`
+
+**ActivityBookingAddOn**
+- `id`, `activityBookingId` (FK), `addOnId` (FK), `priceAtBookingUSD`
+
+**MappedProperty**
+- `id`, `name`, `address`, `latitude`, `longitude`, `sourceApiId`,
+  `destination`, `isBookablePartner`, `partnerId` (FK, nullable),
+  **`locationVerifiedByStaff`** (boolean, must be true before
+  `partnerId` can be set)
+
+**AccommodationRequest**
+- `id`, `partnerId` (FK), `travellerId` (FK), `checkInDate`,
+  `checkOutDate`, `roomType`, `numGuests`, `quotedRateUSD`,
+  `paymentPath`, `status`, `paymentId` (FK, nullable),
+  `manualReviewNotes`, `createdAt`, `confirmedAt`
+
+**Partner**
+- `id`, `type`, `name`, `destination`, `contactEmail`, `contactPhone`,
+  **`commissionType`** (enum: `PERCENTAGE` / `FIXED_AMOUNT`),
+  **`commissionValue`** (decimal), `contentRightsGranted`, `status`
+
+**Payment**
+- `id`, `type`, `relatedBookingId` or `relatedAccommodationRequestId`,
+  `amountUSD`, `gatewayReference`, `status`, `capturedAt`,
+  `securePaymentLinkUrl`, `securePaymentLinkSentAt`,
+  **`securePaymentLinkExpiresAt`**
+
+**PartnerInvoice**
+- `id`, `partnerId` (FK), `accommodationRequestId` (FK),
+  `commissionAmountUSD` (auto-computed from `quotedRateUSD` and the
+  partner's commission fields), `status`, `createdAt`, `billedAt`,
+  `paidAt`
+
+**IssueReport**
+- `id`, `pageType`, `pageRefId`, `description`, `reporterContact`,
+  `status`, `createdAt`
+
+**Traveller**
+- `id`, `name`, **`email` (unique)**, `phone`, `nationality`
+
+## 7. Technical Architecture & Integrations
+
+- **Framework:** Next.js (TypeScript).
+- **ORM/Database:** Prisma ORM over PostgreSQL.
+- **Payment gateway:** Stripe. PaymentIntents with manual capture for
+  accommodation pay-now, Payment Links for the secure-link recovery
+  flow (with an expiry, per Section 5.2). Immediate capture for
+  activity checkout. Payment success is authoritative independent of
+  confirmation email delivery (Section 5.1).
+- **Spreadsheet-to-database:** Excel, via manual admin upload. This is
+  a scope choice for V1 — Excel files can technically be synced live
+  via Microsoft Graph API, but that integration is out of scope here,
+  not technically unavailable. `[ASK: separate sheet for add-ons, or
+  columns on the activity sheet?]`
+- **Geo/places data source: still undecided, and this blocks an
+  in-scope feature (the hotel map), not a future one.**
+  `[ASK: which provider — cost, rate limits, and a refresh strategy for
+  stale or closed listings all need deciding before this can be
+  built.]`
+- **Email sending:** Zoho Mail for V1. **Risk:** Zoho is a mailbox
+  product, not a dedicated transactional email service, and may face
+  deliverability or rate-limit issues at confirmation volume.
+  `[ASK: is Zoho acceptable as a fixed constraint for V1, or is a
+  dedicated transactional provider (e.g. Resend, SES) worth adopting
+  now instead of at the planned later migration?]`
+- **Hosting/domain:** deferred to a later version.
+
+## 8. Business Rules & Policies
+
+- **Rate-lapse honouring, manual review gate, "always show
+  availability" for base activities, pay-at-property invoicing:**
+  unchanged.
+- **Add-on availability is no longer blanket "always available."**
+  Add-ons that imply a limited or guaranteed resource carry a
+  `capacityLimit`; only add-ons with no limit set inherit the base
+  activity's always-available rule.
+- **Accommodation commission is calculated automatically** from
+  `quotedRateUSD` and the partner's `commissionType`/`commissionValue`,
+  the same computable approach used for activity gross/nett margin —
+  no unaudited manual calculation.
+- **Failed capture recovery now has a hard boundary:** an unresolved
+  secure payment link expires and auto-reverts the booking to
+  pay-at-property rather than remaining open-ended.
+- **Accommodation confirmation has a stated SLA**, shown to the
+  traveller at request time.
+
+## 9. Business Model
+
+| Stream | Basis |
+| :--- | :--- |
+| Activity margin | `grossPriceUSD ? nettPriceUSD` on the base activity, captured at booking |
+| Add-on margin | Same gross/nett formula, capacity-limited where flagged, captured at booking |
+| Accommodation, pay-now | Captured at confirmation (or via secure link, before expiry); business pays the partner its share |
+| Accommodation, pay-at-property | Invoiced automatically via `PartnerInvoice`, after the stay |
+
+**Risk noted, not corrected here:** none of the above margins account
+for Stripe's own processing fee — reported margin is gross of
+processing costs, not net take-home.
+
+## 10. Success Metrics
+
+1. Activity funnel (page visits to `ActivityBooking` — still needs an
+   analytics tool, unresolved).
+2. Accommodation funnel, by `paymentPath`, now measurable against the
+   stated confirmation SLA.
+3. Combination rate, by `Traveller` — now reliable, since `Traveller`
+   records are deduplicated by email.
+4. Payment path split.
+5. `[ASK: add-on attach rate as a fifth metric — yes or no?]`
+
+**No target thresholds are defined for any of these metrics in this
+PRD.** Setting them is the business owner's decision, to be made once
+initial data is available, not a build requirement.
+
+## 11. Risks & Assumptions
+
+- **New, from this audit:** add-ons implying scarcity were, until this
+  revision, silently covered by the unlimited-availability rule meant
+  for base activities — corrected, but the specific add-ons needing a
+  real limit are still undecided.
+- **New, from this audit:** `Traveller` deduplication was previously
+  unaddressed and would have silently corrupted the combination-rate
+  metric.
+- **New, from this audit:** Zoho Mail's suitability as a transactional
+  sender at volume is unverified.
+- Geo/places data source, its cost, and its refresh strategy remain
+  undecided despite being required for an in-scope feature.
+- Analytics tooling for the activity funnel metric is still undecided.
+- Reported margins do not account for Stripe processing fees.
+
+## 12. Open Questions
+
+1. Which add-ons, if any, need a real `capacityLimit`, and what is it?
+2. What is the target staff confirmation SLA for an accommodation
+   request?
+3. How long should a secure payment link remain valid before it
+   expires and auto-reverts the booking to pay-at-property?
+4. Which geo/places data source should populate the hotel map — cost,
+   rate limits, and refresh strategy all need deciding, since this
+   blocks an in-scope feature?
+5. Is Zoho acceptable as a fixed email constraint for V1, or should a
+   dedicated transactional provider be adopted now?
+6. Should a non-bookable map pin invite contact about adding that
+   property, or show nothing further?
+7. In the Excel file, are add-ons a separate sheet/tab or columns on
+   the same sheet as their parent activity?
+8. Is any analytics tool already in use, or is activity-funnel tracking
+   out of scope for V1 reporting?
+9. Should add-on attach rate be tracked as a fifth success metric?
