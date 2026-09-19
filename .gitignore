@@ -22,6 +22,9 @@ yarn-error.log*
 .DS_Store
 Thumbs.db
 
+# TypeScript build info
+*.tsbuildinfo
+
 # Raw Source Asset Pack (Curated images preserved in public/images/)
 Shearwater Agents Info Pack/
 
