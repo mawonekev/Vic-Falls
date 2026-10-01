@@ -1,0 +1,977 @@
+/**
+ * ============================================================================
+ * DESIGN SYSTEM CSS TOKENS (MATERIAL DESIGN 3 & LUXURY SAFARI THEME)
+ * ============================================================================
+ * AUTOMATICALLY GENERATED FROM tokens.json — DO NOT EDIT DIRECTLY!
+ *
+ * Design System: Victoria Falls & Luxury Safari Regional Destination Platform Design System
+ * Version:       1.0.0
+ * Brand Color:   #68483A (Cocoa Brown)
+ * Standard:      WCAG 2.2 AA
+ * Generated At:  2026-10-01T11:10:20.227Z
+ *
+ * CORE ARCHITECTURE PRINCIPLE:
+ * 1. PRIMITIVES (--primitive-*) are raw scales and MUST NOT be used directly
+ *    in UI component stylesheets.
+ * 2. SEMANTIC COLOR ROLES (--color-*) are the source of truth for all UI styling.
+ *    They automatically adapt when switching between Light and Dark themes.
+ * 3. COMPONENT TOKENS (--btn-*, --input-*, etc.) reference semantic tokens.
+ * ============================================================================
+ */
+
+:root {
+
+  /* ------------------------------------------------------------------------ */
+  /* 1. PRIMITIVES: COLOR PALETTES (RAW SCALES — INTERNAL ONLY)
+     Do not use directly in UI components. Use semantic color roles instead.
+  /* ------------------------------------------------------------------------ */
+
+  /* Palette: primary */
+  --primitive-color-primary-0: #000000;
+  --primitive-color-primary-10: #261309;
+  --primitive-color-primary-20: #3c2419;
+  --primitive-color-primary-30: #53382c;
+  --primitive-color-primary-40: #68483a;
+  --primitive-color-primary-50: #825f50;
+  --primitive-color-primary-60: #9d7867;
+  --primitive-color-primary-70: #b99280;
+  --primitive-color-primary-80: #d6ac9a;
+  --primitive-color-primary-90: #f3c7b5;
+  --primitive-color-primary-95: #ffede5;
+  --primitive-color-primary-99: #fffbfa;
+  --primitive-color-primary-100: #ffffff;
+
+  /* Palette: secondary */
+  --primitive-color-secondary-0: #000000;
+  --primitive-color-secondary-10: #241813;
+  --primitive-color-secondary-20: #3a2b25;
+  --primitive-color-secondary-30: #51413a;
+  --primitive-color-secondary-40: #6a5850;
+  --primitive-color-secondary-50: #847068;
+  --primitive-color-secondary-60: #9f8981;
+  --primitive-color-secondary-70: #baa39b;
+  --primitive-color-secondary-80: #d6beb6;
+  --primitive-color-secondary-90: #f3dad2;
+  --primitive-color-secondary-95: #ffede7;
+  --primitive-color-secondary-99: #fffbfa;
+  --primitive-color-secondary-100: #ffffff;
+
+  /* Palette: tertiary */
+  --primitive-color-tertiary-0: #000000;
+  --primitive-color-tertiary-10: #1e1b07;
+  --primitive-color-tertiary-20: #343019;
+  --primitive-color-tertiary-30: #4b462c;
+  --primitive-color-tertiary-40: #635d42;
+  --primitive-color-tertiary-50: #7c7659;
+  --primitive-color-tertiary-60: #978f71;
+  --primitive-color-tertiary-70: #b2a98a;
+  --primitive-color-tertiary-80: #cec4a4;
+  --primitive-color-tertiary-90: #eae0be;
+  --primitive-color-tertiary-95: #f9efcd;
+  --primitive-color-tertiary-99: #fffcf4;
+  --primitive-color-tertiary-100: #ffffff;
+
+  /* Palette: neutral */
+  --primitive-color-neutral-0: #000000;
+  --primitive-color-neutral-10: #1f1a18;
+  --primitive-color-neutral-20: #342f2c;
+  --primitive-color-neutral-30: #4a4542;
+  --primitive-color-neutral-40: #625c59;
+  --primitive-color-neutral-50: #7b7572;
+  --primitive-color-neutral-60: #958e8b;
+  --primitive-color-neutral-70: #b0a9a6;
+  --primitive-color-neutral-80: #ccc4c1;
+  --primitive-color-neutral-90: #e8e0dd;
+  --primitive-color-neutral-95: #f7efeb;
+  --primitive-color-neutral-99: #fffbfa;
+  --primitive-color-neutral-100: #ffffff;
+
+  /* Palette: neutralVariant */
+  --primitive-color-neutral-variant-0: #000000;
+  --primitive-color-neutral-variant-10: #231a15;
+  --primitive-color-neutral-variant-20: #392d28;
+  --primitive-color-neutral-variant-30: #50433d;
+  --primitive-color-neutral-variant-40: #685a54;
+  --primitive-color-neutral-variant-50: #82726c;
+  --primitive-color-neutral-variant-60: #9c8c85;
+  --primitive-color-neutral-variant-70: #b7a69f;
+  --primitive-color-neutral-variant-80: #d3c1bb;
+  --primitive-color-neutral-variant-90: #f0ddd6;
+  --primitive-color-neutral-variant-95: #feedea;
+  --primitive-color-neutral-variant-99: #fffbfa;
+  --primitive-color-neutral-variant-100: #ffffff;
+
+  /* Palette: success */
+  --primitive-color-success-0: #000000;
+  --primitive-color-success-10: #00210e;
+  --primitive-color-success-20: #00391c;
+  --primitive-color-success-30: #0e522c;
+  --primitive-color-success-40: #296b3f;
+  --primitive-color-success-50: #edf7ed;
+  --primitive-color-success-60: #5ca06e;
+  --primitive-color-success-70: #76bc87;
+  --primitive-color-success-80: #92d8a1;
+  --primitive-color-success-90: #adf5bc;
+  --primitive-color-success-95: #ccffce;
+  --primitive-color-success-99: #f4fff0;
+  --primitive-color-success-100: #d3eed4;
+  --primitive-color-success-200: #a8deb0;
+  --primitive-color-success-300: #7bc98a;
+  --primitive-color-success-400: #4eb366;
+  --primitive-color-success-500: #296b3f;
+  --primitive-color-success-600: #205632;
+  --primitive-color-success-700: #174125;
+  --primitive-color-success-800: #0f2c18;
+  --primitive-color-success-900: #081b0d;
+  --primitive-color-success-tonal-0: #000000;
+  --primitive-color-success-tonal-10: #00210e;
+  --primitive-color-success-tonal-20: #00391c;
+  --primitive-color-success-tonal-30: #0e522c;
+  --primitive-color-success-tonal-40: #296b3f;
+  --primitive-color-success-tonal-50: #428556;
+  --primitive-color-success-tonal-60: #5ca06e;
+  --primitive-color-success-tonal-70: #76bc87;
+  --primitive-color-success-tonal-80: #92d8a1;
+  --primitive-color-success-tonal-90: #adf5bc;
+  --primitive-color-success-tonal-95: #ccffce;
+  --primitive-color-success-tonal-99: #f4fff0;
+  --primitive-color-success-tonal-100: #ffffff;
+
+  /* Palette: warning */
+  --primitive-color-warning-0: #000000;
+  --primitive-color-warning-10: #291800;
+  --primitive-color-warning-20: #442b00;
+  --primitive-color-warning-30: #623f00;
+  --primitive-color-warning-40: #815500;
+  --primitive-color-warning-50: #fffbeb;
+  --primitive-color-warning-60: #c38500;
+  --primitive-color-warning-70: #e59f1a;
+  --primitive-color-warning-80: #ffba49;
+  --primitive-color-warning-90: #ffddaa;
+  --primitive-color-warning-95: #ffeed6;
+  --primitive-color-warning-99: #fffbf8;
+  --primitive-color-warning-100: #fef3c7;
+  --primitive-color-warning-200: #fde68a;
+  --primitive-color-warning-300: #fcd34d;
+  --primitive-color-warning-400: #fbbf24;
+  --primitive-color-warning-500: #815500;
+  --primitive-color-warning-600: #6c4600;
+  --primitive-color-warning-700: #543600;
+  --primitive-color-warning-800: #3b2600;
+  --primitive-color-warning-900: #221500;
+  --primitive-color-warning-tonal-0: #000000;
+  --primitive-color-warning-tonal-10: #291800;
+  --primitive-color-warning-tonal-20: #442b00;
+  --primitive-color-warning-tonal-30: #623f00;
+  --primitive-color-warning-tonal-40: #815500;
+  --primitive-color-warning-tonal-50: #a16d00;
+  --primitive-color-warning-tonal-60: #c38500;
+  --primitive-color-warning-tonal-70: #e59f1a;
+  --primitive-color-warning-tonal-80: #ffba49;
+  --primitive-color-warning-tonal-90: #ffddaa;
+  --primitive-color-warning-tonal-95: #ffeed6;
+  --primitive-color-warning-tonal-99: #fffbf8;
+  --primitive-color-warning-tonal-100: #ffffff;
+
+  /* Palette: error */
+  --primitive-color-error-0: #000000;
+  --primitive-color-error-10: #410002;
+  --primitive-color-error-20: #690005;
+  --primitive-color-error-30: #93000a;
+  --primitive-color-error-40: #ba1a1a;
+  --primitive-color-error-50: #fef2f2;
+  --primitive-color-error-60: #ff5449;
+  --primitive-color-error-70: #ff897d;
+  --primitive-color-error-80: #ffb4ab;
+  --primitive-color-error-90: #ffdad6;
+  --primitive-color-error-95: #ffedea;
+  --primitive-color-error-99: #fffbf9;
+  --primitive-color-error-100: #fee2e2;
+  --primitive-color-error-200: #fecaca;
+  --primitive-color-error-300: #fca5a5;
+  --primitive-color-error-400: #f87171;
+  --primitive-color-error-500: #ba1a1a;
+  --primitive-color-error-600: #9b1515;
+  --primitive-color-error-700: #7c1111;
+  --primitive-color-error-800: #5d0c0c;
+  --primitive-color-error-900: #3f0707;
+  --primitive-color-error-tonal-0: #000000;
+  --primitive-color-error-tonal-10: #410002;
+  --primitive-color-error-tonal-20: #690005;
+  --primitive-color-error-tonal-30: #93000a;
+  --primitive-color-error-tonal-40: #ba1a1a;
+  --primitive-color-error-tonal-50: #de3730;
+  --primitive-color-error-tonal-60: #ff5449;
+  --primitive-color-error-tonal-70: #ff897d;
+  --primitive-color-error-tonal-80: #ffb4ab;
+  --primitive-color-error-tonal-90: #ffdad6;
+  --primitive-color-error-tonal-95: #ffedea;
+  --primitive-color-error-tonal-99: #fffbf9;
+  --primitive-color-error-tonal-100: #ffffff;
+
+  /* Palette: information */
+  --primitive-color-information-0: #000000;
+  --primitive-color-information-10: #001e2e;
+  --primitive-color-information-20: #00344d;
+  --primitive-color-information-30: #004c6e;
+  --primitive-color-information-40: #006590;
+  --primitive-color-information-50: #f0f7ff;
+  --primitive-color-information-60: #3d98cf;
+  --primitive-color-information-70: #5eb3eb;
+  --primitive-color-information-80: #8acfef;
+  --primitive-color-information-90: #bfe7ff;
+  --primitive-color-information-95: #e0f3ff;
+  --primitive-color-information-99: #f8fbff;
+  --primitive-color-information-100: #e0effe;
+  --primitive-color-information-200: #bae0fd;
+  --primitive-color-information-300: #7cc5fa;
+  --primitive-color-information-400: #36a5f5;
+  --primitive-color-information-500: #006590;
+  --primitive-color-information-600: #005377;
+  --primitive-color-information-700: #00405d;
+  --primitive-color-information-800: #002e43;
+  --primitive-color-information-900: #001d2a;
+  --primitive-color-information-tonal-0: #000000;
+  --primitive-color-information-tonal-10: #001e2e;
+  --primitive-color-information-tonal-20: #00344d;
+  --primitive-color-information-tonal-30: #004c6e;
+  --primitive-color-information-tonal-40: #006590;
+  --primitive-color-information-tonal-50: #197eb2;
+  --primitive-color-information-tonal-60: #3d98cf;
+  --primitive-color-information-tonal-70: #5eb3eb;
+  --primitive-color-information-tonal-80: #8acfef;
+  --primitive-color-information-tonal-90: #bfe7ff;
+  --primitive-color-information-tonal-95: #e0f3ff;
+  --primitive-color-information-tonal-99: #f8fbff;
+  --primitive-color-information-tonal-100: #ffffff;
+
+  /* Palette: alpha */
+  --primitive-color-alpha-transparent: rgba(0, 0, 0, 0);
+  --primitive-color-alpha-black4: rgba(0, 0, 0, 0.04);
+  --primitive-color-alpha-black8: rgba(0, 0, 0, 0.08);
+  --primitive-color-alpha-black12: rgba(0, 0, 0, 0.12);
+  --primitive-color-alpha-black16: rgba(0, 0, 0, 0.16);
+  --primitive-color-alpha-black24: rgba(0, 0, 0, 0.24);
+  --primitive-color-alpha-black38: rgba(0, 0, 0, 0.38);
+  --primitive-color-alpha-black50: rgba(0, 0, 0, 0.50);
+  --primitive-color-alpha-black70: rgba(0, 0, 0, 0.70);
+  --primitive-color-alpha-white4: rgba(255, 255, 255, 0.04);
+  --primitive-color-alpha-white8: rgba(255, 255, 255, 0.08);
+  --primitive-color-alpha-white12: rgba(255, 255, 255, 0.12);
+  --primitive-color-alpha-white16: rgba(255, 255, 255, 0.16);
+  --primitive-color-alpha-white24: rgba(255, 255, 255, 0.24);
+  --primitive-color-alpha-white38: rgba(255, 255, 255, 0.38);
+  --primitive-color-alpha-white50: rgba(255, 255, 255, 0.50);
+  --primitive-color-alpha-white70: rgba(255, 255, 255, 0.70);
+
+  /* ------------------------------------------------------------------------ */
+  /* 2. PRIMITIVES: TYPOGRAPHY FOUNDATIONS (INTER & SYMBOLS)
+  /* ------------------------------------------------------------------------ */
+  --font-primary: Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-icon: Material Symbols Rounded;
+  --font-code: 'JetBrains Mono', 'SF Mono', Consolas, monospace;
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+  --font-weight-semi-bold: 600;
+  --font-weight-bold: 700;
+
+  /* ------------------------------------------------------------------------ */
+  /* 3. PRIMITIVES: SPACING SCALE (4PX BASE UNIT)
+  /* ------------------------------------------------------------------------ */
+  --space-0: 0px;
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+  --space-7: 28px;
+  --space-8: 32px;
+  --space-10: 40px;
+  --space-12: 48px;
+  --space-16: 64px;
+  --space-20: 80px;
+  --space-24: 96px;
+  --space-32: 128px;
+
+  /* ------------------------------------------------------------------------ */
+  /* 4. PRIMITIVES: BORDER RADIUS
+  /* ------------------------------------------------------------------------ */
+  --radius-none: 0px;
+  --radius-xs: 4px;
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-xl: 24px;
+  --radius-full: 9999px;
+
+  /* ------------------------------------------------------------------------ */
+  /* 5. PRIMITIVES: BORDER WIDTHS
+  /* ------------------------------------------------------------------------ */
+  --border-width-none: 0px;
+  --border-width-thin: 1px;
+  --border-width-medium: 2px;
+  --border-width-thick: 3px;
+
+  /* ------------------------------------------------------------------------ */
+  /* 6. PRIMITIVES: ELEVATION LEVELS (SUBTLE M3 TONAL SHADOWS)
+  /* ------------------------------------------------------------------------ */
+  --elevation-level0: none;
+  --elevation-level1: 0px 1px 3px 1px rgba(0, 0, 0, 0.07), 0px 1px 2px 0px rgba(0, 0, 0, 0.04);
+  --elevation-level2: 0px 2px 6px 2px rgba(0, 0, 0, 0.07), 0px 1px 2px 0px rgba(0, 0, 0, 0.04);
+  --elevation-level3: 0px 4px 8px 3px rgba(0, 0, 0, 0.07), 0px 1px 3px 0px rgba(0, 0, 0, 0.04);
+  --elevation-level4: 0px 6px 10px 4px rgba(0, 0, 0, 0.07), 0px 2px 3px 0px rgba(0, 0, 0, 0.04);
+  --elevation-level5: 0px 8px 12px 6px rgba(0, 0, 0, 0.07), 0px 4px 4px 0px rgba(0, 0, 0, 0.04);
+
+  /* ------------------------------------------------------------------------ */
+  /* 7. PRIMITIVES: ICON DIMENSIONS
+  /* ------------------------------------------------------------------------ */
+  --icon-size-xs: 16px;
+  --icon-size-sm: 20px;
+  --icon-size-md: 24px;
+  --icon-size-lg: 32px;
+  --icon-size-xl: 40px;
+
+  /* ------------------------------------------------------------------------ */
+  /* 8. PRIMITIVES: MOTION & MICRO-ANIMATIONS
+  /* ------------------------------------------------------------------------ */
+  --motion-duration-instant: 0ms;
+  --motion-duration-fast: 100ms;
+  --motion-duration-normal: 200ms;
+  --motion-duration-slow: 300ms;
+  --motion-duration-slower: 500ms;
+  --motion-easing-standard: cubic-bezier(0.2, 0.0, 0.0, 1.0);
+  --motion-easing-standard-decelerate: cubic-bezier(0.0, 0.0, 0.2, 1.0);
+  --motion-easing-standard-accelerate: cubic-bezier(0.3, 0.0, 1.0, 1.0);
+  --motion-easing-emphasized: cubic-bezier(0.2, 0.0, 0.0, 1.0);
+
+  /* ------------------------------------------------------------------------ */
+  /* 9. PRIMITIVES: BREAKPOINTS & LAYOUT
+  /* ------------------------------------------------------------------------ */
+  --breakpoint-mobile: 0px;
+  --breakpoint-tablet: 600px;
+  --breakpoint-desktop: 1024px;
+  --breakpoint-large-desktop: 1440px;
+  --layout-max-width: 1200px;
+  --layout-reading-width: 720px;
+  --layout-form-width: 640px;
+  --layout-wide-width: 1440px;
+
+  /* ------------------------------------------------------------------------ */
+  /* 10. PRIMITIVES: Z-INDEX LAYERING STACK
+  /* ------------------------------------------------------------------------ */
+  --z-base: 0;
+  --z-dropdown: 1000;
+  --z-sticky: 1100;
+  --z-overlay: 1200;
+  --z-modal: 1300;
+  --z-popover: 1400;
+  --z-toast: 1500;
+  --z-tooltip: 1600;
+
+  /* ------------------------------------------------------------------------ */
+  /* 11. PRIMITIVES: INTERACTION STATE OPACITIES
+  /* ------------------------------------------------------------------------ */
+  --state-opacity-hover-opacity: 0.08;
+  --state-opacity-focus-opacity: 0.12;
+  --state-opacity-pressed-opacity: 0.12;
+  --state-opacity-dragged-opacity: 0.16;
+  --state-opacity-disabled-opacity: 0.38;
+  --state-opacity-disabled-container-opacity: 0.12;
+
+  /* ------------------------------------------------------------------------ */
+  /* 12. SEMANTIC: TYPOGRAPHY HIERARCHY TOKENS
+  /* ------------------------------------------------------------------------ */
+  /* Typography: displayLarge */
+  --type-display-large-font-size: 57px;
+  --type-display-large-font-weight: var(--primitives-typography-font-weight-regular);
+  --type-display-large-line-height: 64px;
+  --type-display-large-letter-spacing: -0.25px;
+  /* Typography: displayMedium */
+  --type-display-medium-font-size: 45px;
+  --type-display-medium-font-weight: var(--primitives-typography-font-weight-regular);
+  --type-display-medium-line-height: 52px;
+  --type-display-medium-letter-spacing: 0px;
+  /* Typography: displaySmall */
+  --type-display-small-font-size: 36px;
+  --type-display-small-font-weight: var(--primitives-typography-font-weight-regular);
+  --type-display-small-line-height: 44px;
+  --type-display-small-letter-spacing: 0px;
+  /* Typography: headlineLarge */
+  --type-headline-large-font-size: 32px;
+  --type-headline-large-font-weight: var(--primitives-typography-font-weight-semi-bold);
+  --type-headline-large-line-height: 40px;
+  --type-headline-large-letter-spacing: 0px;
+  /* Typography: headlineMedium */
+  --type-headline-medium-font-size: 28px;
+  --type-headline-medium-font-weight: var(--primitives-typography-font-weight-semi-bold);
+  --type-headline-medium-line-height: 36px;
+  --type-headline-medium-letter-spacing: 0px;
+  /* Typography: headlineSmall */
+  --type-headline-small-font-size: 24px;
+  --type-headline-small-font-weight: var(--primitives-typography-font-weight-semi-bold);
+  --type-headline-small-line-height: 32px;
+  --type-headline-small-letter-spacing: 0px;
+  /* Typography: titleLarge */
+  --type-title-large-font-size: 22px;
+  --type-title-large-font-weight: var(--primitives-typography-font-weight-semi-bold);
+  --type-title-large-line-height: 28px;
+  --type-title-large-letter-spacing: 0px;
+  /* Typography: titleMedium */
+  --type-title-medium-font-size: 16px;
+  --type-title-medium-font-weight: var(--primitives-typography-font-weight-semi-bold);
+  --type-title-medium-line-height: 24px;
+  --type-title-medium-letter-spacing: 0.15px;
+  /* Typography: titleSmall */
+  --type-title-small-font-size: 14px;
+  --type-title-small-font-weight: var(--primitives-typography-font-weight-medium);
+  --type-title-small-line-height: 20px;
+  --type-title-small-letter-spacing: 0.1px;
+  /* Typography: bodyLarge */
+  --type-body-large-font-size: 16px;
+  --type-body-large-font-weight: var(--primitives-typography-font-weight-regular);
+  --type-body-large-line-height: 24px;
+  --type-body-large-letter-spacing: 0.5px;
+  /* Typography: bodyMedium */
+  --type-body-medium-font-size: 14px;
+  --type-body-medium-font-weight: var(--primitives-typography-font-weight-regular);
+  --type-body-medium-line-height: 20px;
+  --type-body-medium-letter-spacing: 0.25px;
+  /* Typography: bodySmall */
+  --type-body-small-font-size: 12px;
+  --type-body-small-font-weight: var(--primitives-typography-font-weight-regular);
+  --type-body-small-line-height: 16px;
+  --type-body-small-letter-spacing: 0.4px;
+  /* Typography: labelLarge */
+  --type-label-large-font-size: 14px;
+  --type-label-large-font-weight: var(--primitives-typography-font-weight-medium);
+  --type-label-large-line-height: 20px;
+  --type-label-large-letter-spacing: 0.1px;
+  /* Typography: labelMedium */
+  --type-label-medium-font-size: 12px;
+  --type-label-medium-font-weight: var(--primitives-typography-font-weight-medium);
+  --type-label-medium-line-height: 16px;
+  --type-label-medium-letter-spacing: 0.5px;
+  /* Typography: labelSmall */
+  --type-label-small-font-size: 11px;
+  --type-label-small-font-weight: var(--primitives-typography-font-weight-medium);
+  --type-label-small-line-height: 16px;
+  --type-label-small-letter-spacing: 0.5px;
+
+  /* ------------------------------------------------------------------------ */
+  /* 13. SEMANTIC: ACCESSIBILITY & TOUCH TARGET CONSTRAINTS
+  /* ------------------------------------------------------------------------ */
+  --a11y-min-touch-target: 44px;
+  --a11y-recommended-touch-target: 48px;
+  --a11y-focus-ring-width: var(--border-width-medium);
+  --a11y-focus-ring-offset: var(--border-width-medium);
+  --a11y-contrast-ratio-normal-text: 4.5:1;
+  --a11y-contrast-ratio-large-text: 3.0:1;
+  --a11y-contrast-ratio-ui-components: 3.0:1;
+
+  /* ------------------------------------------------------------------------ */
+  /* 14. SEMANTIC COLOR ROLES (LIGHT THEME — DEFAULT)
+     Primary API for all UI components. Theme-aware.
+  /* ------------------------------------------------------------------------ */
+  --color-primary: var(--primitive-color-primary-40);
+  --color-on-primary: var(--primitive-color-primary-100);
+  --color-primary-container: var(--primitive-color-primary-90);
+  --color-on-primary-container: var(--primitive-color-primary-10);
+  --color-secondary: var(--primitive-color-secondary-40);
+  --color-on-secondary: var(--primitive-color-secondary-100);
+  --color-secondary-container: var(--primitive-color-secondary-90);
+  --color-on-secondary-container: var(--primitive-color-secondary-10);
+  --color-tertiary: var(--primitive-color-tertiary-40);
+  --color-on-tertiary: var(--primitive-color-tertiary-100);
+  --color-tertiary-container: var(--primitive-color-tertiary-90);
+  --color-on-tertiary-container: var(--primitive-color-tertiary-10);
+  --color-error: var(--primitive-color-error-40);
+  --color-on-error: var(--primitive-color-error-100);
+  --color-error-container: var(--primitive-color-error-90);
+  --color-on-error-container: var(--primitive-color-error-10);
+  --color-surface: var(--primitive-color-neutral-99);
+  --color-surface-dim: var(--primitive-color-neutral-90);
+  --color-surface-bright: var(--primitive-color-neutral-100);
+  --color-surface-container-lowest: var(--primitive-color-neutral-100);
+  --color-surface-container-low: var(--primitive-color-neutral-95);
+  --color-surface-container: var(--primitive-color-neutral-90);
+  --color-surface-container-high: var(--primitive-color-neutral-80);
+  --color-surface-container-highest: var(--primitive-color-neutral-70);
+  --color-on-surface: var(--primitive-color-neutral-10);
+  --color-on-surface-variant: var(--primitive-color-neutral-variant-30);
+  --color-outline: var(--primitive-color-neutral-variant-50);
+  --color-outline-variant: var(--primitive-color-neutral-variant-80);
+  --color-inverse-surface: var(--primitive-color-neutral-20);
+  --color-inverse-on-surface: var(--primitive-color-neutral-95);
+  --color-inverse-primary: var(--primitive-color-primary-80);
+  --color-background: var(--primitive-color-neutral-99);
+  --color-on-background: var(--primitive-color-neutral-10);
+  --color-scrim: var(--primitive-color-neutral-0);
+  --color-shadow: var(--primitive-color-neutral-0);
+
+  /* ------------------------------------------------------------------------ */
+  /* 15. SEMANTIC: BORDER STYLES & FOCUS RING
+  /* ------------------------------------------------------------------------ */
+  --border-default: var(--color-outline-variant);
+  --border-subtle: var(--primitive-color-neutral-variant-90);
+  --border-strong: var(--color-outline);
+  --border-focus: var(--color-primary);
+  --border-error: var(--color-error);
+  --border-success: var(--color-success);
+  --focus-ring: 0 0 0 2px var(--color-surface), 0 0 0 4px var(--color-primary);
+
+  /* ------------------------------------------------------------------------ */
+  /* 16. COMPONENT TOKENS (MAPPED TO SEMANTIC ROLES)
+     Consume these directly in component styles.
+  /* ------------------------------------------------------------------------ */
+
+  /* Component: button */
+  --button-height-sm: 32px;
+  --button-height-md: 40px;
+  --button-height-lg: 48px;
+  --button-padding-horizontal-sm: var(--space-3);
+  --button-padding-horizontal-md: var(--space-4);
+  --button-padding-horizontal-lg: var(--space-6);
+  --button-padding-vertical-sm: var(--space-1);
+  --button-padding-vertical-md: var(--space-2);
+  --button-padding-vertical-lg: var(--space-3);
+  --button-radius: var(--radius-md);
+  --button-primary-background: var(--color-primary);
+  --button-primary-foreground: var(--color-on-primary);
+  --button-primary-border: var(--border-width-none);
+  --button-primary-hover-background: var(--primitive-color-primary-30);
+  --button-primary-pressed-background: var(--primitive-color-primary-20);
+  --button-secondary-background: var(--color-secondary-container);
+  --button-secondary-foreground: var(--color-on-secondary-container);
+  --button-secondary-border: var(--border-width-none);
+  --button-secondary-hover-background: var(--primitive-color-secondary-80);
+  --button-secondary-pressed-background: var(--primitive-color-secondary-70);
+  --button-tertiary-background: transparent;
+  --button-tertiary-foreground: var(--color-primary);
+  --button-tertiary-border: var(--border-width-none);
+  --button-tertiary-hover-background: var(--primitive-color-primary-95);
+  --button-tertiary-pressed-background: var(--primitive-color-primary-90);
+  --button-outlined-background: transparent;
+  --button-outlined-foreground: var(--color-primary);
+  --button-outlined-border: var(--border-default);
+  --button-outlined-hover-background: var(--primitive-color-primary-95);
+  --button-outlined-pressed-background: var(--primitive-color-primary-90);
+  --button-disabled-background: var(--primitive-color-neutral-90);
+  --button-disabled-foreground: var(--primitive-color-neutral-60);
+  --button-disabled-border: transparent;
+  --button-hover-opacity: var(--primitive-state-hover-opacity);
+  --button-pressed-opacity: var(--primitive-state-pressed-opacity);
+  --button-focus-ring: var(--state-focus-ring);
+
+  /* Component: input */
+  --input-height-sm: 36px;
+  --input-height-md: 44px;
+  --input-height-lg: 52px;
+  --input-background: var(--color-surface);
+  --input-foreground: var(--color-on-surface);
+  --input-placeholder: var(--color-on-surface-variant);
+  --input-border-default: var(--border-default);
+  --input-border-focus: var(--border-focus);
+  --input-border-error: var(--border-error);
+  --input-border-focus: var(--border-focus);
+  --input-border-error: var(--border-error);
+  --input-radius: var(--radius-sm);
+  --input-padding-horizontal: var(--space-4);
+  --input-padding-vertical: var(--space-3);
+  --input-label-color: var(--color-on-surface-variant);
+  --input-label-typography: var(--semantic-typography-label-medium);
+  --input-helper-color: var(--color-on-surface-variant);
+  --input-helper-typography: var(--semantic-typography-body-small);
+  --input-error-color: var(--color-error);
+  --input-error-typography: var(--semantic-typography-body-small);
+
+  /* Component: card */
+  --card-background: var(--color-surface);
+  --card-foreground: var(--color-on-surface);
+  --card-border: var(--border-subtle);
+  --card-radius: var(--radius-md);
+  --card-padding: var(--space-6);
+  --card-elevation: var(--elevation-level1);
+  --card-elevated-background: var(--color-surface-container-low);
+  --card-elevated-elevation: var(--elevation-level1);
+  --card-elevated-border: transparent;
+  --card-filled-background: var(--color-surface-container-highest);
+  --card-filled-elevation: var(--elevation-level0);
+  --card-filled-border: transparent;
+  --card-outlined-background: var(--color-surface);
+  --card-outlined-elevation: var(--elevation-level0);
+  --card-outlined-border: var(--border-default);
+
+  /* Component: navigation */
+  --navigation-background: var(--color-surface);
+  --navigation-foreground: var(--color-on-surface);
+  --navigation-active-background: var(--color-secondary-container);
+  --navigation-active-foreground: var(--color-on-secondary-container);
+  --navigation-inactive-foreground: var(--color-on-surface-variant);
+  --navigation-border: var(--border-subtle);
+  --navigation-item-height: 48px;
+  --navigation-item-radius: var(--radius-full);
+
+  /* Component: tabs */
+  --tabs-background: transparent;
+  --tabs-active: var(--color-primary);
+  --tabs-inactive: var(--color-on-surface-variant);
+  --tabs-indicator: var(--color-primary);
+  --tabs-height: 48px;
+  --tabs-indicator-height: var(--border-width-thick);
+
+  /* Component: chip */
+  --chip-background: var(--color-surface-container-low);
+  --chip-foreground: var(--color-on-surface-variant);
+  --chip-border: var(--border-default);
+  --chip-radius: var(--radius-sm);
+  --chip-height: 32px;
+  --chip-padding-horizontal: var(--space-3);
+  --chip-default-background: var(--color-surface-container-low);
+  --chip-default-foreground: var(--color-on-surface-variant);
+  --chip-default-border: var(--border-default);
+  --chip-selected-background: var(--color-secondary-container);
+  --chip-selected-foreground: var(--color-on-secondary-container);
+  --chip-selected-border: var(--border-subtle);
+  --chip-success-background: var(--color-success-container);
+  --chip-success-foreground: var(--color-on-success-container);
+  --chip-success-border: transparent;
+  --chip-warning-background: var(--color-warning-container);
+  --chip-warning-foreground: var(--color-on-warning-container);
+  --chip-warning-border: transparent;
+  --chip-error-background: var(--color-error-container);
+  --chip-error-foreground: var(--color-on-error-container);
+  --chip-error-border: transparent;
+  --chip-information-background: var(--color-information-container);
+  --chip-information-foreground: var(--color-on-information-container);
+  --chip-information-border: transparent;
+
+  /* Component: badge */
+  --badge-radius: var(--radius-full);
+  --badge-height: 20px;
+  --badge-padding-horizontal: var(--space-2);
+  --badge-neutral-background: var(--color-surface-container-high);
+  --badge-neutral-foreground: var(--color-on-surface-variant);
+  --badge-neutral-border: transparent;
+  --badge-success-background: var(--color-success-container);
+  --badge-success-foreground: var(--color-on-success-container);
+  --badge-success-border: transparent;
+  --badge-warning-background: var(--color-warning-container);
+  --badge-warning-foreground: var(--color-on-warning-container);
+  --badge-warning-border: transparent;
+  --badge-error-background: var(--color-error-container);
+  --badge-error-foreground: var(--color-on-error-container);
+  --badge-error-border: transparent;
+  --badge-information-background: var(--color-information-container);
+  --badge-information-foreground: var(--color-on-information-container);
+  --badge-information-border: transparent;
+  --badge-primary-background: var(--color-primary-container);
+  --badge-primary-foreground: var(--color-on-primary-container);
+  --badge-primary-border: transparent;
+
+  /* Component: dialog */
+  --dialog-background: var(--color-surface-container-high);
+  --dialog-foreground: var(--color-on-surface);
+  --dialog-radius: var(--radius-xl);
+  --dialog-padding: var(--space-6);
+  --dialog-elevation: var(--elevation-level3);
+  --dialog-overlay: var(--primitive-alpha-black50);
+
+  /* Component: toast */
+  --toast-background: var(--color-inverse-surface);
+  --toast-foreground: var(--color-inverse-on-surface);
+  --toast-radius: var(--radius-xs);
+  --toast-padding: var(--space-4);
+  --toast-elevation: var(--elevation-level3);
+
+  /* Component: table */
+  --table-background: var(--color-surface);
+  --table-header-background: var(--color-surface-container-lowest);
+  --table-header-foreground: var(--color-on-surface-variant);
+  --table-row-background: var(--color-surface);
+  --table-row-hover: var(--color-surface-container-low);
+  --table-row-selected: var(--color-secondary-container);
+  --table-border: var(--border-default);
+  --table-divider: var(--border-subtle);
+  --table-cell-padding: var(--space-4);
+}
+
+/* ==========================================================================
+   DARK THEME SEMANTIC COLOR ROLES & OVERRIDES
+   Activated via [data-theme="dark"] on <html> or <body>
+   ========================================================================== */
+:root[data-theme="dark"],
+body[data-theme="dark"] {
+  --color-primary: var(--primitive-color-primary-80);
+  --color-on-primary: var(--primitive-color-primary-20);
+  --color-primary-container: var(--primitive-color-primary-30);
+  --color-on-primary-container: var(--primitive-color-primary-90);
+  --color-secondary: var(--primitive-color-secondary-80);
+  --color-on-secondary: var(--primitive-color-secondary-20);
+  --color-secondary-container: var(--primitive-color-secondary-30);
+  --color-on-secondary-container: var(--primitive-color-secondary-90);
+  --color-tertiary: var(--primitive-color-tertiary-80);
+  --color-on-tertiary: var(--primitive-color-tertiary-20);
+  --color-tertiary-container: var(--primitive-color-tertiary-30);
+  --color-on-tertiary-container: var(--primitive-color-tertiary-90);
+  --color-error: var(--primitive-color-error-80);
+  --color-on-error: var(--primitive-color-error-20);
+  --color-error-container: var(--primitive-color-error-30);
+  --color-on-error-container: var(--primitive-color-error-90);
+  --color-surface: var(--primitive-color-neutral-10);
+  --color-surface-dim: var(--primitive-color-neutral-10);
+  --color-surface-bright: var(--primitive-color-neutral-30);
+  --color-surface-container-lowest: var(--primitive-color-neutral-0);
+  --color-surface-container-low: var(--primitive-color-neutral-10);
+  --color-surface-container: var(--primitive-color-neutral-20);
+  --color-surface-container-high: var(--primitive-color-neutral-20);
+  --color-surface-container-highest: var(--primitive-color-neutral-30);
+  --color-on-surface: var(--primitive-color-neutral-90);
+  --color-on-surface-variant: var(--primitive-color-neutral-variant-80);
+  --color-outline: var(--primitive-color-neutral-variant-60);
+  --color-outline-variant: var(--primitive-color-neutral-variant-30);
+  --color-inverse-surface: var(--primitive-color-neutral-90);
+  --color-inverse-on-surface: var(--primitive-color-neutral-20);
+  --color-inverse-primary: var(--primitive-color-primary-40);
+  --color-background: var(--primitive-color-neutral-10);
+  --color-on-background: var(--primitive-color-neutral-90);
+  --color-scrim: var(--primitive-color-neutral-0);
+  --color-shadow: var(--primitive-color-neutral-0);
+  --color-text-primary: var(--color-on-surface);
+  --color-text-secondary: var(--color-on-surface-variant);
+  --color-text-tertiary: var(--primitive-color-neutral-variant-60);
+  --color-text-disabled: var(--primitive-alpha-white38);
+  --color-text-inverse: var(--color-inverse-on-surface);
+  --color-text-link: var(--color-primary);
+  --color-text-link-hover: var(--primitive-color-primary-90);
+  --border-default: var(--color-outline-variant);
+  --border-subtle: var(--primitive-color-neutral-variant-20);
+  --border-strong: var(--color-outline);
+  --border-focus: var(--color-primary);
+  --border-error: var(--color-error);
+  --border-success: var(--primitive-color-success-80);
+  --focus-ring: 0 0 0 2px var(--color-surface), 0 0 0 4px var(--color-primary);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --color-primary: var(--primitive-color-primary-80);
+    --color-on-primary: var(--primitive-color-primary-20);
+    --color-primary-container: var(--primitive-color-primary-30);
+    --color-on-primary-container: var(--primitive-color-primary-90);
+    --color-secondary: var(--primitive-color-secondary-80);
+    --color-on-secondary: var(--primitive-color-secondary-20);
+    --color-secondary-container: var(--primitive-color-secondary-30);
+    --color-on-secondary-container: var(--primitive-color-secondary-90);
+    --color-tertiary: var(--primitive-color-tertiary-80);
+    --color-on-tertiary: var(--primitive-color-tertiary-20);
+    --color-tertiary-container: var(--primitive-color-tertiary-30);
+    --color-on-tertiary-container: var(--primitive-color-tertiary-90);
+    --color-error: var(--primitive-color-error-80);
+    --color-on-error: var(--primitive-color-error-20);
+    --color-error-container: var(--primitive-color-error-30);
+    --color-on-error-container: var(--primitive-color-error-90);
+    --color-surface: var(--primitive-color-neutral-10);
+    --color-surface-dim: var(--primitive-color-neutral-10);
+    --color-surface-bright: var(--primitive-color-neutral-30);
+    --color-surface-container-lowest: var(--primitive-color-neutral-0);
+    --color-surface-container-low: var(--primitive-color-neutral-10);
+    --color-surface-container: var(--primitive-color-neutral-20);
+    --color-surface-container-high: var(--primitive-color-neutral-20);
+    --color-surface-container-highest: var(--primitive-color-neutral-30);
+    --color-on-surface: var(--primitive-color-neutral-90);
+    --color-on-surface-variant: var(--primitive-color-neutral-variant-80);
+    --color-outline: var(--primitive-color-neutral-variant-60);
+    --color-outline-variant: var(--primitive-color-neutral-variant-30);
+    --color-inverse-surface: var(--primitive-color-neutral-90);
+    --color-inverse-on-surface: var(--primitive-color-neutral-20);
+    --color-inverse-primary: var(--primitive-color-primary-40);
+    --color-background: var(--primitive-color-neutral-10);
+    --color-on-background: var(--primitive-color-neutral-90);
+    --color-scrim: var(--primitive-color-neutral-0);
+    --color-shadow: var(--primitive-color-neutral-0);
+    --color-text-primary: var(--color-on-surface);
+    --color-text-secondary: var(--color-on-surface-variant);
+    --color-text-tertiary: var(--primitive-color-neutral-variant-60);
+    --color-text-disabled: var(--primitive-alpha-white38);
+    --color-text-inverse: var(--color-inverse-on-surface);
+    --color-text-link: var(--color-primary);
+    --color-text-link-hover: var(--primitive-color-primary-90);
+    --border-default: var(--color-outline-variant);
+    --border-subtle: var(--primitive-color-neutral-variant-20);
+    --border-strong: var(--color-outline);
+    --border-focus: var(--color-primary);
+    --border-error: var(--color-error);
+    --border-success: var(--primitive-color-success-80);
+    --focus-ring: 0 0 0 2px var(--color-surface), 0 0 0 4px var(--color-primary);
+  }
+}
+
+/* ==========================================================================
+   TYPOGRAPHY UTILITY CLASSES
+   ========================================================================== */
+.display-large {
+  font-family: var(--font-primary);
+  font-size: var(--type-display-large-font-size);
+  font-weight: var(--type-display-large-font-weight);
+  line-height: var(--type-display-large-line-height);
+  letter-spacing: var(--type-display-large-letter-spacing);
+}
+
+.display-medium {
+  font-family: var(--font-primary);
+  font-size: var(--type-display-medium-font-size);
+  font-weight: var(--type-display-medium-font-weight);
+  line-height: var(--type-display-medium-line-height);
+  letter-spacing: var(--type-display-medium-letter-spacing);
+}
+
+.display-small {
+  font-family: var(--font-primary);
+  font-size: var(--type-display-small-font-size);
+  font-weight: var(--type-display-small-font-weight);
+  line-height: var(--type-display-small-line-height);
+  letter-spacing: var(--type-display-small-letter-spacing);
+}
+
+.headline-large {
+  font-family: var(--font-primary);
+  font-size: var(--type-headline-large-font-size);
+  font-weight: var(--type-headline-large-font-weight);
+  line-height: var(--type-headline-large-line-height);
+  letter-spacing: var(--type-headline-large-letter-spacing);
+}
+
+.headline-medium {
+  font-family: var(--font-primary);
+  font-size: var(--type-headline-medium-font-size);
+  font-weight: var(--type-headline-medium-font-weight);
+  line-height: var(--type-headline-medium-line-height);
+  letter-spacing: var(--type-headline-medium-letter-spacing);
+}
+
+.headline-small {
+  font-family: var(--font-primary);
+  font-size: var(--type-headline-small-font-size);
+  font-weight: var(--type-headline-small-font-weight);
+  line-height: var(--type-headline-small-line-height);
+  letter-spacing: var(--type-headline-small-letter-spacing);
+}
+
+.title-large {
+  font-family: var(--font-primary);
+  font-size: var(--type-title-large-font-size);
+  font-weight: var(--type-title-large-font-weight);
+  line-height: var(--type-title-large-line-height);
+  letter-spacing: var(--type-title-large-letter-spacing);
+}
+
+.title-medium {
+  font-family: var(--font-primary);
+  font-size: var(--type-title-medium-font-size);
+  font-weight: var(--type-title-medium-font-weight);
+  line-height: var(--type-title-medium-line-height);
+  letter-spacing: var(--type-title-medium-letter-spacing);
+}
+
+.title-small {
+  font-family: var(--font-primary);
+  font-size: var(--type-title-small-font-size);
+  font-weight: var(--type-title-small-font-weight);
+  line-height: var(--type-title-small-line-height);
+  letter-spacing: var(--type-title-small-letter-spacing);
+}
+
+.body-large {
+  font-family: var(--font-primary);
+  font-size: var(--type-body-large-font-size);
+  font-weight: var(--type-body-large-font-weight);
+  line-height: var(--type-body-large-line-height);
+  letter-spacing: var(--type-body-large-letter-spacing);
+}
+
+.body-medium {
+  font-family: var(--font-primary);
+  font-size: var(--type-body-medium-font-size);
+  font-weight: var(--type-body-medium-font-weight);
+  line-height: var(--type-body-medium-line-height);
+  letter-spacing: var(--type-body-medium-letter-spacing);
+}
+
+.body-small {
+  font-family: var(--font-primary);
+  font-size: var(--type-body-small-font-size);
+  font-weight: var(--type-body-small-font-weight);
+  line-height: var(--type-body-small-line-height);
+  letter-spacing: var(--type-body-small-letter-spacing);
+}
+
+.label-large {
+  font-family: var(--font-primary);
+  font-size: var(--type-label-large-font-size);
+  font-weight: var(--type-label-large-font-weight);
+  line-height: var(--type-label-large-line-height);
+  letter-spacing: var(--type-label-large-letter-spacing);
+}
+
+.label-medium {
+  font-family: var(--font-primary);
+  font-size: var(--type-label-medium-font-size);
+  font-weight: var(--type-label-medium-font-weight);
+  line-height: var(--type-label-medium-line-height);
+  letter-spacing: var(--type-label-medium-letter-spacing);
+}
+
+.label-small {
+  font-family: var(--font-primary);
+  font-size: var(--type-label-small-font-size);
+  font-weight: var(--type-label-small-font-weight);
+  line-height: var(--type-label-small-line-height);
+  letter-spacing: var(--type-label-small-letter-spacing);
+}
+
+/* ==========================================================================
+   ELEVATION & SURFACE CONTAINER UTILITIES
+   ========================================================================== */
+.elevation-0 {
+  box-shadow: var(--elevation-level-0);
+}
+
+.elevation-1 {
+  box-shadow: var(--elevation-level-1);
+}
+
+.elevation-2 {
+  box-shadow: var(--elevation-level-2);
+}
+
+.elevation-3 {
+  box-shadow: var(--elevation-level-3);
+}
+
+.elevation-4 {
+  box-shadow: var(--elevation-level-4);
+}
+
+.elevation-5 {
+  box-shadow: var(--elevation-level-5);
+}
+
+.surface-container-lowest { background-color: var(--color-surface-container-lowest); color: var(--color-on-surface); }
+.surface-container-low    { background-color: var(--color-surface-container-low);    color: var(--color-on-surface); }
+.surface-container        { background-color: var(--color-surface-container);        color: var(--color-on-surface); }
+.surface-container-high   { background-color: var(--color-surface-container-high);   color: var(--color-on-surface); }
+.surface-container-highest{ background-color: var(--color-surface-container-highest);color: var(--color-on-surface); }
+
+.touch-target {
+  min-width: var(--a11y-min-touch-target);
+  min-height: var(--a11y-min-touch-target);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.focus-visible:focus-visible {
+  outline: none;
+  box-shadow: var(--focus-ring);
+}

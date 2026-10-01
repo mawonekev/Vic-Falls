@@ -5,6 +5,8 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
+    "tokens:build": "node scripts/tokens-to-css.mjs",
+    "tokens:watch": "node scripts/tokens-to-css.mjs --watch",
     "start": "next start",
     "lint": "next lint"
   },
