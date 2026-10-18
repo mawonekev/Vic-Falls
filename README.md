@@ -46,6 +46,23 @@ Rather than generic subgroup headers, every adventure is unpacked into individua
 - **Automated Payment Recovery**: In the event of hold expiration, generates a secure 48-hour Stripe Payment Link (`securePaymentLinkExpiresAt`), auto-reverting to `PAY_AT_PROPERTY` upon expiration without dropping bookings.
 - **Automated Commission Invoicing**: Staff dashboard generates exact partner commission invoices from structured contract terms (Percentage or Fixed USD per room-night).
 
+### ✉️ Authoritative Email Normalization & Identity Matching
+Single-entity deduplication ensures the combination-rate metric between activity bookings and hotel requests remains 100% reliable:
+- **Unified Normalization (`src/lib/email.ts`)**:
+  - Trims boundary whitespace and removes internal whitespace.
+  - Applies Unicode NFKC normalization (`input.normalize('NFKC')`).
+  - Strips zero-width and invisible characters (`U+200B`, `U+200C`, `U+200D`, `U+FEFF`).
+  - Lowercases the entire address while strictly preserving local-part dots and `+tag` aliases (provider-neutral).
+  - Pragmatic RFC-aligned validation (`isValidEmail`) rejecting malformed or over-length inputs without giant regexes.
+- **Three-Layer Defense**:
+  - **Client-Side:** Normalizes on blur (`onBlur`), validates before submission, displays clear inline errors, and applies standard accessibility/mobile attributes (`type="email"`, `autoComplete="email"`, `inputMode="email"`, `autoCapitalize="none"`).
+  - **Server-Side (Authoritative):** All booking, accommodation, and issue API endpoints validate and normalize payloads before processing, rejecting invalid submissions with clean `400 Bad Request` responses.
+  - **Database Layer (`src/lib/prisma.ts`):** Prisma Client Extensions (`$extends`) automatically sanitize `Traveller.email`, `Partner.contactEmail`, and `IssueReport` on `create`, `update`, and `upsert`.
+  - **Contact Preservation:** Nullable `IssueReport.reporterContact` values are conditionally normalized only when representing an email address, safeguarding phone numbers and WhatsApp strings (e.g. `+263 77 210 0110`).
+- **Collision Detection & Migration Backfill (`scripts/backfill-normalize-emails.ts`)**:
+  - Scans legacy rows for collisions (e.g. `John@x.com` vs. `john@x.com`), tabulates associated booking/request counts, and halts execution for manual review without destructive auto-merging.
+  - Idempotent and runnable in safe dry-run mode (`npm run backfill`) or commit mode (`npm run backfill:execute`).
+
 ### 🎛️ Operations & Admin Back-Office Portal
 - **Spreadsheet Catalog Importer**: Upload 2-tab Excel spreadsheets (`Activities` and `AddOns`) with automated side-by-side diff previews, error checks, and staff sign-off.
 - **Accommodation Request Triage Queue**: Real-time 24-hour SLA countdown timers (`slaDeadline`), status toggles (`PENDING` -> `HELD` -> `CONFIRMED` / `DECLINED`), and guest communications.
@@ -120,11 +137,20 @@ Rather than generic subgroup headers, every adventure is unpacked into individua
 │   └── lib/                                 # Business logic & seed databases
 │       ├── seed-data.ts                     # 49 activities & 66 properties
 │       ├── types.ts                         # Complete TypeScript interfaces
+│       ├── email.ts                         # NFKC normalization & pragmatic email validator
 │       ├── excel-parser.ts                  # SheetJS parser for catalog import
-│       └── prisma.ts                        # Prisma database client
+│       └── prisma.ts                        # Extended Prisma client with email normalization
 │
-└── prisma/
-    └── schema.prisma                        # PostgreSQL schema definition
+├── prisma/
+│   ├── schema.prisma                        # PostgreSQL schema definition
+│   └── migrations/                          # SQL migrations (email normalization & unique keys)
+│
+├── scripts/
+│   ├── backfill-normalize-emails.ts         # Collision detector & idempotent normalization backfill
+│   └── ...                                  # Asset and catalog generators
+│
+└── tests/
+    └── email-normalization.test.ts          # 24 unit & cross-service integration tests
 ```
 
 ---
@@ -165,6 +191,18 @@ npm run dev
 # Or build and run production server
 npm run build
 npm start
+```
+
+### Testing & Database Backfill
+```bash
+# Run unit & integration test suite (24 tests)
+npm test
+
+# Run email normalization backfill in dry-run mode (safe audit)
+npm run backfill
+
+# Execute and commit email normalization backfill to database
+npm run backfill:execute
 ```
 The application will be accessible at `http://localhost:3000`.
 
