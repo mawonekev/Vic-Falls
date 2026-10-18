@@ -1,5 +1,6 @@
 import { NextResponse } from 'next/server';
 import { db } from '@/lib/db';
+import { normalizeEmail, isValidEmail } from '@/lib/email';
 
 export async function POST(request: Request) {
   try {
@@ -23,6 +24,14 @@ export async function POST(request: Request) {
       );
     }
 
+    const normalizedGuestEmail = normalizeEmail(guestEmail);
+    if (!isValidEmail(normalizedGuestEmail)) {
+      return NextResponse.json(
+        { error: 'Please provide a valid email address' },
+        { status: 400 }
+      );
+    }
+
     const result = db.createAccommodationRequest({
       partnerId,
       roomTypeId,
@@ -31,7 +40,7 @@ export async function POST(request: Request) {
       numGuests: Number(numGuests || 2),
       paymentPath: paymentPath === 'PAY_NOW' ? 'PAY_NOW' : 'PAY_AT_PROPERTY',
       guestName,
-      guestEmail,
+      guestEmail: normalizedGuestEmail,
       guestPhone
     });
 

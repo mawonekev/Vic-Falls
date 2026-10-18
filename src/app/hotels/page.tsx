@@ -18,6 +18,7 @@ import {
   MessageSquareQuote
 } from 'lucide-react';
 import confetti from 'canvas-confetti';
+import { normalizeEmail, isValidEmail } from '@/lib/email';
 
 // Dynamically import map without SSR to avoid Leaflet window errors
 const DynamicHotelMap = dynamic(
@@ -48,10 +49,15 @@ export default function HotelsMapPage() {
   const [paymentPath, setPaymentPath] = useState<'PAY_NOW' | 'PAY_AT_PROPERTY'>('PAY_NOW');
   const [guestName, setGuestName] = useState('');
   const [guestEmail, setGuestEmail] = useState('');
+  const [emailError, setEmailError] = useState<string | null>(null);
   const [guestPhone, setGuestPhone] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [requestSuccess, setRequestSuccess] = useState<any | null>(null);
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
+
+  // Concierge inquiry state
+  const [conciergeEmail, setConciergeEmail] = useState('');
+  const [conciergeEmailError, setConciergeEmailError] = useState<string | null>(null);
 
   // Filter properties
   const filteredProperties = selectedDest === 'ALL'
@@ -71,18 +77,58 @@ export default function HotelsMapPage() {
       setSelectedRoomId(partner.roomTypes[0].id);
       setRequestSuccess(null);
       setErrorMessage(null);
+      setEmailError(null);
       setRequestModalOpen(true);
     } else {
       // Non-bookable reference pin -> open Concierge modal
       setConciergeProperty(property);
+      setConciergeEmail('');
+      setConciergeEmailError(null);
       setConciergeModalOpen(true);
+    }
+  };
+
+  const handleGuestEmailBlur = () => {
+    if (!guestEmail.trim()) {
+      setEmailError(null);
+      return;
+    }
+    const normalized = normalizeEmail(guestEmail);
+    setGuestEmail(normalized);
+    if (!isValidEmail(normalized)) {
+      setEmailError('Please enter a valid email address (e.g. name@example.com)');
+    } else {
+      setEmailError(null);
+    }
+  };
+
+  const handleConciergeEmailBlur = () => {
+    if (!conciergeEmail.trim()) {
+      setConciergeEmailError(null);
+      return;
+    }
+    const normalized = normalizeEmail(conciergeEmail);
+    setConciergeEmail(normalized);
+    if (!isValidEmail(normalized)) {
+      setConciergeEmailError('Please enter a valid email address (e.g. name@example.com)');
+    } else {
+      setConciergeEmailError(null);
     }
   };
 
   const handleSubmitRequest = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!guestName || !guestEmail) {
+    if (!guestName.trim() || !guestEmail.trim()) {
       setErrorMessage('Please provide your name and email');
+      return;
+    }
+
+    const cleanedEmail = normalizeEmail(guestEmail);
+    setGuestEmail(cleanedEmail);
+
+    if (!isValidEmail(cleanedEmail)) {
+      setEmailError('Please enter a valid email address (e.g. name@example.com)');
+      setErrorMessage('Please provide a valid email address');
       return;
     }
 
@@ -524,11 +570,30 @@ export default function HotelsMapPage() {
                       <input
                         type="email"
                         required
+                        autoComplete="email"
+                        inputMode="email"
+                        autoCapitalize="none"
+                        spellCheck={false}
                         placeholder="sarah@example.com"
                         value={guestEmail}
-                        onChange={e => setGuestEmail(e.target.value)}
-                        style={{ width: '100%', padding: '10px 12px', borderRadius: 'var(--radius-sm)', border: '1px solid var(--sand-border)', fontSize: '0.9rem' }}
+                        onChange={e => {
+                          setGuestEmail(e.target.value);
+                          if (emailError) setEmailError(null);
+                        }}
+                        onBlur={handleGuestEmailBlur}
+                        style={{
+                          width: '100%',
+                          padding: '10px 12px',
+                          borderRadius: 'var(--radius-sm)',
+                          border: `1px solid ${emailError ? 'var(--crimson)' : 'var(--sand-border)'}`,
+                          fontSize: '0.9rem'
+                        }}
                       />
+                      {emailError && (
+                        <div style={{ color: 'var(--crimson)', fontSize: '0.78rem', marginTop: '4px' }}>
+                          {emailError}
+                        </div>
+                      )}
                     </div>
                   </div>
 
@@ -597,17 +662,50 @@ export default function HotelsMapPage() {
               <div style={{ marginTop: '4px' }}><strong>Est. Rate:</strong> From ${conciergeProperty.startingPriceUSD}/night</div>
             </div>
 
-            <form onSubmit={e => { e.preventDefault(); setConciergeModalOpen(false); alert('Inquiry sent to our concierge team! We will reply within 24 hours.'); }} style={{ display: 'flex', flexDirection: 'column', gap: '14px' }}>
+            <form
+              onSubmit={e => {
+                e.preventDefault();
+                const cleaned = normalizeEmail(conciergeEmail);
+                setConciergeEmail(cleaned);
+                if (!isValidEmail(cleaned)) {
+                  setConciergeEmailError('Please enter a valid email address (e.g. name@example.com)');
+                  return;
+                }
+                setConciergeModalOpen(false);
+                alert('Inquiry sent to our concierge team! We will reply within 24 hours.');
+              }}
+              style={{ display: 'flex', flexDirection: 'column', gap: '14px' }}
+            >
               <div>
                 <label style={{ display: 'block', fontSize: '0.85rem', fontWeight: 600, marginBottom: '6px' }}>
-                  Your Contact Email
+                  Your Contact Email <span style={{ color: 'var(--crimson)' }}>*</span>
                 </label>
                 <input
                   type="email"
                   required
+                  autoComplete="email"
+                  inputMode="email"
+                  autoCapitalize="none"
+                  spellCheck={false}
                   placeholder="traveler@example.com"
-                  style={{ width: '100%', padding: '10px 12px', borderRadius: 'var(--radius-sm)', border: '1px solid var(--sand-border)' }}
+                  value={conciergeEmail}
+                  onChange={e => {
+                    setConciergeEmail(e.target.value);
+                    if (conciergeEmailError) setConciergeEmailError(null);
+                  }}
+                  onBlur={handleConciergeEmailBlur}
+                  style={{
+                    width: '100%',
+                    padding: '10px 12px',
+                    borderRadius: 'var(--radius-sm)',
+                    border: `1px solid ${conciergeEmailError ? 'var(--crimson)' : 'var(--sand-border)'}`
+                  }}
                 />
+                {conciergeEmailError && (
+                  <div style={{ color: 'var(--crimson)', fontSize: '0.78rem', marginTop: '4px' }}>
+                    {conciergeEmailError}
+                  </div>
+                )}
               </div>
 
               <div>

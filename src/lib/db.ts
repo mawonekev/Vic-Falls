@@ -17,18 +17,22 @@ import {
   INITIAL_ACCOMMODATION_REQUESTS,
   INITIAL_INVOICES
 } from './seed-data';
+import { normalizeEmail, isValidEmail, normalizeIfEmail } from './email';
 
 // Persistent in-memory data store with atomic operations
 class VicFallsDatabase {
   private activities: Activity[] = [...INITIAL_ACTIVITIES];
-  private partners: Partner[] = [...INITIAL_PARTNERS];
+  private partners: Partner[] = INITIAL_PARTNERS.map(p => ({
+    ...p,
+    contactEmail: normalizeEmail(p.contactEmail)
+  }));
   private mappedProperties: MappedProperty[] = [...INITIAL_MAPPED_PROPERTIES];
   private accommodationRequests: AccommodationRequest[] = [...INITIAL_ACCOMMODATION_REQUESTS];
   private activityBookings: ActivityBooking[] = [];
   private travellers: Traveller[] = [
     {
       id: 'trav-101',
-      email: 'sarah.jenkins@example.co.uk',
+      email: normalizeEmail('sarah.jenkins@example.co.uk'),
       fullName: 'Sarah Jenkins',
       nationality: 'United Kingdom',
       createdAt: new Date().toISOString(),
@@ -36,7 +40,7 @@ class VicFallsDatabase {
     },
     {
       id: 'trav-102',
-      email: 'mchang@example.com',
+      email: normalizeEmail('mchang@example.com'),
       fullName: 'Michael Chang',
       nationality: 'United States',
       createdAt: new Date().toISOString(),
@@ -48,11 +52,15 @@ class VicFallsDatabase {
   private issueReports: IssueReport[] = [];
 
   // ==========================================
-  // TRAVELLER (Deduplicated by Email)
+  // TRAVELLER (Deduplicated by Normalized Email)
   // ==========================================
   public upsertTraveller(data: { email: string; fullName: string; phone?: string; nationality?: string }): Traveller {
-    const normalizedEmail = data.email.trim().toLowerCase();
-    let traveller = this.travellers.find(t => t.email.toLowerCase() === normalizedEmail);
+    const normalizedEmail = normalizeEmail(data.email);
+    if (!isValidEmail(normalizedEmail)) {
+      throw new Error(`Invalid email address: "${data.email}"`);
+    }
+
+    let traveller = this.travellers.find(t => t.email === normalizedEmail);
 
     if (traveller) {
       // Update existing traveller
@@ -78,7 +86,8 @@ class VicFallsDatabase {
   }
 
   public getTravellerByEmail(email: string): Traveller | undefined {
-    return this.travellers.find(t => t.email.toLowerCase() === email.trim().toLowerCase());
+    const normalizedEmail = normalizeEmail(email);
+    return this.travellers.find(t => t.email === normalizedEmail);
   }
 
   // ==========================================
@@ -557,14 +566,17 @@ class VicFallsDatabase {
     reporterEmail?: string;
     reporterContact?: string;
   }): IssueReport {
+    const normalizedReporterEmail = params.reporterEmail ? normalizeEmail(params.reporterEmail) : undefined;
+    const processedContact = params.reporterContact ? (normalizeIfEmail(params.reporterContact) || undefined) : undefined;
+
     const report: IssueReport = {
       id: `issue-${Date.now()}`,
       pageUrl: params.pageUrl,
       pageType: params.pageType,
       pageRefId: params.pageRefId,
       description: params.description,
-      reporterEmail: params.reporterEmail,
-      reporterContact: params.reporterContact,
+      reporterEmail: normalizedReporterEmail,
+      reporterContact: processedContact,
       status: 'OPEN',
       createdAt: new Date().toISOString()
     };

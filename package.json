@@ -8,10 +8,13 @@
     "tokens:build": "node scripts/tokens-to-css.mjs",
     "tokens:watch": "node scripts/tokens-to-css.mjs --watch",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "test": "tsx --test tests/**/*.test.ts",
+    "backfill": "tsx scripts/backfill-normalize-emails.ts",
+    "backfill:execute": "tsx scripts/backfill-normalize-emails.ts --execute"
   },
   "dependencies": {
-    "@prisma/client": "^7.10.0",
+    "@prisma/client": "5.22.0",
     "canvas-confetti": "^1.9.4",
     "leaflet": "^1.9.4",
     "lucide-react": "^1.47.0",
@@ -26,7 +29,8 @@
     "@types/node": "^26.6.2",
     "@types/react": "^18.3.11",
     "@types/react-dom": "^18.3.1",
-    "prisma": "^8.0.0-rc.15",
+    "prisma": "5.22.0",
+    "tsx": "^4.23.15",
     "typescript": "^5.9.3"
   }
 }

@@ -24,6 +24,7 @@ import {
   Lock
 } from 'lucide-react';
 import confetti from 'canvas-confetti';
+import { normalizeEmail, isValidEmail } from '@/lib/email';
 
 interface ActivityClientPageProps {
   activity: Activity;
@@ -54,6 +55,7 @@ export function ActivityClientPage({ activity, relatedTiers }: ActivityClientPag
   // Guest details
   const [guestName, setGuestName] = useState('');
   const [guestEmail, setGuestEmail] = useState('');
+  const [emailError, setEmailError] = useState<string | null>(null);
   const [guestPhone, setGuestPhone] = useState('');
   const [guestNationality, setGuestNationality] = useState('United States');
 
@@ -79,13 +81,37 @@ export function ActivityClientPage({ activity, relatedTiers }: ActivityClientPag
 
   const handleStartBooking = () => {
     setBookingError(null);
+    setEmailError(null);
     setCheckoutModalOpen(true);
+  };
+
+  const handleEmailBlur = () => {
+    if (!guestEmail.trim()) {
+      setEmailError(null);
+      return;
+    }
+    const normalized = normalizeEmail(guestEmail);
+    setGuestEmail(normalized);
+    if (!isValidEmail(normalized)) {
+      setEmailError('Please enter a valid email address (e.g. name@example.com)');
+    } else {
+      setEmailError(null);
+    }
   };
 
   const handleCompleteCheckout = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!guestName || !guestEmail) {
+    if (!guestName.trim() || !guestEmail.trim()) {
       setBookingError('Please enter your full name and email address');
+      return;
+    }
+
+    const cleanedEmail = normalizeEmail(guestEmail);
+    setGuestEmail(cleanedEmail);
+
+    if (!isValidEmail(cleanedEmail)) {
+      setEmailError('Please enter a valid email address (e.g. name@example.com)');
+      setBookingError('Please provide a valid email address before submitting.');
       return;
     }
 
@@ -935,17 +961,30 @@ export function ActivityClientPage({ activity, relatedTiers }: ActivityClientPag
                       <input
                         type="email"
                         required
+                        autoComplete="email"
+                        inputMode="email"
+                        autoCapitalize="none"
+                        spellCheck={false}
                         placeholder="john.smith@example.com"
                         value={guestEmail}
-                        onChange={e => setGuestEmail(e.target.value)}
+                        onChange={e => {
+                          setGuestEmail(e.target.value);
+                          if (emailError) setEmailError(null);
+                        }}
+                        onBlur={handleEmailBlur}
                         style={{
                           width: '100%',
                           padding: '10px 12px',
                           borderRadius: 'var(--radius-sm)',
-                          border: '1px solid var(--sand-border)',
+                          border: `1px solid ${emailError ? 'var(--crimson)' : 'var(--sand-border)'}`,
                           fontSize: '0.92rem'
                         }}
                       />
+                      {emailError && (
+                        <div style={{ color: 'var(--crimson)', fontSize: '0.78rem', marginTop: '4px' }}>
+                          {emailError}
+                        </div>
+                      )}
                     </div>
                   </div>
 

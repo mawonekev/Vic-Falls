@@ -2,6 +2,7 @@
 
 import React, { useState } from 'react';
 import { AlertCircle, CheckCircle2, X } from 'lucide-react';
+import { normalizeEmail, isValidEmail } from '@/lib/email';
 
 interface ReportIssueModalProps {
   isOpen: boolean;
@@ -20,14 +21,39 @@ export function ReportIssueModal({
 }: ReportIssueModalProps) {
   const [description, setDescription] = useState('');
   const [email, setEmail] = useState('');
+  const [emailError, setEmailError] = useState<string | null>(null);
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
 
   if (!isOpen) return null;
 
+  const handleEmailBlur = () => {
+    if (!email.trim()) {
+      setEmailError(null);
+      return;
+    }
+    const normalized = normalizeEmail(email);
+    setEmail(normalized);
+    if (!isValidEmail(normalized)) {
+      setEmailError('Please enter a valid email address (e.g. name@example.com)');
+    } else {
+      setEmailError(null);
+    }
+  };
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!description.trim()) return;
+
+    let normalizedEmail: string | undefined = undefined;
+    if (email.trim()) {
+      normalizedEmail = normalizeEmail(email);
+      setEmail(normalizedEmail);
+      if (!isValidEmail(normalizedEmail)) {
+        setEmailError('Please enter a valid email address (e.g. name@example.com)');
+        return;
+      }
+    }
 
     setLoading(true);
     try {
@@ -39,7 +65,7 @@ export function ReportIssueModal({
           pageType,
           pageRefId,
           description,
-          reporterEmail: email
+          reporterEmail: normalizedEmail
         })
       });
       if (res.ok) {
@@ -56,6 +82,7 @@ export function ReportIssueModal({
     setSubmitted(false);
     setDescription('');
     setEmail('');
+    setEmailError(null);
     onClose();
   };
 
@@ -124,18 +151,31 @@ export function ReportIssueModal({
                 </label>
                 <input
                   type="email"
+                  autoComplete="email"
+                  inputMode="email"
+                  autoCapitalize="none"
+                  spellCheck={false}
                   placeholder="traveler@example.com"
                   value={email}
-                  onChange={e => setEmail(e.target.value)}
+                  onChange={e => {
+                    setEmail(e.target.value);
+                    if (emailError) setEmailError(null);
+                  }}
+                  onBlur={handleEmailBlur}
                   style={{
                     width: '100%',
                     padding: '10px 12px',
                     borderRadius: 'var(--radius-sm)',
-                    border: '1px solid var(--sand-border)',
+                    border: `1px solid ${emailError ? 'var(--crimson)' : 'var(--sand-border)'}`,
                     outline: 'none',
                     fontSize: '0.95rem'
                   }}
                 />
+                {emailError && (
+                  <div style={{ color: 'var(--crimson)', fontSize: '0.78rem', marginTop: '4px' }}>
+                    {emailError}
+                  </div>
+                )}
               </div>
 
               <div style={{ display: 'flex', justifyContent: 'flex-end', gap: '12px', marginTop: '12px' }}>

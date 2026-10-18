@@ -1,5 +1,6 @@
 import { NextResponse } from 'next/server';
 import { db } from '@/lib/db';
+import { normalizeEmail, isValidEmail } from '@/lib/email';
 
 export async function POST(request: Request) {
   try {
@@ -25,13 +26,21 @@ export async function POST(request: Request) {
       );
     }
 
+    const normalizedGuestEmail = normalizeEmail(guestEmail);
+    if (!isValidEmail(normalizedGuestEmail)) {
+      return NextResponse.json(
+        { error: 'Please provide a valid email address' },
+        { status: 400 }
+      );
+    }
+
     const result = db.createActivityBooking({
       activitySlug,
       bookingDate,
       timeSlot,
       numAdults: Number(numAdults),
       numChildren: Number(numChildren),
-      guestEmail,
+      guestEmail: normalizedGuestEmail,
       guestName,
       guestPhone,
       guestNationality,
